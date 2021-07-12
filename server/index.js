@@ -4,7 +4,7 @@ const app = express();
 const PORT = 3001;
 const router = require('./routes.js');
 const morgan = require('morgan');
-const db = require('../db/index.js');
+const pool = require('../db/index.js');
 
 app.use(express.json());
 app.use(express.static('./dist'));

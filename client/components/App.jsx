@@ -6,7 +6,6 @@ import Calendar from './Calendar.jsx';
 
 const App = (props) => {
 
-
   return(
     <div>Hello World</div>
   );
