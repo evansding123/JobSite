@@ -30,7 +30,7 @@ CREATE TYPE employment_type AS ENUM (
   'Full Time',
   'Part Time',
   'Temporary',
-  'internship'
+  'Internship'
 );
 
 CREATE TYPE experience AS ENUM (
@@ -50,6 +50,7 @@ CREATE TABLE "accounts" (
 );
 
 CREATE TABLE "notes" (
+  "id" serial PRIMARY KEY,
   "note" text NOT NULL,
   "accounts_id" integer NOT NULL --foregin key
 );
