@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { useAuth } from '../src/contexts/AuthContext';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -30,6 +30,7 @@ function Login() {
   const { login } = useAuth();
   const [ error, setError ] = useState('');
   const [ loading, setLoading ] = useState(false);
+  const history = useHistory();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -37,7 +38,8 @@ function Login() {
     try {
       setError('');
       setLoading(true);
-      await login(emailRef.current.value, passwordRef.current.value);
+      await login(emailRef.current.value, passwordRef.current.value)
+      history.push('/')
     } catch {
       setError('Failed to sign in')
     }
@@ -63,9 +65,11 @@ function Login() {
         inputRef={passwordRef}
       />
       <div>
-        <Button variant="contained" onClick={()=> console.log('clicked')}>
-          Cancel
-        </Button>
+        <Link to='/'>
+          <Button variant="contained">
+            Cancel
+          </Button>
+        </Link>
         <Button type="submit" disabled={loading} variant="contained" color="primary">
           Log In
         </Button>

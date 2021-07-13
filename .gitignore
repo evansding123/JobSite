@@ -3,5 +3,5 @@ dist/bundle.js
 node_modules
 package-lock.json
 .env
-
+client/src/firebase.config.js
 

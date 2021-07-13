@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { useAuth } from '../src/contexts/AuthContext';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -33,12 +33,10 @@ const Signup = (props) => {
   const { signup } = useAuth();
   const [ error, setError ] = useState('');
   const [ loading, setLoading ] = useState(false);
+  const history = useHistory();
 
   async function handleSubmit(e) {
     e.preventDefault();
-
-    console.log(firstNameRef, lastNameRef, emailRef, passwordRef);
-    //handleClose(); modal close function
 
     if (passwordRef.current.value !== passwordConfirmRef.current.value ){
       return setError('Passwords do not match');
@@ -48,18 +46,11 @@ const Signup = (props) => {
       setError('');
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
+      history.push('/')
     } catch {
       setError('Failed to create an account')
     }
   };
-
-
-  /*
-    TODO: Add component to a modal window component and pass down the "close modal" click handler to the cancel/submit buttons
-  */
-
-
-
 
   return (
     <>
@@ -102,9 +93,11 @@ const Signup = (props) => {
           inputRef={passwordConfirmRef}
         />
         <div>
-          <Button variant="contained" onClick={()=> console.log('clicked')}>
-            Cancel
-          </Button>
+          <Link to='/'>
+            <Button variant="contained" onClick={()=> console.log('clicked')}>
+              Cancel
+            </Button>
+          </Link>
           <Button type="submit" disabled={loading} variant="contained" color="primary">
             Signup
           </Button>
