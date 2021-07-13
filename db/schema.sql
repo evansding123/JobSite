@@ -45,7 +45,8 @@ CREATE TABLE "accounts" (
   "email" varchar(255) NOT NULL,
   "username" varchar(255) NOT NULL,
   "password" varchar(255) NOT NULL,
-  "location_coordinates" varchar(255),
+  "longitude" varchar(255),
+  "latitude" varchar(255,)
   "location_address" varchar(255) NOT NULL
 );
 
@@ -81,7 +82,7 @@ CREATE TABLE "jobs" (
   "salary" integer NOT NULL,
   "remote" remote NOT NULL,
   "experience" experience, --constraints
-  "date" date NOT NULL DEFAULT CURRENT_DATE,
+  "date" varchar(255) NOT NULL DEFAULT CURRENT_DATE,
   -- "location_coordinates" varchar(255), --set default based off of accounts
   -- "location_address" varchar(255) NOT NULL, --set default based off of accounts
   "employers_id" integer NOT NULL --foreign key

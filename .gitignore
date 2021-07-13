@@ -1,13 +1,7 @@
-<<<<<<< HEAD
-dist/bundle.js
-node_modules
-package-lock.json
-=======
 config.js
 dist/bundle.js
 node_modules
 package-lock.json
 .env
-
->>>>>>> 7fed65c06cd5a79cffd1eac9cd9b0e2c8a4e60a4
+json.js
 
