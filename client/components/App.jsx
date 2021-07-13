@@ -8,7 +8,10 @@ const App = (props) => {
 
 
   return(
-    <div>Hello World</div>
+    <>
+    <Calendar test = 'props showing'/>
+    <div id="calendar" ></div>
+    </>
   );
 
 }
