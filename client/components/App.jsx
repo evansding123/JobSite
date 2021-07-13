@@ -1,5 +1,6 @@
 import React from 'react';
-
+import SignupModal from'./SignupModal.jsx';
+import { AuthProvider } from "../src/contexts/AuthContext"
 
 
 
@@ -7,9 +8,13 @@ const App = (props) => {
 
 
   return(
-    <div>Hello World</div>
+    <>
+      <AuthProvider>
+        <div>Hello World</div>
+        <SignupModal />
+      </AuthProvider>
+    </>
   );
-
 }
 
 export default App;

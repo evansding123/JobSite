@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { makeStyles } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { useAuth } from '../src/contexts/AuthContext';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,61 +23,90 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const SignupModal = ({ handleClose }) => {
+const SignupModal = (props) => {
   const classes = useStyles();
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const firstNameRef = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const passwordConfirmRef = useRef();
+  const lastNameRef = useRef();
+  const { signup, currentUser } = useAuth();
+  const [ error, setError ] = useState('');
+  const [ loading, setLoading ] = useState(false);
 
-  const handleSubmit = e => {
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log(firstName, lastName, email, password);
-    handleClose();
+
+    console.log(firstNameRef, lastNameRef, emailRef, passwordRef);
+    //handleClose(); modal close function
+
+    if (passwordRef.current.value !== passwordConfirmRef.current.value ){
+      return setError('Passwords do not match');
+    }
+
+    try {
+      setError('');
+      setLoading(true);
+      await signup(emailRef.current.value, passwordRef.current.value);
+    } catch {
+      setError('Failed to create an account')
+    }
+
+    console.log(currentUser.email);
   };
 
   return (
-    <form className={classes.root} onSubmit={handleSubmit}>
-      <TextField
-        label="First Name"
-        variant="filled"
-        required
-        value={firstName}
-        onChange={e => setFirstName(e.target.value)}
-      />
-      <TextField
-        label="Last Name"
-        variant="filled"
-        required
-        value={lastName}
-        onChange={e => setLastName(e.target.value)}
-      />
-      <TextField
-        label="Email"
-        variant="filled"
-        type="email"
-        required
-        value={email}
-        onChange={e => setEmail(e.target.value)}
-      />
-      <TextField
-        label="Password"
-        variant="filled"
-        type="password"
-        required
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-      />
-      <div>
-        <Button variant="contained" onClick={handleClose}>
-          Cancel
-        </Button>
-        <Button type="submit" variant="contained" color="primary">
-          Signup
-        </Button>
-      </div>
-    </form>
+    <>
+      <h3>Create An Account (it's free!)</h3>
+      {error && <div>{ error }</div>}
+      <form className={classes.root} onSubmit={handleSubmit}>
+        <TextField
+          label="First Name"
+          variant="filled"
+          required
+          type="text"
+          inputRef={firstNameRef}
+        />
+        <TextField
+          label="Last Name"
+          variant="filled"
+          required
+          type="text"
+          inputRef={lastNameRef}
+        />
+        <TextField
+          label="Email"
+          variant="filled"
+          type="email"
+          required
+          inputRef={emailRef}
+        />
+        <TextField
+          label="Password"
+          variant="filled"
+          type="password"
+          required
+          inputRef={passwordRef}
+        />
+        <TextField
+          label="Password Confirmation"
+          variant="filled"
+          type="password"
+          required
+          inputRef={passwordConfirmRef}
+        />
+        <div>
+          <Button variant="contained" onClick={()=> console.log('clicked')}>
+            Cancel
+          </Button>
+          <Button type="submit" disabled={loading} variant="contained" color="primary">
+            Signup
+          </Button>
+        </div>
+      </form>
+      <div> Already signed up? Log In here</div>
+    </>
   );
 };
 
-export default Login;
+export default SignupModal;
