@@ -3,7 +3,7 @@ CREATE DATABASE "job_site";
 \c "job_site";
 
 DROP TABLE IF EXISTS
-  "accounts, notes, notifications, job_seekers, employers, jobs, job_seekers_jobs";
+  "accounts, notes, notifications, job_seekers, employers, jobs, job_seekers_applied_jobs";
 
   CREATE TYPE industry AS ENUM (
   'Agriculture',
@@ -88,7 +88,7 @@ CREATE TABLE "jobs" (
   "employers_id" integer NOT NULL --foreign key
 );
 
-CREATE TABLE "job_seekers_jobs" (
+CREATE TABLE "job_seekers_applied_jobs" (
   "id" serial PRIMARY KEY,
   "job_seekers_id" integer NOT NULL, --foreign key
   "jobs_id" integer NOT NULL --foreign key
