@@ -1,15 +1,13 @@
 import React from 'react';
 import Calendar from './Calendar.jsx';
-
-
-
+import HomePage from './HomePage.jsx';
 
 const App = (props) => {
-
   return(
-    <div>Hello World</div>
+    <div>
+      <HomePage />
+    </div>
   );
-
 }
 
 export default App;
