@@ -1,18 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import PopUp from './PopUp.jsx';
 
 const ReactCalendar = (props) => {
-
-
-  const [clicked, popUp] = useState(false);
+  const [clicked, setClicked] = useState(false);
   const [value, onChange] = useState(new Date());
 
+  // useEffect(() => {
+  //   axios.get('/notification')
+  //   .then((response) => {
+  //     //do something with response
+  //     console.log(response);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error)
+  //   })
+  // }, []);
 
-  const addDate = (event) => {
+  const handleClick = (event) => {
     onChange(event);
-    popUp(true);
+    setClicked(true);
   }
+
+  const handleClose = (closed) => {
+    setClicked(false);
+  }
+
+
 
   // let box;
 
@@ -23,13 +37,11 @@ const ReactCalendar = (props) => {
   //   box = <div></div>;
   // }
 
-  let box = clicked === true ? <PopUp date = {value.toString()}/> : <div></div>;
-
-
+  let box = clicked ? <PopUp date={value.toString()} callback = {handleClose}/> : <div></div>;
 
   return (
     <div>
-      <Calendar onChange ={addDate}  value={value}>
+      <Calendar onChange={handleClick} value={value}>
       </Calendar>
       <div>{box}</div>
     </div>
