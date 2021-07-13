@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { useAuth } from '../src/contexts/AuthContext';
-
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -23,14 +23,14 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const SignupModal = (props) => {
+const Signup = (props) => {
   const classes = useStyles();
   const firstNameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
   const lastNameRef = useRef();
-  const { signup, currentUser } = useAuth();
+  const { signup } = useAuth();
   const [ error, setError ] = useState('');
   const [ loading, setLoading ] = useState(false);
 
@@ -110,9 +110,9 @@ const SignupModal = (props) => {
           </Button>
         </div>
       </form>
-      <div> Already signed up? Log In here</div>
+      <div> Already signed up? <Link to="/login">Log in</Link> here</div>
     </>
   );
 };
 
-export default SignupModal;
+export default Signup;
