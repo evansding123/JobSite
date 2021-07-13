@@ -63,9 +63,6 @@ transition: 0.3s;
 }
 `;
 
-
-
-
 const Search = () => {
   const [searchTerm, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
@@ -78,7 +75,7 @@ const Search = () => {
       <FormHeaders>Search Jobs</FormHeaders>
       <br></br>
       <SearchAndButton>
-        <StyledInput TextField id="filled-basic" label="Search" variant="filled"
+        <StyledInput id="filled-basic" label="Search" variant="filled"
           size="small"
           type="text"
           value={searchTerm}
@@ -91,22 +88,22 @@ const Search = () => {
       <FormHeaders>Type of Employment</FormHeaders>
       <br></br>
       <CheckContainer>
-        <label for="full-time">
+        <label htmlFor="full-time">
           <input type="checkbox" id="full-time" name="full-time" value="full-time" />
             Full-Time
         </label>
         <br></br>
-        <label for="part-time">
+        <label htmlFor="part-time">
           <input type="checkbox" id="part-time" name="part-time" value="part-time" />
             Part-Time
         </label>
         <br></br>
-        <label for="temp">
+        <label htmlFor="temp">
           <input type="checkbox" id="temp" name="temp" value="temp" />
             Temporary
         </label>
         <br></br>
-        <label for="intern">
+        <label htmlFor="intern">
           <input type="checkbox" id="intern" name="intern" value="intern" />
             Internship
         </label>
@@ -115,22 +112,22 @@ const Search = () => {
       <FormHeaders>Experience Level</FormHeaders>
       <br></br>
       <CheckContainer>
-        <label for="entry-level">
+        <label htmlFor="entry-level">
           <input type="checkbox" id="entry-level" name="entry-level" value="entry-level" />
           Entry-Level
         </label>
         <br></br>
-        <label for="mid-level">
+        <label htmlFor="mid-level">
           <input type="checkbox" id="mid-level" name="mid-level" value="mid-level" />
           Mid-Level
         </label>
         <br></br>
-        <label for="senior">
+        <label htmlFor="senior">
           <input type="checkbox" id="senior" name="senior" value="senior" />
           Senior-Level
         </label>
         <br></br>
-        <label for="exec">
+        <label htmlFor="exec">
           <input type="checkbox" id="exec" name="exec" value="exec" />
           Executive-Level
         </label>
@@ -138,22 +135,22 @@ const Search = () => {
       <br></br>
       <FormHeaders>Salary</FormHeaders>
       <br></br>
-      <input type="range" min="1" max="100" class="slider" id="salary" />
+      <input type="range" min="1" max="100" className="slider" id="salary" />
       <br></br>
       <FormHeaders>Remote/Onsite</FormHeaders>
       <br></br>
       <CheckContainer>
-        <label for="remote">
+        <label htmlFor="remote">
           <input type="checkbox" id="remote" name="remote" value="remote" />
           Remote
         </label>
         <br></br>
-        <label for="onsite">
+        <label htmlFor="onsite">
           <input type="checkbox" id="onsite" name="onsite" value="onsite" />
           Onsite
         </label>
         <br></br>
-        <label for="mixed">
+        <label htmlFor="mixed">
           <input type="checkbox" id="mixed" name="mixed" value="mixed" />
           Mixed
         </label>
@@ -162,32 +159,32 @@ const Search = () => {
       <FormHeaders>Date Posted</FormHeaders>
       <br></br>
       <CheckContainer>
-        <label for="24h">
+        <label htmlFor="24h">
           <input type="checkbox" id="24h" name="24h" value="24h" />
           24 hours
         </label>
         <br></br>
-        <label for="3d">
+        <label htmlFor="3d">
           <input type="checkbox" id="3d" name="3d" value="3d" />
           3 days
         </label>
         <br></br>
-        <label for="7d">
+        <label htmlFor="7d">
           <input type="checkbox" id="7d" name="7d" value="7d" />
           7 days
         </label>
         <br></br>
-        <label for="14d">
+        <label htmlFor="14d">
           <input type="checkbox" id="14d" name="14d" value="14d" />
           14 days
         </label>
         <br></br>
-        <label for="30d">
+        <label htmlFor="30d">
           <input type="checkbox" id="30d" name="30d" value="30d" />
           30 days
         </label>
         <br></br>
-        <label for="anytime">
+        <label htmlFor="anytime">
           <input type="checkbox" id="anytime" name="anytime" value="anytime" />
           Anytime
         </label>
@@ -196,27 +193,27 @@ const Search = () => {
       <FormHeaders>Location Range</FormHeaders>
       <br></br>
       <CheckContainer>
-        <label for="5m">
+        <label htmlFor="5m">
         <input type="checkbox" id="5m" name="5m" value="5m" />
         5 miles
         </label>
         <br></br>
-        <label for="20m">
+        <label htmlFor="20m">
         <input type="checkbox" id="20m" name="20m" value="20m" />
         20 miles
         </label>
         <br></br>
-        <label for="50m">
+        <label htmlFor="50m">
         <input type="checkbox" id="50m" name="50m" value="50m" />
         50 miles
         </label>
         <br></br>
-        <label for="100m">
+        <label htmlFor="100m">
         <input type="checkbox" id="100m" name="100m" value="100m" />
         100 miles
         </label>
         <br></br>
-        <label for="anywhere">
+        <label htmlFor="anywhere">
         <input type="checkbox" id="anywhere" name="anywhere" value="anywhere" />
         Anywhere
         </label>
