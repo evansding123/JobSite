@@ -10,17 +10,17 @@
 const data = require('./json.js');
 const splitWhole = ((data.results.length % 2) === 0 ? data.results.length / 2 : (data.results.length - 1) / 2);
 const fillerData = {
-  lorem: `Sed ut perspiciatis unde omnis iste natus error sit voluptatem \
-  accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo \
-  inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo \
-  enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia \
-  consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro \
-  quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, \
-  sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam \
-  quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam \
-  corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem \
-  vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, \
-  vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?`,
+  lorem: `Sed ut perspiciatis unde omnis iste natus error sit voluptatem\
+accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo\
+inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo\
+enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit sed quia\
+consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro\
+quisquam est qui dolorem ipsum quia dolor sit amet consectetur adipisci velit\
+sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam\
+quaerat voluptatem. Ut enim ad minima veniam quis nostrum exercitationem ullam\
+corporis suscipit laboriosam nisi ut aliquid ex ea commodi consequatur? Quis autem\
+vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur\
+vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?`,
   industries: [
     'Agriculture',
     'Construction',
@@ -44,7 +44,7 @@ const fillerData = {
     'Full Time',
     'Part Time',
     'Temporary',
-    'internship'
+    'Internship'
   ],
   experience: [
     'Entry',
@@ -68,9 +68,9 @@ const csv = (json) => {
   const csv = json.map((row) => {
     return columns.map((column) => {
       return row[column];
-    }).join(';');
+    }).join(',');
   })
-  csv.unshift(columns.join(';'))
+  csv.unshift(columns.join(','))
   return csv.join('\n');
 }
 
@@ -91,7 +91,8 @@ module.exports = {
   },
 
   notes: (transform) => {
-    const json = Array(data.results.length).fill({note: fillerData.lorem});
+    // const json = Array(data.results.length).fill({note: fillerData.lorem});
+    const json = Array(data.results.length).fill(0).map((na, index) => ({note: fillerData.lorem, accounts_id: index + 1}));
     return transform ? csv(json) : json;
   },
 
@@ -133,8 +134,9 @@ module.exports = {
 
   job_seekers_applied_jobs: (applications, jobs, transform) => {
     const json = Array(applications).fill(0).map(() => {
-      const jobSeekers = Array.from(Array(data.results.length + 1).keys()).slice(splitWhole);
-      const job_seekers_id = jobSeekers[Math.floor(1 + (Math.random() * jobSeekers.length))];
+      // const jobSeekers = Array.from(Array(data.results.length + 1).keys()).slice(splitWhole);
+      // const job_seekers_id = jobSeekers[Math.floor(1 + (Math.random() * (jobSeekers.length - 1)))];
+      const job_seekers_id = Math.floor(1 + Math.random() * (data.results.length - splitWhole));
       const jobs_id = Math.floor(1 + (Math.random() * jobs));
       let obj = {};
       obj.job_seekers_id = job_seekers_id;

@@ -1,9 +1,10 @@
 # JobSite
 1. Run `npm install` to get all dependencies
+
 2. Access postgres
   a. for ubuntu users, use the following command: `sudo -i -u postgres`
   b.
-3. Run the following command to create the db from the schema: `psql -U postgres < INSERT_FILE_PATH.sql`
+
 3. create a config.js file (or .env file) with the following layout:
 
   module.exports = {
@@ -50,6 +51,7 @@ tip: the default port is 5432.
 
     (for `jobs` table)
     `/jobs?posts=INSERT_NUMBER_OF_DESIRED_POSTS`
+    example: `http://localhost:3011/generate/job_seekers_applied_jobs?applications=20000&jobs=5000&transform=true`
 
     (for `/job_seekers_applied_jobs` table. The number of jobs must accurately represent the number of job posts you generated above)
     `/job_seekers_applied_jobs?applications=INSERT_NUMBER_OF_DESIRED_APPLICANTS&jobs=INSERT_NUMBER_OF_JOB_POSTS_USED_IN_JOBS`
@@ -64,4 +66,7 @@ tip: the default port is 5432.
     3. copy the returned generated json data.
     4. use this website to generate csv from the returned json: `https://www.convertcsv.com/json-to-csv.htm`
 
-6. After you have your csv data create csv files named after the appropriate tables for the data in the db.
+6. After you have your csv data create csv files in the db folder. Name the files after the appropriate tables for the data in the db.
+
+7. Run the following command to create the db from the schema: `psql -U postgres < INSERT_FILE_PATH.sql`
+   You can also change to any user you want `-U INSERT_USER`
