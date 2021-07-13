@@ -8,7 +8,8 @@
     "start": "nodemon ./server/index.js",
     "watch": "webpack --config ./webpack.config.js -w",
     "seed:schema": "psql < ./db/schema.sql",
-    "db": "psql job_site"
+    "db": "psql job_site",
+    "generateData": "nodemon ./generateData/index.js"
   },
   "repository": {
     "type": "git",
