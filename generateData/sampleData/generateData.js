@@ -68,32 +68,45 @@ const csv = (json) => {
   const csv = json.map((row) => {
     return columns.map((column) => {
       return row[column];
-    }).join(',');
+    }).join(';');
   })
-  csv.unshift(columns.join(','))
-  return csv.join(' \n');
+  csv.unshift(columns.join(';'))
+  return csv.join('\n');
 }
 
 module.exports = {
 
-  accounts: csv(data.results.map((user) => {
-    return {
-      username: user.login.username,
-      password: user.login.password,
-      email: user.email,
-      longitude: user.location.coordinates.longitude,
-      latitude: user.location.coordinates.latitude,
-      location_address: 'sample address'
-    };
-  })),
+  accounts: (transform) => {
+    const json = data.results.map((user) => {
+      return {
+        username: user.login.username,
+        password: user.login.password,
+        email: user.email,
+        longitude: user.location.coordinates.longitude,
+        latitude: user.location.coordinates.latitude,
+        location_address: 'sample address'
+      };
+    })
+    return transform ? csv(json) : json;
+  },
 
-  notes: csv(Array(data.results.length).fill({note: fillerData.lorem})),
+  notes: (transform) => {
+    const json = Array(data.results.length).fill({note: fillerData.lorem});
+    return transform ? csv(json) : json;
+  },
 
-  employers: csv(Array.from(Array(splitWhole + 1).keys()).slice(1).map((id) => ({accounts_id: id}))),
+  employers: (transform) => {
+    const json = Array.from(Array(splitWhole + 1).keys()).slice(1).map((id) => ({accounts_id: id}));
+    return transform ? csv(json) : json;
+  },
 
-  job_seekers: csv(Array.from(Array(data.results.length + 1).keys()).slice(splitWhole + 1).map((id) => ({accounts_id: id}))),
+  job_seekers: (transform) => {
+    const json = Array.from(Array(data.results.length + 1).keys()).slice(splitWhole + 1).map((id) => ({accounts_id: id}));
+    return transform ? csv(json) : json;
+  },
 
-  jobs: (posts) => {
+
+  jobs: (posts, transform) => {
     const json = Array(posts).fill(0).map(() => {
       const industriesRandom = fillerData.industries[Math.floor(Math.random() * fillerData.industries.length)];
       const remoteRandom = fillerData.remote[Math.floor(Math.random() * fillerData.remote.length)];
@@ -115,21 +128,20 @@ module.exports = {
       obj.employers_id = employers_id;
       return obj;
     })
-    // return json;
-    return csv(json);
+    return transform ? csv(json) : json;
   },
 
-  job_seekers_applied_jobs: (applicationsWanted, numberOfJobPostings) => {
-    const json = Array(applicationsWanted).fill(0).map(() => {
+  job_seekers_applied_jobs: (applications, jobs, transform) => {
+    const json = Array(applications).fill(0).map(() => {
       const jobSeekers = Array.from(Array(data.results.length + 1).keys()).slice(splitWhole);
       const job_seekers_id = jobSeekers[Math.floor(1 + (Math.random() * jobSeekers.length))];
-      const jobs_id = Math.floor(1 + (Math.random() * numberOfJobPostings));
+      const jobs_id = Math.floor(1 + (Math.random() * jobs));
       let obj = {};
       obj.job_seekers_id = job_seekers_id;
       obj.jobs_id = jobs_id;
       return obj;
     })
-    return csv(json);
+    return transform ? csv(json) : json;
   }
 }
 

@@ -28,11 +28,13 @@ app.listen(PORT, () => {
 app.use('/generate', router);
 
 router.get('/accounts', (req, res) => {
-  res.send(generateData.accounts)
+  const {transform} = req.query;
+  res.send(generateData.accounts(transform));
 })
 
 router.get('/notes', (req, res) => {
-  res.send(generateData.notes)
+  const {transform} = req.query;
+  res.send(generateData.notes(transform));
 })
 
 // router.get('/notifications', (req, res) => {
@@ -40,31 +42,24 @@ router.get('/notes', (req, res) => {
 // })
 
 router.get('/employers', (req, res) => {
-  res.send(generateData.employers);
+  const {transform} = req.query;
+  res.send(generateData.employers(transform));
 })
 
 router.get('/job_seekers', (req, res) => {
-  res.send(generateData.job_seekers);
+  const {transform} = req.query;
+  res.send(generateData.job_seekers(transform));
 })
 
 router.get('/jobs', (req, res) => {
-  let {posts} = req.query;
+  let {posts, transform} = req.query;
   posts = Number.parseInt(posts);
-  res.send(generateData.jobs(posts));
+  res.send(generateData.jobs(posts, transform));
 })
 
 router.get('/job_seekers_applied_jobs', (req, res) => {
-  let {applicationsWanted, numberOfJobPostings} = req.query;
-  applicationsWanted = Number.parseInt(applicationsWanted);
-  numberOfJobPostings = Number.parseInt(numberOfJobPostings);
-  res.send(generateData.job_seekers_applied_jobs(applicationsWanted, numberOfJobPostings))
-})
-
-
-
-
-
-
-app.get('/job_seekers_applied_jobs', (req, res) => {
-  res.send(generateData.accounts)
+  let {applications, jobs, transform} = req.query;
+  applications = Number.parseInt(applications);
+  jobs = Number.parseInt(jobs);
+  res.send(generateData.job_seekers_applied_jobs(applications, jobs, transform));
 })
