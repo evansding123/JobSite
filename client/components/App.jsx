@@ -7,7 +7,6 @@ import ReactCalendar from './ReactCalendar.jsx';
 
 const App = (props) => {
 
-
   return(
     <>
 
