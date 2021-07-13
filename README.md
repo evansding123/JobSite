@@ -68,5 +68,7 @@ tip: the default port is 5432.
 
 6. After you have your csv data create csv files in the db folder. Name the files after the appropriate tables for the data in the db.
 
-7. Run the following command to create the db from the schema: `psql -U postgres < INSERT_FILE_PATH.sql`
+7. Specify the path to the csv files in schema.sql
+
+8. Run the following command to create the db from the schema: `psql -U postgres < INSERT_FILE_PATH.sql`
    You can also change to any user you want `-U INSERT_USER`
