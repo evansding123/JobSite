@@ -4,6 +4,7 @@ const path = require('path');
 const config = {
   entry: './client/src/index.js',
   output: {
+    publicPath: '/',
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
   },
@@ -29,6 +30,9 @@ const config = {
   },
   mode: 'development',
   devtool: 'eval-source-map',
+  devServer: {
+    historyApiFallback: true,
+  }
 };
 
 module.exports = config;

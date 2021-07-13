@@ -51,9 +51,15 @@ const SignupModal = (props) => {
     } catch {
       setError('Failed to create an account')
     }
-
-    console.log(currentUser.email);
   };
+
+
+  /*
+    TODO: Add component to a modal window component and pass down the "close modal" click handler to the cancel/submit buttons
+  */
+
+
+
 
   return (
     <>
