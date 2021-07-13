@@ -1,5 +1,6 @@
 import React from 'react';
-import Calendar from './Calendar.jsx';
+
+import ReactCalendar from './ReactCalendar.jsx';
 
 
 
@@ -9,8 +10,9 @@ const App = (props) => {
 
   return(
     <>
-    <Calendar test = 'props showing'/>
-    <div id="calendar" ></div>
+    {/* <Calendar test = 'props showing'/>
+    <div id="calendar" ></div> */}
+    <ReactCalendar />
     </>
   );
 
