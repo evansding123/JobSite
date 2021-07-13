@@ -10,8 +10,7 @@ const App = (props) => {
 
   return(
     <>
-    {/* <Calendar test = 'props showing'/>
-    <div id="calendar" ></div> */}
+
     <ReactCalendar />
     </>
   );

@@ -151,3 +151,20 @@
 
 } */
 
+p{
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.popUp {
+  background-color: #274358;
+  width: 50%;
+  border-radius: 10px;
+  color: #E9EB9E;
+}
+
+
+form {
+  color:  #E9EB9E;
+}
+
