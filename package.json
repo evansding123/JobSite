@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon ./server/index.js",
-    "watch": "webpack --config ./webpack.config.js -w"
+    "watch": "webpack --config ./webpack.config.js -w",
+    "seed:schema": "psql < ./db/schema.sql",
+    "db": "psql job_site"
   },
   "repository": {
     "type": "git",
