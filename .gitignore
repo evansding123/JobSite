@@ -5,6 +5,7 @@ package-lock.json
 .env
 json.js
 
+
 accounts.csv
 notes.csv
 notifications.csv
@@ -12,4 +13,5 @@ employers.csv
 job_seekers.csv
 jobs.csv
 job_seekers_applied_jobs.csv
+
 
