@@ -1,12 +1,16 @@
 import React from 'react';
-import Calendar from './Calendar.jsx';
+
+import ReactCalendar from './ReactCalendar.jsx';
 import HomePage from './HomePage.jsx';
 
 const App = (props) => {
   return(
+    <>
+    <ReactCalendar />
     <div>
       <HomePage />
     </div>
+    </>
   );
 }
 
