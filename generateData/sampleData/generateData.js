@@ -63,26 +63,38 @@ const fillerData = {
   ]
 };
 
+const csv = (json) => {
+  const columns = Object.keys(json[0]);
+  const csv = json.map((row) => {
+    return columns.map((column) => {
+      return row[column];
+    }).join(',');
+  })
+  csv.unshift(columns.join(','))
+  return csv.join(' \n');
+}
+
 module.exports = {
 
-  accounts: data.results.map((user) => {
+  accounts: csv(data.results.map((user) => {
     return {
       username: user.login.username,
       password: user.login.password,
-      email: user.email.account,
+      email: user.email,
       longitude: user.location.coordinates.longitude,
-      latitude: user.location.coordinates.latitude
+      latitude: user.location.coordinates.latitude,
+      location_address: 'sample address'
     };
-  }),
+  })),
 
-  notes: Array(data.results.length).fill({note: fillerData.lorem}),
+  notes: csv(Array(data.results.length).fill({note: fillerData.lorem})),
 
-  employers: Array.from(Array(splitWhole + 1).keys()).slice(1).map((id) => ({accounts_id: id})),
+  employers: csv(Array.from(Array(splitWhole + 1).keys()).slice(1).map((id) => ({accounts_id: id}))),
 
-  jobSeekers: Array.from(Array(data.results.length + 1).keys()).slice(splitWhole + 1).map((id) => ({accounts_id: id})),
+  job_seekers: csv(Array.from(Array(data.results.length + 1).keys()).slice(splitWhole + 1).map((id) => ({accounts_id: id}))),
 
   jobs: (posts) => {
-    return new Array(posts).fill(0).map(() => {
+    const json = Array(posts).fill(0).map(() => {
       const industriesRandom = fillerData.industries[Math.floor(Math.random() * fillerData.industries.length)];
       const remoteRandom = fillerData.remote[Math.floor(Math.random() * fillerData.remote.length)];
       const employment_typeRandom = fillerData.employment_type[Math.floor(Math.random() * fillerData.employment_type.length)];
@@ -103,10 +115,12 @@ module.exports = {
       obj.employers_id = employers_id;
       return obj;
     })
+    // return json;
+    return csv(json);
   },
 
   job_seekers_applied_jobs: (applicationsWanted, numberOfJobPostings) => {
-    return Array(applicationsWanted).fill(0).map(() => {
+    const json = Array(applicationsWanted).fill(0).map(() => {
       const jobSeekers = Array.from(Array(data.results.length + 1).keys()).slice(splitWhole);
       const job_seekers_id = jobSeekers[Math.floor(1 + (Math.random() * jobSeekers.length))];
       const jobs_id = Math.floor(1 + (Math.random() * numberOfJobPostings));
@@ -115,6 +129,7 @@ module.exports = {
       obj.jobs_id = jobs_id;
       return obj;
     })
+    return csv(json);
   }
 }
 
