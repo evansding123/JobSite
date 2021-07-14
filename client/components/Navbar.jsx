@@ -79,7 +79,7 @@ const Navbar = () => {
         </LogoContainer>
       </LogoLink>
       <NavLinkContainer>
-        <NavLink to="/">Find Jobs</NavLink>
+        <NavLink to="/findjobs">Find Jobs</NavLink>
         <NavLink to="/profile">Post Jobs</NavLink>
         <NavLink to="/login">Log In</NavLink>
       </NavLinkContainer>
