@@ -78,6 +78,7 @@ const PopUp = (props) => {
 
   if (props.date !== undefined) {
     dateString = props.date.substring(0,16);
+    //visualDate = props.visualdate ....
   }
 
   const handleClose = () => {
@@ -86,7 +87,6 @@ const PopUp = (props) => {
   };
 
   const handleChange = (event) => {
-    //event.target.name
 
     const obj = {
       [event.target.name]: event.target.value,
@@ -117,8 +117,9 @@ const PopUp = (props) => {
   const body = (
     <div style={modalStyle} className={classes.paper}>
       <p>{dateString}</p>
-      <CssTextField id="standard-basic" label="Add title"/>
+
       <form onSubmit={handleSubmit}>
+        <CssTextField onChange={handleChange} id="standard-basic" label="Add title" name = 'title'/>
         <CssTextField
               id="datetime-local"
               type="datetime-local"
