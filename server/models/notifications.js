@@ -24,7 +24,7 @@ module.exports = {
   getNotification: async (date, username) => {
     const query = `SELECT * FROM notifications WHERE date = ${date} AND accounts_notifications_appointments.accounts_id = ((SELECT username from accounts) = ${username}))`;
     try {
-      const res = await pool.query(query, values);
+      const res = await pool.query(query);
       return res;
     } catch (error) {
       console.log(error);
@@ -43,3 +43,8 @@ module.exports = {
 
     // INSERT INTO notifications (date, title, guests, location, notification) VALUES ('2021-07-02T07:00','somethig', 'evans', 'something', 'soes') RETURNING id;
     // INSERT INTO accounts_notifications_appointments (notifications_id, accounts_id) VALUES (3, (SELECT id FROM accounts WHERE username = 'purpleswan857'));
+
+
+    //query for jobseeker side
+    // const query = SELECT * FROM notifications RIGHT JOIN WHERE accounts_notifications_appoinments.notifications_id = notifications.id
+    //joinng on accounts table with accounts id

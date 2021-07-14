@@ -5,9 +5,10 @@ import PopUp from './PopUp.jsx';
 const ReactCalendar = (props) => {
   const [clicked, setClicked] = useState(false);
   const [value, onChange] = useState(new Date());
+  const [data, addData] = useState({});
 
   // useEffect(() => {
-  //   axios.get('/notification')
+  //   axios.get('/notification/getnotification')
   //   .then((response) => {
   //     //do something with response
   //     console.log(response);
@@ -16,7 +17,7 @@ const ReactCalendar = (props) => {
   //     console.log(error)
   //   })
   // }, []);
-//hevans
+
   const handleClick = (event) => {
     onChange(event);
     setClicked(true);
@@ -27,15 +28,6 @@ const ReactCalendar = (props) => {
   }
 
 
-
-  // let box;
-
-
-  // if(clicked === true) {
-  //   box = <div className = 'event'>hello there</div>
-  // } else {
-  //   box = <div></div>;
-  // }
 
   let box = clicked ? <PopUp date={value.toISOString()} callback = {handleClose}/> : <div></div>;
 
