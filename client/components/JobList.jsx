@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import JobPost from './JobPost.jsx';
-import list from './exampleList.js';
 
 const JobListContainer = styled.div`
   font-family: Helvetica;
@@ -18,8 +17,7 @@ const JobListContainer = styled.div`
   border-radius: 2px;
 `
 
-const JobList = () => {
-  const [listings, updateListings] = useState(list);
+const JobList = ({ listings }) => {
   return (
     <JobListContainer>
       {listings.map((item, index) =>

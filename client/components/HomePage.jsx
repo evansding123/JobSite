@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Search from './Search.jsx';
 import JobList from './JobList.jsx';
+import list from './exampleList.js';
 
 const Nav = styled.div`
   display: flex;
@@ -72,15 +73,45 @@ const ContentContainer = styled.div`
   width: 80%;
 `
 
+const NoResults = styled.div`
+  background-color: #274358;
+  margin-left: 10%;
+  margin-left: 8%;
+  font-size: 5vh;
+  color: white;
+  font-family: Helvetica;
+`;
+
 const HomePage = () => {
+  const [listings, updateListings] = useState(list);
+  const [listingsCopy, updateListingsCopy] = useState(list);
+
+  const search = (searchTerm) => {
+    const jobList = listingsCopy.slice();
+    const noMatches = null;
+    const matches = [];
+
+    for (var i = 0; i < jobList.length; i++) {
+      if (jobList[i].position.toLowerCase().includes(searchTerm.toLowerCase()) || jobList[i].company.toLowerCase().includes(searchTerm.toLowerCase()) || jobList[i].location.toLowerCase().includes(searchTerm.toLowerCase())) {
+        matches.push(jobList[i]);
+      }
+    }
+    if (matches.length >= 1) {
+      updateListings(matches);
+    } else {
+      updateListings(null)
+    }
+  }
+
   return (
     <div>
-      <Background>
+      {listings === null ? <NoResults onClick={() => {updateListings(listingsCopy)}}>No Results - Return Home</NoResults> : <Background>
         <ContentContainer>
-          <Search />
-          <JobList />
+          <Search search={search}/>
+          <JobList listings={listings} />
         </ContentContainer>
-      </Background>
+      </Background>}
+
     </div>
   )
 }
