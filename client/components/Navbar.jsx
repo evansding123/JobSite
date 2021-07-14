@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useAuth, logout } from '../src/contexts/AuthContext.js';
 
 const Nav = styled.div`
   display: flex;
@@ -70,6 +71,23 @@ const Site = styled.div`
 `;
 
 const Navbar = () => {
+  const { currentUser, logout } = useAuth();
+  const history = useHistory();
+  const [error, setError] = useState('');
+
+  console.log(currentUser);
+
+  async function handleLogout() {
+    setError('');
+
+    try {
+      await logout();
+      history.push('/login');
+    } catch {
+      setError('Failed to log out');
+    }
+  }
+
   return (
     <Nav>
       <LogoLink href="/">
@@ -81,7 +99,10 @@ const Navbar = () => {
       <NavLinkContainer>
         <NavLink to="/findjobs">Find Jobs</NavLink>
         <NavLink to="/profile">Post Jobs</NavLink>
-        <NavLink to="/login">Log In</NavLink>
+        {currentUser
+          ? <NavLink onClick={handleLogout}>Log Out ({currentUser.email})</NavLink>
+          : <NavLink className="login" to='/login'>Log In</NavLink>
+        }
       </NavLinkContainer>
     </Nav>
   )
