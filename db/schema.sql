@@ -58,7 +58,11 @@ CREATE TABLE "notes" (
 CREATE TABLE "notifications" (
   "id" serial PRIMARY KEY,
   "date"  date NOT NULL DEFAULT CURRENT_DATE,
+  "title" varchar(255),
   "notification" varchar(255),
+  "start_time" varchar(255) NOT NULL,
+  "end_time" varchar(255) NOT NULL,
+  "location" varchar(255) NOT NULL,
   "accounts_id" integer NOT NULL --foregin key
 );
 

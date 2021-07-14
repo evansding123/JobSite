@@ -16,7 +16,7 @@ const ReactCalendar = (props) => {
   //     console.log(error)
   //   })
   // }, []);
-
+//hevans
   const handleClick = (event) => {
     onChange(event);
     setClicked(true);
@@ -37,7 +37,7 @@ const ReactCalendar = (props) => {
   //   box = <div></div>;
   // }
 
-  let box = clicked ? <PopUp date={value.toString()} callback = {handleClose}/> : <div></div>;
+  let box = clicked ? <PopUp date={value.toISOString()} callback = {handleClose}/> : <div></div>;
 
   return (
     <div>
