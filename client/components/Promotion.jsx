@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom';
 
 const PromotionBody = styled.div`
   padding-left: 3vw;
@@ -72,9 +73,11 @@ const Promotion = (props) => {
         <Typography gutterBottom variant="h6" className={classes.body}>
           {promotionBody}
         </Typography>
-        <Button className={classes.button} variant="outlined">
-          CREATE YOUR ACCOUNT
-        </Button>
+        <Link to='/signup'>
+          <Button className={classes.button} variant="outlined">
+            CREATE YOUR ACCOUNT
+          </Button>
+        </Link>
       </PromotionBody>
     </Card>
   )
