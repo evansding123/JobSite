@@ -6,7 +6,7 @@ import Login from './Login.jsx';
 import ReactCalendar from './ReactCalendar.jsx';
 import HomePage from './HomePage.jsx';
 import Profile from './Profile.jsx';
-import PostAJob from './PostAJob.jsx';
+import CreateJob from './CreateJob.jsx';
 import styled, { createGlobalStyle } from 'styled-components';
 import LandingPage from './LandingPage.jsx';
 import Navbar from './Navbar.jsx';
@@ -16,7 +16,6 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import CreateJob from './CreateJob.jsx';
 import { theme } from '../src/constants';
 
 const GlobalStyle = createGlobalStyle`
@@ -43,7 +42,7 @@ const App = (props) => {
               <HomePage />
             </Route>
             <Route path="/profile">
-              <PostAJob />
+              <CreateJob />
             </Route>
             <Route path="/login">
               <Login />
