@@ -25,7 +25,7 @@ const PopularTitle = styled.div`
   font-weight: normal;
   font-size: 24px;
   line-height: 28px;
-
+  margin-left: 1vw;
   color: #FFFFFF;
 `;
 
