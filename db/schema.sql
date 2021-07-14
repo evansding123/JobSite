@@ -122,7 +122,7 @@ CREATE INDEX ON "job_seekers_applied_jobs" ("job_seekers_id");
 CREATE INDEX ON "job_seekers_applied_jobs" ("jobs_id");
 
 COPY "accounts" (username,password,email,longitude,latitude,location_address)
-FROM '/home/parker/hackreactor/JobSite/db/accounts.csv' --insert your direct path to your .csv files
+FROM '/Users/evansding/Desktop/BlueOcean/JobSite/accounts.csv' --insert your direct path to your .csv files
 DELIMITER ','
 CSV HEADER;
 

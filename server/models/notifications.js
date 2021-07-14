@@ -1,13 +1,20 @@
 const pool = require('../../db/index.js');
 
 module.exports = {
-  addNotification: async (values = [], username, id) => {
+  addNotification: async (values = [], username) => {
     console.log(values);
-    const query = `INSERT INTO notifications (date, title, guests, location, notification) VALUES ($1, $2, $3, $4, $5);
-    INSERT INTO accounts_notifications_appointments (notifications_id, accounts_id) VALUES (LAST_INSERT_ID, (SELECT id FROM accounts WHERE username = ${username}))`;
+
+
     try {
-      const res = await pool.query(query, values);
-      return res;
+      const query1 = `INSERT INTO notifications (date, title, guests, location, notification) VALUES ($1, $2, $3, $4, $5) RETURNING id;`
+
+      const res1 = await pool.query(query1, values);
+      console.log(res1.rows[0]);
+
+      const query2 = `INSERT INTO accounts_notifications_appointments (notifications_id, accounts_id) VALUES (${res1.rows[0].id}, (SELECT id FROM accounts WHERE username = '${username}'))`
+
+      const res2 = await pool.query(query2);
+      return res1;
     } catch (error) {
       console.log(error);
       throw error;
@@ -25,3 +32,14 @@ module.exports = {
     }
   }
 };
+
+
+
+
+    // const query = `INSERT INTO notifications (date, title, guests, location, notification) VALUES ($1, $2, $3, $4, $5)`;
+
+
+
+
+    // INSERT INTO notifications (date, title, guests, location, notification) VALUES ('2021-07-02T07:00','somethig', 'evans', 'something', 'soes') RETURNING id;
+    // INSERT INTO accounts_notifications_appointments (notifications_id, accounts_id) VALUES (3, (SELECT id FROM accounts WHERE username = 'purpleswan857'));

@@ -38,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
   input: {
     color: '#FFFFFF',
     backgroundColor: '#49475B'
+  },
+  bottom: {
+    marginBottom: 10
   }
 }));
 
@@ -70,6 +73,7 @@ const PopUp = (props) => {
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = useState(true);
   const [formInfo, setFormInfo] = useState({
+    username: 'purpleswan857',
     time: props.date.substring(0,16)
   });
 
@@ -119,7 +123,8 @@ const PopUp = (props) => {
       <p>{dateString}</p>
 
       <form onSubmit={handleSubmit}>
-        <CssTextField onChange={handleChange} id="standard-basic" label="Add title" name = 'title'/>
+        <CssTextField className = {classes.bottom} onChange={handleChange} id="standard-basic" label="Add title" name = 'title'/>
+
         <CssTextField
               id="datetime-local"
               type="datetime-local"
