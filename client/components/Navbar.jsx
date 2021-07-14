@@ -29,11 +29,19 @@ const NavLink = styled(Link)`
   }
 `;
 
+const NavLinkContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
 const LogoContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  width: 50vw;
 `;
 
 const LogoLink = styled.a`
@@ -44,29 +52,27 @@ const LogoLink = styled.a`
 const Job = styled.div`
   font-family: Helvetica;
   color: #E9EB9E;
-  font-size: 5vh;
-  padding-left: 1vw;
 `;
 
 const Site = styled.div`
   font-family: Helvetica;
   color: #799469;
-  font-size: 5vh;
-  padding-right: 55%;
 `;
 
 const Navbar = () => {
   return (
     <Nav>
-      <LogoContainer>
-        <LogoLink href="/">
+      <LogoLink href="/">
+        <LogoContainer>
           <Job>Job</Job>
           <Site>Site</Site>
-        </LogoLink>
-      </LogoContainer>
-      <NavLink to="/">Find Jobs</NavLink>
-      <NavLink to="/profile">Post Jobs</NavLink>
-      <NavLink to="/login">Log In</NavLink>
+        </LogoContainer>
+      </LogoLink>
+      <NavLinkContainer>
+        <NavLink to="/">Find Jobs</NavLink>
+        <NavLink to="/profile">Post Jobs</NavLink>
+        <NavLink to="/login">Log In</NavLink>
+      </NavLinkContainer>
     </Nav>
   )
 }

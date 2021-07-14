@@ -6,23 +6,32 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
+const PromotionBody = styled.div`
+  padding-left: 3vw;
+  width: 40vw;
+  margin: auto;
+`;
+
 const useStyles = makeStyles({
   root: {
     width: '90vw',
-    height: '35vw',
+    height: '30vw',
     margin: '6vw',
     backgroundColor: '#274358',
     padding: '3vw',
     display: 'flex',
     color: '#FFFFFF',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   media: {
-    height: '35vw',
-    width: '50vw',
-    margin: 'auto',
+    height: '30vw',
+    width: '45vw',
   },
   title: {
-
+    height: '35vw',
+    width: '50vw',
+    margin: '13vw',
   }
 });
 
@@ -39,12 +48,14 @@ const Promotion = (props) => {
         image="./img/calendartool.png"
         title="calendartool"
       />
-      <Typography gutterBottom variant="h5" component="h2" className={classes.title}>
-        {promotionTitle}
-        <Typography gutterBottom variant="h5" component="h4" className={classes.title}>
-        {promotionBody}
+      <PromotionBody>
+        <Typography gutterBottom variant="h5" component="h2">
+          {promotionTitle}
         </Typography>
-      </Typography>
+        <Typography gutterBottom variant="h5" component="h4">
+          {promotionBody}
+        </Typography>
+      </PromotionBody>
     </Card>
   )
 }
