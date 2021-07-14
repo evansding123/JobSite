@@ -30,8 +30,8 @@ tip: the default port is 5432.
   a. send a get request to this address, and insert the number of users you want to have:
   (data will be pulled from this object and used in the account table)
   `https://randomuser.me/api/?results=INSERT_NUMBER_HERE`
-  
-  b. create a `json.js` file inside of generateData, paste the json into the file assigned to module.exports.
+
+  b. create a `json.js` file inside of generateData, paste the json into the json file. Then, modify the json.js file to be exported like so: `module.exports = {JSON_FILE_HERE}`
 
   c. use this command in the terminal: `npm run generateData`
 
@@ -70,3 +70,7 @@ tip: the default port is 5432.
 
 7. Run the following command to create the db from the schema: `psql -U postgres < INSERT_FILE_PATH.sql`
    You can also change to any user you want `-U INSERT_USER`
+
+8. `npm run watch`
+
+9. `npm start`
