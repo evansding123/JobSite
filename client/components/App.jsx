@@ -31,8 +31,8 @@ const Nav = styled.div`
 
 const NavLink = styled(Link)`
   font-family: Helvetica;
-  font-size: 24px;
-  padding-right: 2vw;
+  font-size: 18px;
+  padding-right: 1vw;
   text-decoration: none;
   color: white;
   NavLink:visited {

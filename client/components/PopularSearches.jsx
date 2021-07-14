@@ -14,19 +14,18 @@ const PopularContainer = styled.div`
   display: flex;
 `;
 
-const CardContainer = styled.div`
-`;
-
 const useStyles = makeStyles({
   root: {
-    width: '322px',
-    height: '405px',
-    left: '58px',
-    top: '1034px',
-    margin: '10px',
+    width: '21vw',
+    height: '30vw',
+    margin: '1vw',
   },
   media: {
-    height: 140,
+    height: '25vw',
+  },
+  industry: {
+    display: 'flex',
+    justifyContent: 'center',
   },
 });
 
@@ -49,7 +48,7 @@ const PopularSearches = (props) => {
               title={industry}
             />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
+              <Typography gutterBottom variant="h5" component="h2" className={classes.industry}>
                 {industry}
               </Typography>
             </CardContent>
