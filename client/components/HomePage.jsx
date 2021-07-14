@@ -99,6 +99,8 @@ const HomePage = () => {
       history.push('/login');
     } catch {
       setError('Failed to log out');
+    }
+  }
 
       const search = (searchTerm) => {
         const jobList = listingsCopy.slice();
@@ -117,31 +119,32 @@ const HomePage = () => {
         }
       }
 
-      return (
-        <div>
-          <Background>
-            <Nav>
-              <Job>Job</Job>
-              <Site>Site</Site>
-              <Link className="homepage" to='/'><NavButtons>Find Jobs</NavButtons></Link>
-              <NavButtons>Employers</NavButtons>
-              {!currentUser && <Link className="login" to='/login'><NavButtons>Log In</NavButtons></Link>}
-              {currentUser && <NavButtons onClick={handleLogout}>Log Out</NavButtons>}
-            </Nav>
-            {listings === null ? <NoResults onClick={() => { updateListings(listingsCopy) }}>No Results - Return Home</NoResults> : <Background>
-              <ContentContainer>
-                <Search search={search} />
-                <JobList listings={listings} />
-              </ContentContainer>
-              <Footer>
-                © 2021 JobSite
-              </Footer>
-            </Background>}
-          </Background>
-        </div>
-      )
-    }
-  }
+
+
+  return (
+    <div>
+      <Background>
+        {/* <Nav>
+          <Job>Job</Job>
+          <Site>Site</Site>
+          <Link className="homepage" to='/'><NavButtons>Find Jobs</NavButtons></Link>
+          <NavButtons>Employers</NavButtons>
+          { !currentUser && <Link className="login" to='/login'><NavButtons>Log In</NavButtons></Link> }
+          { currentUser && <NavButtons onClick={handleLogout}>Log Out</NavButtons> }
+        </Nav> */}
+      {listings === null ? <NoResults onClick={() => {updateListings(listingsCopy)}}>No Results - Return Home</NoResults> : <Background>
+        <ContentContainer>
+          <Search search={search}/>
+          <JobList listings={listings} />
+        </ContentContainer>
+      <Footer>
+        © 2021 JobSite
+      </Footer>
+      </Background>}
+      </Background>
+    </div>
+  )
 }
+
 
 export default HomePage;
