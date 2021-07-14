@@ -1,4 +1,5 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -15,29 +16,36 @@ const PopularContainer = styled.div`
 const CardContainer = styled.div`
 `;
 
+const useStyles = makeStyles({
+  root: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 140,
+  },
+});
+
 const PopularSearches = (props) => {
-const dummyData = [
-  { id: 1, service: 'HealthCare'},
-  { id: 2, service: 'Engineering'},
-  { id: 3, service: 'Service'},
-  { id: 4, service: 'Data Science'},
-]
+  const classes = useStyles();
+  const dummyData = [
+    { id: 1, industry: 'HealthCare'},
+    { id: 2, industry: 'Engineering'},
+    { id: 3, industry: 'Service'},
+    { id: 4, industry: 'Data Science'},
+  ]
   return (
     <PopularContainer>
-      {dummyData.map(({ id }) => (
-        <Card raised={true} key={id}>
+      {dummyData.map(({ id, industry }) => (
+        <Card raised={true} key={id} className={classes.root}>
           <CardActionArea>
             <CardMedia
-            src="../dist/img/healthcare.png"
-            title="Healthcare"
+            className={classes.media}
+            image="./img/healthcare.png"
+            title={industry}
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-              Lizard
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-              Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-              across all continents except Antarctica
+              {industry}
               </Typography>
             </CardContent>
           </CardActionArea>

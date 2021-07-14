@@ -39,12 +39,12 @@ const Background = styled.div`
   margin-left: -8%;
 `;
 
-const Footer = styled.div`
-  margin-left: -10%;
-  margin-left: -8%;
-  background-color: #192A34;
-  height: 40vh;
-`;
+// const Footer = styled.div`
+//   margin-left: -10%;
+//   margin-left: -8%;
+//   background-color: #192A34;
+//   height: 40vh;
+// `;
 
 const NavButtons = styled.div`
   font-family: Helvetica;

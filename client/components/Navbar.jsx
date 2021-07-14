@@ -11,11 +11,11 @@ const Nav = styled.div`
   height: 6vh;
   padding-right: 1px;
   padding-top: 1.5vh;
-  padding-left: 10%;
-  margin-left: -10%;
-  margin-right: -8%;
-  margin-top: -9px;
 `;
+  // padding-left: 10%;
+  // margin-left: -10%;
+  // margin-right: -8%;
+  // margin-top: -9px;
 
 const Job = styled.div`
   font-family: Helvetica;
@@ -41,8 +41,7 @@ const NavButtons = styled.div`
   &:hover ${NavButtons} {
     color: #E9EB9E;
     pointer: cursor;
-}
-`
+}`
 
 const Navbar = () => {
   return (

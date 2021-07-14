@@ -1,11 +1,11 @@
 import React from 'react';
-
 import ReactCalendar from './ReactCalendar.jsx';
 import HomePage from './HomePage.jsx';
 // import Calendar from './Calendar.jsx';
 import Profile from './Profile.jsx';
 import PostAJob from './PostAJob.jsx';
 import styled from 'styled-components';
+import LandingPage from './LandingPage.jsx';
 import {
   BrowserRouter as Router,
   Switch,
@@ -23,32 +23,32 @@ const Nav = styled.div`
   height: 6vh;
   padding-right: 1px;
   padding-top: 1.5vh;
-  padding-left: 10%;
-  margin-left: -10%;
-  margin-right: -8%;
-  margin-top: -9px;
-`;
+  `;
+  // padding-left: 10%;
+  // margin-left: -10%;
+  // margin-right: -8%;
+  // margin-top: -9px;
 
 const NavLink = styled(Link)`
-font-family: Helvetica;
-font-size: 2.5vh;
-padding-right: 2vw;
-text-decoration: none;
-color: white;
-NavLink:visited {
+  font-family: Helvetica;
+  font-size: 2.5vh;
+  padding-right: 2vw;
+  text-decoration: none;
   color: white;
-}
-&:hover ${NavLink} {
-  color: #E9EB9E;
-  border: none;
-}
-`
+  NavLink:visited {
+    color: white;
+  }
+  &:hover ${NavLink} {
+    color: #E9EB9E;
+    border: none;
+  }
+`;
 
 const Job = styled.div`
   font-family: Helvetica;
   color: #E9EB9E;
   font-size: 5vh;
-  padding-left: 10vw;
+  padding-left: 1vw;
 `;
 
 const Site = styled.div`
@@ -58,12 +58,12 @@ const Site = styled.div`
   padding-right: 55%;
 `;
 
-const Footer = styled.div`
-  margin-left: -10%;
-  margin-left: -8%;
-  background-color: #192A34;
-  height: 40vh;
-`;
+// const Footer = styled.div`
+//   margin-left: -10%;
+//   margin-left: -8%;
+//   background-color: #192A34;
+//   height: 40vh;
+// `;
 
 const ContentContainer = styled.div`
   font-family: Helvetica;
@@ -72,38 +72,36 @@ const ContentContainer = styled.div`
   flex-direction: row;
   align-items: left;
   justify-content: left;
-  background-color: #274358;
   margin-top: 5%;
   height: 80%;
   width: 80%;
 `
 
 const Container = styled.div`
-font-family: Helvetica;
-display: flex;
-text-decoration: none;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-background-color: #192A34;
-width: 40%;
-margin-top: 5vh;
-margin-left: 30%;
-margin-bottom: 10%;
-border: 1px solid;
-border-color: #49475B;
-border-radius: 10px;
+  font-family: Helvetica;
+  display: flex;
+  text-decoration: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  margin-top: 5vh;
+  margin-left: 30%;
+  margin-bottom: 10%;
+  border: 1px solid;
+  border-color: #49475B;
+  border-radius: 10px;
 `
 
-const Background = styled.div`
-  background-color: #274358;
-  margin-left: -10%;
-  margin-left: -8%;
-`;
+// const Background = styled.div`
+//   background-color: #274358;
+//   `;
+  // margin-left: -10%;
+  // margin-left: -8%;
 
 const App = (props) => {
   return(
-    <Background>
+    <>
       <Router>
         <Nav>
           <Job>Job</Job>
@@ -114,8 +112,9 @@ const App = (props) => {
         </Nav>
         <Switch>
             <Route exact path="/">
-              <HomePage />
+              <LandingPage />
             </Route>
+              {/* <HomePage /> */}
             <Route path="/profile">
               <PostAJob />
             </Route>
@@ -124,9 +123,9 @@ const App = (props) => {
             </Route>
           </Switch>
       </Router>
-      <Footer>
-      </Footer>
-    </Background>
+      {/* <Footer>
+      </Footer> */}
+    </>
   );
 }
 
