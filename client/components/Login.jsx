@@ -54,9 +54,9 @@ function Login() {
   return (
     <>
     <div style={{height: '100vh', width: '100%', background: '#274358'}}>
-    {error && <div>{ error }</div>}
     <form className={classes.root} onSubmit={handleSubmit}>
     <h3>Log In</h3>
+    {error && <h4 style={{margin: '3vh'}}>{ error }</h4>}
       <TextField
         label="Email"
         variant="filled"

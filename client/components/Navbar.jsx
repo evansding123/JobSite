@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link, useHistory } from "react-router-dom";
 import { useAuth, logout } from '../src/contexts/AuthContext.js';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import NotificationsIcon from '@material-ui/icons/Notifications';
 
 const Nav = styled.div`
   display: flex;
@@ -99,8 +101,9 @@ const Navbar = () => {
       <NavLinkContainer>
         <NavLink to="/findjobs">Find Jobs</NavLink>
         <NavLink to="/profile">Post Jobs</NavLink>
+        {/* TODO: Add notification and profile icons w links here */}
         {currentUser
-          ? <NavLink onClick={handleLogout}>Log Out ({currentUser.email})</NavLink>
+          ? <> <NotificationsIcon style={{color: 'white', marginRight: '1vh'}}/> <AccountCircleIcon style={{color: 'white', marginRight: '1vh'}} /><NavLink onClick={handleLogout}>Log Out </NavLink>  </>
           : <NavLink className="login" to='/login'>Log In</NavLink>
         }
       </NavLinkContainer>
