@@ -60,11 +60,17 @@ CREATE TABLE "notifications" (
   "id" serial PRIMARY KEY,
   "date"  date NOT NULL DEFAULT CURRENT_DATE,
   "title" varchar(255),
-  "notification" varchar(255),
-  "start_time" varchar(255) NOT NULL,
-  "end_time" varchar(255) NOT NULL,
+  "guests" varchar(255),
+  "start_time" varchar(255),
+  "end_time" varchar(255),
   "location" varchar(255) NOT NULL,
-  "accounts_id" integer NOT NULL --foregin key
+  "notification" text NOT NULL
+);
+
+CREATE TABLE "accounts_notifications_appointments" (
+  "id" serial PRIMARY KEY,
+  "accounts_id" integer NOT NULL, --foreign key
+  "notifications_id" integer NOT NULL --foreign key
 );
 
 CREATE TABLE "employers" (
@@ -98,7 +104,8 @@ CREATE TABLE "job_seekers_applied_jobs" (
 );
 
 ALTER TABLE "notes" ADD FOREIGN KEY ("accounts_id") REFERENCES "accounts" ("id");
-ALTER TABLE "notifications" ADD FOREIGN KEY ("accounts_id") REFERENCES "accounts" ("id");
+ALTER TABLE "accounts_notifications_appointments" ADD FOREIGN KEY ("accounts_id") REFERENCES "accounts" ("id");
+ALTER TABLE "accounts_notifications_appointments" ADD FOREIGN KEY ("notifications_id") REFERENCES "notifications" ("id");
 ALTER TABLE "employers" ADD FOREIGN KEY ("accounts_id") REFERENCES "accounts" ("id");
 ALTER TABLE "job_seekers" ADD FOREIGN KEY ("accounts_id") REFERENCES "accounts" ("id");
 ALTER TABLE "jobs" ADD FOREIGN KEY ("employers_id") REFERENCES "employers" ("id");
@@ -106,7 +113,8 @@ ALTER TABLE "job_seekers_applied_jobs" ADD FOREIGN KEY ("job_seekers_id") REFERE
 ALTER TABLE "job_seekers_applied_jobs" ADD FOREIGN KEY ("jobs_id") REFERENCES "jobs" ("id");
 
 CREATE INDEX ON "notes" ("accounts_id");
-CREATE INDEX ON "notifications" ("accounts_id");
+CREATE INDEX ON "accounts_notifications_appointments" ("accounts_id");
+CREATE INDEX ON "accounts_notifications_appointments" ("notifications_id");
 CREATE INDEX ON "employers" ("accounts_id");
 CREATE INDEX ON "job_seekers" ("accounts_id");
 CREATE INDEX ON "jobs" ("employers_id");
