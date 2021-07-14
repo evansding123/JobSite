@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { theme } from '../src/constants';
-import Nav from './Nav.jsx';
 
 const Container = styled.div`
   display: flex;
@@ -93,7 +92,6 @@ export default function CreateJob() {
 
   return (
     <div>
-      <Nav />
       <Container>
         <InnerContainer>
           <Header>Post a Job</Header>
