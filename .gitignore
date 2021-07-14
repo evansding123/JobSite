@@ -4,3 +4,14 @@ node_modules
 package-lock.json
 .env
 client/src/firebase.config.js
+json.js
+accounts.csv
+notes.csv
+notifications.csv
+employers.csv
+job_seekers.csv
+jobs.csv
+job_seekers_applied_jobs.csv
+
+
+

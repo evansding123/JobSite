@@ -66,8 +66,8 @@ const ContentContainer = styled.div`
   display: flex;
   text-decoration: none;
   flex-direction: row;
-  align-items: left;
-  justify-content: left;
+  align-items: center;
+  justify-content: center;
   background-color: #274358;
   margin-top: 5%;
   height: 80%;
@@ -93,6 +93,7 @@ const HomePage = () => {
   return (
     <div>
       <Background>
+
         <Nav>
           <Job>Job</Job>
           <Site>Site</Site>
@@ -101,11 +102,13 @@ const HomePage = () => {
           { !currentUser && <Link className="login" to='/login'><NavButtons>Log In</NavButtons></Link> }
           { currentUser && <NavButtons onClick={handleLogout}>Log Out</NavButtons> }
         </Nav>
+
         <ContentContainer>
           <Search />
           <JobList />
         </ContentContainer>
       </Background>
+
       <Footer>
         © 2021 JobSite
       </Footer>
