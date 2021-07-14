@@ -30,7 +30,7 @@ const useStyles = makeStyles({
     alignItems: 'center',
   },
   media: {
-    height: '30vw',
+    height: '28vw',
     width: '45vw',
     borderRadius: '4px',
   },
@@ -46,8 +46,9 @@ const useStyles = makeStyles({
     color: '#FFFFFF',
     border: '2px solid #799496',
     borderRadius: '50px',
-    padding: '0.5vw 7vw',
+    padding: '0.75vw 12vw',
     marginTop: '2vw',
+    fontSize: '1.25vw',
   },
 });
 
