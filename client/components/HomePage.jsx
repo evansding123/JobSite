@@ -2,65 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Search from './Search.jsx';
 import JobList from './JobList.jsx';
-import { Link, useHistory } from 'react-router-dom';
-import { useAuth, logout } from '../src/contexts/AuthContext.js';
 import list from './exampleList.js';
-
-const Nav = styled.div`
-  display: flex;
-  text-decoration: none;
-  flex-direction: row;
-  align-items: left;
-  justify-content: left;
-  background-color: #192A34;
-  height: 6vh;
-  padding-right: 1px;
-  padding-top: 1.5vh;
-  padding-left: 10%;
-  margin-left: -10%;
-  margin-right: -8%;
-  margin-top: -9px;
-`;
-
-const Job = styled.div`
-  font-family: Helvetica;
-  color: #E9EB9E;
-  font-size: 5vh;
-  padding-left: 10vw;
-`;
-
-const Site = styled.div`
-  font-family: Helvetica;
-  color: #799469;
-  font-size: 5vh;
-  padding-right: 55%;
-`;
-
-const Background = styled.div`
-  background-color: #274358;
-  margin-left: -10%;
-  margin-left: -8%;
-`;
-
-const Footer = styled.div`
-  margin-left: -10%;
-  margin-left: -8%;
-  background-color: #192A34;
-  height: 40vh;
-`;
-
-const NavButtons = styled.div`
-  font-family: Helvetica;
-  color: white;
-  font-size: 2vh;
-  padding-right: 2vw;
-  padding-top: 2.5vh;
-  white-space: nowrap;
-  &:hover ${NavButtons} {
-    color: #E9EB9E;
-    pointer: cursor;
-}
-`
 
 const ContentContainer = styled.div`
   font-family: Helvetica;
@@ -85,9 +27,6 @@ const NoResults = styled.div`
 `;
 
 const HomePage = () => {
-  const [error, setError] = useState('');
-  const { currentUser, logout } = useAuth();
-  const history = useHistory();
   const [listings, updateListings] = useState(list);
   const [listingsCopy, updateListingsCopy] = useState(list);
 
@@ -102,49 +41,50 @@ const HomePage = () => {
     }
   }
 
-      const search = (searchTerm) => {
-        const jobList = listingsCopy.slice();
-        const noMatches = null;
-        const matches = [];
+  const search = (searchTerm) => {
+    const jobList = listingsCopy.slice();
+    const noMatches = null;
+    const matches = [];
 
-        for (var i = 0; i < jobList.length; i++) {
-          if (jobList[i].position.toLowerCase().includes(searchTerm.toLowerCase()) || jobList[i].company.toLowerCase().includes(searchTerm.toLowerCase()) || jobList[i].location.toLowerCase().includes(searchTerm.toLowerCase())) {
-            matches.push(jobList[i]);
-          }
-        }
-        if (matches.length >= 1) {
-          updateListings(matches);
-        } else {
-          updateListings(null)
-        }
+    for (var i = 0; i < jobList.length; i++) {
+      if (jobList[i].position.toLowerCase().includes(searchTerm.toLowerCase()) || jobList[i].company.toLowerCase().includes(searchTerm.toLowerCase()) || jobList[i].location.toLowerCase().includes(searchTerm.toLowerCase())) {
+        matches.push(jobList[i]);
       }
+    }
+    if (matches.length >= 1) {
+      updateListings(matches);
+    } else {
+      updateListings(null)
+    }
 
+    const search = (searchTerm) => {
+      const jobList = listingsCopy.slice();
+      const noMatches = null;
+      const matches = [];
 
+      for (var i = 0; i < jobList.length; i++) {
+        if (jobList[i].position.toLowerCase().includes(searchTerm.toLowerCase()) || jobList[i].company.toLowerCase().includes(searchTerm.toLowerCase()) || jobList[i].location.toLowerCase().includes(searchTerm.toLowerCase())) {
+          matches.push(jobList[i]);
+        }
 
-  return (
-    <div>
-      <Background>
-        {/* <Nav>
-          <Job>Job</Job>
-          <Site>Site</Site>
-          <Link className="homepage" to='/'><NavButtons>Find Jobs</NavButtons></Link>
-          <NavButtons>Employers</NavButtons>
-          { !currentUser && <Link className="login" to='/login'><NavButtons>Log In</NavButtons></Link> }
-          { currentUser && <NavButtons onClick={handleLogout}>Log Out</NavButtons> }
-        </Nav> */}
-      {listings === null ? <NoResults onClick={() => {updateListings(listingsCopy)}}>No Results - Return Home</NoResults> : <Background>
-        <ContentContainer>
-          <Search search={search}/>
-          <JobList listings={listings} />
-        </ContentContainer>
-      <Footer>
-        © 2021 JobSite
-      </Footer>
-      </Background>}
-      </Background>
-    </div>
-  )
+        return (
+          <div>
+            {listings === null
+              ? <NoResults onClick={() => { updateListings(listingsCopy) }}>No Results - Return Home</NoResults>
+              : (
+                <ContentContainer>
+                  <Search search={search} />
+                  <JobList listings={listings} />
+                </ContentContainer>
+              )}
+            {/* <Footer>
+          © 2021 JobSite
+        </Footer> */}
+          </div>
+        );
+      }
+    }
+  }
 }
-
 
 export default HomePage;
