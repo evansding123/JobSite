@@ -1,4 +1,6 @@
 import React from 'react';
+
+import ReactCalendar from './ReactCalendar.jsx';
 import HomePage from './HomePage.jsx';
 import Calendar from './Calendar.jsx';
 import Profile from './Profile.jsx';
