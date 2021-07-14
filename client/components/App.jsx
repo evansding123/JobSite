@@ -4,7 +4,6 @@ import { AuthProvider } from "../src/contexts/AuthContext"
 import Login from './Login.jsx';
 import ReactCalendar from './ReactCalendar.jsx';
 import HomePage from './HomePage.jsx';
-import Calendar from './Calendar.jsx';
 import Profile from './Profile.jsx';
 import PostAJob from './PostAJob.jsx';
 import styled from 'styled-components';
@@ -123,7 +122,10 @@ const App = (props) => {
               <PostAJob />
             </Route>
             <Route path="/login">
-              <Profile />
+              <Login />
+            </Route>
+            <Route path="/signup">
+            <Signup />
             </Route>
           </Switch>
         </AuthProvider>
