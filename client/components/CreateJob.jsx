@@ -17,7 +17,7 @@ const Header = styled.h1`
 `;
 
 const InnerContainer = styled.div`
-  background-color: ${theme.colors.Independence};
+  background-color: ${theme.colors.surfaceLight};
   min-width: 400px;
   width: 20vw;
   margin-top: 80px;
@@ -53,8 +53,8 @@ const Submit = styled.button`
   margin: 10px 0;
   height: 30px;
   width: 150px;
-  background-color: ${theme.colors.accent};
-  color: ${theme.colors.secondary};
+  background-color: ${theme.colors.Independence};
+  color: ${theme.colors.GreenYellow};
   &:hover ${Submit} {
     background-color: ${theme.colors.secondary};
     color: ${theme.colors.accent};
