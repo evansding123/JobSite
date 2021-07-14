@@ -18,11 +18,11 @@ const App = (props) => {
   return (
     <div>
         <GlobalStyle />
-        {/* <ReactCalendar /> */}
-        {/* <div> */}
-        {/* <HomePage /> */}
-        <CreateJob />
-        {/* </div> */}
+        <ReactCalendar />
+        <div>
+        <HomePage />
+        {/* <CreateJob /> */}
+        </div>
     </div>
   )
 }
