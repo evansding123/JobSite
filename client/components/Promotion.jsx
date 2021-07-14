@@ -19,9 +19,8 @@ const PromotionBody = styled.div`
 
 const useStyles = makeStyles({
   root: {
-    width: '90vw',
+    width: '86vw',
     height: '30vw',
-    margin: '3vw',
     backgroundColor: '#274358',
     padding: '2vw',
     display: 'flex',
