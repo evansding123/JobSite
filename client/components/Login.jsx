@@ -8,17 +8,23 @@ import { Link, useHistory } from 'react-router-dom';
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
+    color: '#e9eb9e',
+    fontFamily: 'Helvetica',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#274358',
     padding: theme.spacing(2),
 
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
+      background: 'white',
       width: '300px',
     },
     '& .MuiButtonBase-root': {
       margin: theme.spacing(2),
+      color: 'white',
+      backgroundColor: '#49475B'
     },
   },
 }));
@@ -47,9 +53,10 @@ function Login() {
 
   return (
     <>
-    <h3>Log In</h3>
+    <div style={{height: '100vh', width: '100%', background: '#274358'}}>
     {error && <div>{ error }</div>}
     <form className={classes.root} onSubmit={handleSubmit}>
+    <h3>Log In</h3>
       <TextField
         label="Email"
         variant="filled"
@@ -74,8 +81,9 @@ function Login() {
           Log In
         </Button>
       </div>
+      <div> Need an account? <Link to='/signup' style={{color: 'white'}}> Sign Up </Link></div>
     </form>
-    <div> Need an account? <Link to='/signup'> Sign Up </Link></div>
+    </div>
   </>
   );
 }

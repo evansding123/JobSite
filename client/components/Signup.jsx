@@ -8,17 +8,23 @@ import { Link, useHistory } from 'react-router-dom';
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
+    color: '#e9eb9e',
     flexDirection: 'column',
+    fontFamily: 'Helvetica',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#274358',
     padding: theme.spacing(2),
 
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
       width: '300px',
+      background: 'white'
     },
     '& .MuiButtonBase-root': {
       margin: theme.spacing(2),
+      color: 'white',
+      backgroundColor: '#49475B',
     },
   },
 }));
@@ -54,9 +60,10 @@ const Signup = (props) => {
 
   return (
     <>
-      <h3>Create An Account (it's free!)</h3>
+<div style={{height: '100vh', width: '100%', background: '#274358'}}>
       {error && <div>{ error }</div>}
       <form className={classes.root} onSubmit={handleSubmit}>
+      <h3>Create An Account (it's free!)</h3>
         <TextField
           label="First Name"
           variant="filled"
@@ -102,8 +109,9 @@ const Signup = (props) => {
             Signup
           </Button>
         </div>
+        <div> Already signed up? <Link to="/login" style={{color:'white'}}>Log in</Link> here</div>
       </form>
-      <div> Already signed up? <Link to="/login">Log in</Link> here</div>
+      </div>
     </>
   );
 };
