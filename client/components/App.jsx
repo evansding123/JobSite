@@ -10,7 +10,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
-
+import { AuthProvider } from "../src/contexts/AuthContext"
 import CreateJob from './CreateJob.jsx';
 import { theme } from '../src/constants';
 
