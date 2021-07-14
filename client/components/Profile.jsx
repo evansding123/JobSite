@@ -12,8 +12,8 @@ const ContentContainer = styled.div`
   display: flex;
   text-decoration: none;
   flex-direction: row;
-  align-items: left;
-  justify-content: left;
+  align-items: center;
+  justify-content: center;
   background-color: #274358;
   margin-top: 5%;
   height: 80%;
