@@ -10,7 +10,7 @@ import styled from 'styled-components';
 
 const PopularContainer = styled.div`
   margin-top: 4vw;
-  margin: 1vw;
+  margin: 3vw;
 `;
 
 const PopularCards = styled.div`

@@ -32,6 +32,7 @@ const useStyles = makeStyles({
   media: {
     height: '30vw',
     width: '45vw',
+    borderRadius: '4px',
   },
   title: {
     height: '35vw',
@@ -43,6 +44,8 @@ const useStyles = makeStyles({
     color: '#FFFFFF',
     border: '2px solid #799496',
     borderRadius: '50px',
+    padding: '0.5vw 7vw',
+    marginTop: '2vw',
   },
 });
 

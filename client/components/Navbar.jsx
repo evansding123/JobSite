@@ -12,8 +12,10 @@ const Nav = styled.div`
   height: 6vh;
   padding-right: 1px;
   padding-top: 1.5vh;
+  padding-bottom: 1.5vh;
   position: sticky;
   top: 0;
+  z-index: 10;
 `;
 
 const NavLink = styled(Link)`
