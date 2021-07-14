@@ -44,7 +44,7 @@ const ReactCalendar = (props) => {
   const handleClick = (event) => {
 
     onChange(event);
-    console.log(event.toISOString());
+
 
     // axios.get('/notification/getnotification', {
     //   params: {
@@ -86,12 +86,11 @@ const ReactCalendar = (props) => {
     // Add class to tiles in month view only
     if (view === 'month') {
       // Check if a date React-Calendar wants to check is on the list of dates to add class to
-      //console.log((date).toISOString());
-      console.log(data);
+
       if(data.length !== 0) {
         if (data.find(dDate => isSameDay(parseISO(dDate), parseISO(date.toISOString())))) {
-          console.log('same');
-          return 'My content';
+
+          return <div>event here</div>
         }
       }
     }
