@@ -45,9 +45,9 @@ const useStyles = makeStyles({
     color: '#FFFFFF',
     border: '2px solid #799496',
     borderRadius: '50px',
-    padding: '0.75vw 12vw',
+    padding: '0.75vw 11.5vw',
     marginTop: '2vw',
-    fontSize: '1.25vw',
+    fontSize: '1.3vw',
   },
 });
 
