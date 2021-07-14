@@ -38,7 +38,7 @@ const useStyles = makeStyles({
   },
   body: {
     padding: '2vw 3vw',
-    fontWeight: '400',
+    fontWeight: '300',
   },
   button: {
     backgroundColor: '#363056',
@@ -51,10 +51,6 @@ const useStyles = makeStyles({
     fontSize: '1.3vw',
   },
 });
-
-// background-color: #363056;
-// background-image: linear-gradient(180deg, #363056 30%, #4a496f 90%);
-
 
 const promotionTitle = `Introducing the new JobSite Calendar Tool`;
 const promotionBody = `We have been working hard to make changes behind the scenes and to deliver you a better experience - all so you can more easily find the right fit.`;
@@ -73,7 +69,7 @@ const Promotion = (props) => {
         <Typography gutterBottom variant="h4" className={classes.title}>
           {promotionTitle}
         </Typography>
-        <Typography gutterBottom variant="h5" className={classes.body}>
+        <Typography gutterBottom variant="h6" className={classes.body}>
           {promotionBody}
         </Typography>
         <Button className={classes.button} variant="outlined">
