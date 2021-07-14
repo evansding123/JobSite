@@ -1,18 +1,27 @@
 import React from 'react';
-import Signup from './Signup.jsx';
-import { AuthProvider } from "../src/contexts/AuthContext"
-import Login from './Login.jsx';
 import ReactCalendar from './ReactCalendar.jsx';
+import styled, { createGlobalStyle } from 'styled-components';
 import HomePage from './HomePage.jsx';
 import Profile from './Profile.jsx';
 import PostAJob from './PostAJob.jsx';
-import styled from 'styled-components';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
+
+import CreateJob from './CreateJob.jsx';
+import { theme } from '../src/constants';
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: ${theme.colors.surface};
+    padding: 0px;
+    margin: 0px;
+    height: 100%
+  }
+`;
 
 const Nav = styled.div`
   display: flex;
@@ -133,7 +142,6 @@ const App = (props) => {
     <Footer>
     </Footer>
   </>
-
   );
 }
 

@@ -99,46 +99,49 @@ const HomePage = () => {
       history.push('/login');
     } catch {
       setError('Failed to log out');
- 
-  const search = (searchTerm) => {
-    const jobList = listingsCopy.slice();
-    const noMatches = null;
-    const matches = [];
 
-    for (var i = 0; i < jobList.length; i++) {
-      if (jobList[i].position.toLowerCase().includes(searchTerm.toLowerCase()) || jobList[i].company.toLowerCase().includes(searchTerm.toLowerCase()) || jobList[i].location.toLowerCase().includes(searchTerm.toLowerCase())) {
-        matches.push(jobList[i]);
+      const search = (searchTerm) => {
+        const jobList = listingsCopy.slice();
+        const noMatches = null;
+        const matches = [];
+
+        for (var i = 0; i < jobList.length; i++) {
+          if (jobList[i].position.toLowerCase().includes(searchTerm.toLowerCase()) || jobList[i].company.toLowerCase().includes(searchTerm.toLowerCase()) || jobList[i].location.toLowerCase().includes(searchTerm.toLowerCase())) {
+            matches.push(jobList[i]);
+          }
+        }
+        if (matches.length >= 1) {
+          updateListings(matches);
+        } else {
+          updateListings(null)
+        }
       }
-    }
-    if (matches.length >= 1) {
-      updateListings(matches);
-    } else {
-      updateListings(null)
+
+      return (
+        <div>
+          <Background>
+            <Nav>
+              <Job>Job</Job>
+              <Site>Site</Site>
+              <Link className="homepage" to='/'><NavButtons>Find Jobs</NavButtons></Link>
+              <NavButtons>Employers</NavButtons>
+              {!currentUser && <Link className="login" to='/login'><NavButtons>Log In</NavButtons></Link>}
+              {currentUser && <NavButtons onClick={handleLogout}>Log Out</NavButtons>}
+            </Nav>
+            {listings === null ? <NoResults onClick={() => { updateListings(listingsCopy) }}>No Results - Return Home</NoResults> : <Background>
+              <ContentContainer>
+                <Search search={search} />
+                <JobList listings={listings} />
+              </ContentContainer>
+              <Footer>
+                © 2021 JobSite
+              </Footer>
+            </Background>}
+          </Background>
+        </div>
+      )
     }
   }
-
-  return (
-    <div>
-      <Background>
-        <Nav>
-          <Job>Job</Job>
-          <Site>Site</Site>
-          <Link className="homepage" to='/'><NavButtons>Find Jobs</NavButtons></Link>
-          <NavButtons>Employers</NavButtons>
-          { !currentUser && <Link className="login" to='/login'><NavButtons>Log In</NavButtons></Link> }
-          { currentUser && <NavButtons onClick={handleLogout}>Log Out</NavButtons> }
-        </Nav>
-      {listings === null ? <NoResults onClick={() => {updateListings(listingsCopy)}}>No Results - Return Home</NoResults> : <Background>
-        <ContentContainer>
-          <Search search={search}/>
-          <JobList listings={listings} />
-        </ContentContainer>
-      <Footer>
-        © 2021 JobSite
-      </Footer>
-      </Background>}
-    </div>
-  )
 }
 
 export default HomePage;
