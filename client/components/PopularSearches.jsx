@@ -10,15 +10,31 @@ import Typography from '@material-ui/core/Typography';
 import styled from 'styled-components';
 
 const PopularContainer = styled.div`
-  margin-top: 5%;
+  margin-top: 4vw;
+  margin: '1vw';
+`;
+
+const PopularCards = styled.div`
+  margin-top: 3vw;
   display: flex;
+`;
+
+const PopularTitle = styled.div`
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+
+  color: #FFFFFF;
 `;
 
 const useStyles = makeStyles({
   root: {
     width: '21vw',
     height: '30vw',
-    margin: '1vw',
+    marginRight: '1vw',
+    marginLeft: '1vw',
   },
   media: {
     height: '25vw',
@@ -39,22 +55,27 @@ const PopularSearches = (props) => {
   ]
   return (
     <PopularContainer>
-      {dummyData.map(({ id, industry, src }) => (
-        <Card raised={true} key={id} className={classes.root}>
-          <CardActionArea>
-            <CardMedia
-              className={classes.media}
-              image={src}
-              title={industry}
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2" className={classes.industry}>
-                {industry}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card>
-      ))}
+      <PopularTitle>
+        Popular Searches
+      </PopularTitle>
+      <PopularCards>
+        {dummyData.map(({ id, industry, src }) => (
+          <Card raised={true} key={id} className={classes.root}>
+            <CardActionArea>
+              <CardMedia
+                className={classes.media}
+                image={src}
+                title={industry}
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2" className={classes.industry}>
+                  {industry}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        ))}
+      </PopularCards>
     </PopularContainer>
   )
 }

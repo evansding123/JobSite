@@ -176,7 +176,6 @@ form {
   width: 100%;
   display: flex;
   flex-direction: column;
-  opacity: 0.6;
 }
 
 * {
