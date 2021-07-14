@@ -35,9 +35,11 @@ const useStyles = makeStyles({
     borderRadius: '4px',
   },
   title: {
-    height: '35vw',
-    width: '50vw',
-    margin: '13vw',
+    fontSize: '2vw',
+  },
+  body: {
+    padding: '2vw 3vw',
+    fontWeight: '400',
   },
   button: {
     backgroundColor: '#192A34',
@@ -47,10 +49,6 @@ const useStyles = makeStyles({
     padding: '0.5vw 7vw',
     marginTop: '2vw',
   },
-  body: {
-    padding: '2vw 3vw',
-    fontWeight: '400',
-  }
 });
 
 const promotionTitle = `Introducing the new JobSite Calendar Tool`;
@@ -67,7 +65,7 @@ const Promotion = (props) => {
         title="calendartool"
       />
       <PromotionBody>
-        <Typography gutterBottom variant="h4">
+        <Typography gutterBottom variant="h4" className={classes.title}>
           {promotionTitle}
         </Typography>
         <Typography gutterBottom variant="h5" className={classes.body}>
