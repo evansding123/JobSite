@@ -41,7 +41,8 @@ const useStyles = makeStyles({
     fontWeight: '400',
   },
   button: {
-    backgroundColor: '#192A34',
+    backgroundColor: '#363056',
+    background: 'linear-gradient(180deg, #363056 30%, #4a496f 90%)',
     color: '#FFFFFF',
     border: '2px solid #799496',
     borderRadius: '50px',
@@ -50,6 +51,10 @@ const useStyles = makeStyles({
     fontSize: '1.3vw',
   },
 });
+
+// background-color: #363056;
+// background-image: linear-gradient(180deg, #363056 30%, #4a496f 90%);
+
 
 const promotionTitle = `Introducing the new JobSite Calendar Tool`;
 const promotionBody = `We have been working hard to make changes behind the scenes and to deliver you a better experience - all so you can more easily find the right fit.`;
