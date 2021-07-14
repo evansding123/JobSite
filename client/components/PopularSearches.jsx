@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import styled from 'styled-components';
 
 const PopularContainer = styled.div`
-  border: 1px black;
+  margin-top: 5%;
   display: flex;
 `;
 
@@ -33,24 +33,24 @@ const useStyles = makeStyles({
 const PopularSearches = (props) => {
   const classes = useStyles();
   const dummyData = [
-    { id: 1, industry: 'HealthCare'},
-    { id: 2, industry: 'Engineering'},
-    { id: 3, industry: 'Service'},
-    { id: 4, industry: 'Data Science'},
+    { id: 1, industry: 'HealthCare', src: "./img/nurse.png"},
+    { id: 2, industry: 'Engineering', src: "./img/engineering.png"},
+    { id: 3, industry: 'Service', src: "./img/service.png"},
+    { id: 4, industry: 'Data Science', src: "./img/datascience.png"},
   ]
   return (
     <PopularContainer>
-      {dummyData.map(({ id, industry }) => (
+      {dummyData.map(({ id, industry, src }) => (
         <Card raised={true} key={id} className={classes.root}>
           <CardActionArea>
             <CardMedia
-            className={classes.media}
-            image="./img/healthcare.png"
-            title={industry}
+              className={classes.media}
+              image={src}
+              title={industry}
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-              {industry}
+                {industry}
               </Typography>
             </CardContent>
           </CardActionArea>

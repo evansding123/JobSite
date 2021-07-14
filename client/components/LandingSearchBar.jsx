@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-// import SearchIcon from '@material-ui/icons/Search';
+import SearchIcon from '@material-ui/icons/Search';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,7 +43,7 @@ export default function LandingSearchBar() {
         inputProps={{ 'aria-label': 'location' }}
       />
       <IconButton type="submit" className={classes.iconButton} aria-label="search">
-        {/* <SearchIcon /> */}
+        <SearchIcon />
       </IconButton>
     </Paper>
   );
