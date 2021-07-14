@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-// import Navbar from './Navbar.jsx';
 import MainPhoto from './MainPhoto.jsx';
 import LandingSearchBar from './LandingSearchBar.jsx';
 import PopularSearches from './PopularSearches.jsx';
+import Promotion from './Promotion.jsx';
 
 const PageContainer = styled.div`
   display: flex;
@@ -16,9 +16,9 @@ const LandingPage = (props) => {
   return (
     <PageContainer>
       <MainPhoto />
-      {/* <Navbar /> */}
       <LandingSearchBar />
       <PopularSearches />
+      <Promotion />
     </PageContainer>
   );
 }
