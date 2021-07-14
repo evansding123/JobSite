@@ -73,7 +73,7 @@ const Promotion = (props) => {
         <Typography gutterBottom variant="h6" className={classes.body}>
           {promotionBody}
         </Typography>
-        <Link to='/signup'>
+        <Link to='/signup' style={{ textDecoration: 'none' }}>
           <Button className={classes.button} variant="outlined">
             CREATE YOUR ACCOUNT
           </Button>
