@@ -11,6 +11,7 @@ import styled from 'styled-components';
 
 const PopularContainer = styled.div`
   border: 1px black;
+  display: flex;
 `;
 
 const CardContainer = styled.div`
@@ -18,7 +19,11 @@ const CardContainer = styled.div`
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    width: '322px',
+    height: '405px',
+    left: '58px',
+    top: '1034px',
+    margin: '10px',
   },
   media: {
     height: 140,

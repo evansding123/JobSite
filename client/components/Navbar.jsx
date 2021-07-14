@@ -34,7 +34,7 @@ const Site = styled.div`
 const NavButtons = styled.div`
   font-family: Helvetica;
   color: white;
-  font-size: 2vh;
+  font-size: 24px;
   padding-right: 2vw;
   padding-top: 2.5vh;
   white-space: nowrap;
