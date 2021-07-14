@@ -3,7 +3,7 @@ CREATE DATABASE "job_site";
 \c "job_site";
 
 DROP TABLE IF EXISTS
-  "accounts, notes, notifications, job_seekers, employers, jobs, job_seekers_jobs";
+  "accounts, notes, notifications, job_seekers, employers, jobs, job_seekers_applied_jobs";
 
   CREATE TYPE industry AS ENUM (
   'Agriculture',
@@ -42,11 +42,12 @@ CREATE TYPE experience AS ENUM (
 
 CREATE TABLE "accounts" (
   "id" serial PRIMARY KEY,
-  "email" varchar(255) NOT NULL,
   "username" varchar(255) NOT NULL,
   "password" varchar(255) NOT NULL,
-  "location_coordinates" varchar(255),
-  "location_address" varchar(255) NOT NULL
+  "email" varchar(255) NOT NULL,
+  "longitude" varchar(255),
+  "latitude" varchar(255),
+  "location_address" varchar(255)
 );
 
 CREATE TABLE "notes" (
@@ -86,13 +87,11 @@ CREATE TABLE "jobs" (
   "salary" integer NOT NULL,
   "remote" remote NOT NULL,
   "experience" experience, --constraints
-  "date" date NOT NULL DEFAULT CURRENT_DATE,
-  -- "location_coordinates" varchar(255), --set default based off of accounts
-  -- "location_address" varchar(255) NOT NULL, --set default based off of accounts
+  "date" varchar(255) NOT NULL DEFAULT CURRENT_DATE,
   "employers_id" integer NOT NULL --foreign key
 );
 
-CREATE TABLE "job_seekers_jobs" (
+CREATE TABLE "job_seekers_applied_jobs" (
   "id" serial PRIMARY KEY,
   "job_seekers_id" integer NOT NULL, --foreign key
   "jobs_id" integer NOT NULL --foreign key
@@ -103,16 +102,50 @@ ALTER TABLE "notifications" ADD FOREIGN KEY ("accounts_id") REFERENCES "accounts
 ALTER TABLE "employers" ADD FOREIGN KEY ("accounts_id") REFERENCES "accounts" ("id");
 ALTER TABLE "job_seekers" ADD FOREIGN KEY ("accounts_id") REFERENCES "accounts" ("id");
 ALTER TABLE "jobs" ADD FOREIGN KEY ("employers_id") REFERENCES "employers" ("id");
-ALTER TABLE "job_seekers_jobs" ADD FOREIGN KEY ("job_seekers_id") REFERENCES "job_seekers" ("id");
-ALTER TABLE "job_seekers_jobs" ADD FOREIGN KEY ("jobs_id") REFERENCES "jobs" ("id");
+ALTER TABLE "job_seekers_applied_jobs" ADD FOREIGN KEY ("job_seekers_id") REFERENCES "job_seekers" ("id");
+ALTER TABLE "job_seekers_applied_jobs" ADD FOREIGN KEY ("jobs_id") REFERENCES "jobs" ("id");
 
 CREATE INDEX ON "notes" ("accounts_id");
 CREATE INDEX ON "notifications" ("accounts_id");
 CREATE INDEX ON "employers" ("accounts_id");
 CREATE INDEX ON "job_seekers" ("accounts_id");
 CREATE INDEX ON "jobs" ("employers_id");
-CREATE INDEX ON "job_seekers_jobs" ("job_seekers_id");
-CREATE INDEX ON "job_seekers_jobs" ("jobs_id");
+CREATE INDEX ON "job_seekers_applied_jobs" ("job_seekers_id");
+CREATE INDEX ON "job_seekers_applied_jobs" ("jobs_id");
+
+COPY "accounts" (username,password,email,longitude,latitude,location_address)
+FROM '/home/parker/hackreactor/JobSite/db/accounts.csv' --insert your direct path to your .csv files
+DELIMITER ','
+CSV HEADER;
+
+COPY "notes" (note, accounts_id)
+FROM '/home/parker/hackreactor/JobSite/db/notes.csv'
+DELIMITER ','
+CSV HEADER;
+
+COPY "employers" (accounts_id)
+FROM '/home/parker/hackreactor/JobSite/db/employers.csv'
+DELIMITER ','
+CSV HEADER;
+
+COPY "job_seekers" (accounts_id)
+FROM '/home/parker/hackreactor/JobSite/db/job_seekers.csv'
+DELIMITER ','
+CSV HEADER;
+
+COPY "jobs" (industry,employment_type,title,salary,remote,experience,date,employers_id)
+FROM '/home/parker/hackreactor/JobSite/db/jobs.csv'
+DELIMITER ','
+CSV HEADER;
+
+COPY "job_seekers_applied_jobs" (job_seekers_id,jobs_id)
+FROM '/home/parker/hackreactor/JobSite/db/job_seekers_applied_jobs.csv'
+DELIMITER ','
+CSV HEADER;
+
+
+
+
 
 -- ALTER TABLE "jobs" ADD CONSTRAINT check_types CHECK (
 --   "industry" = "Agriculture" OR
