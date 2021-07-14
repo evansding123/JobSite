@@ -11,4 +11,14 @@ module.exports = {
       throw error;
     }
   },
+  getAccount: async (username) => {
+    const query = `SELECT * FROM accounts WHERE * username = $1`;
+    try {
+      const res = await pool.query(query, username);
+      return res;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  },
 };

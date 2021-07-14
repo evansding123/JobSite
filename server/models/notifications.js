@@ -10,4 +10,7 @@ module.exports = {
       throw error;
     }
   },
+  getNotifications: async () => {
+    const query = `SELECT `
+  }
 };
