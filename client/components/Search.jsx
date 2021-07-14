@@ -30,6 +30,7 @@ border-radius: 3px;
 const FormHeaders = styled.div`
 color: #E9EB9E;
 font-family: Helvetica;
+padding-top: 9%;
 `;
 
 const CheckContainer = styled.div`
@@ -63,15 +64,31 @@ transition: 0.3s;
 }
 `;
 
-const Search = () => {
+const Search = ({ search }) => {
+
   const [searchTerm, setSearch] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
+  const [employmentType, setEmploymentType] = useState(true);
+
   const handleChange = event => {
     setSearch(event.target.value);
+    search(searchTerm);
+  }
+  const handleSubmit = event => {
+    setSearch(event.target.value);
+    search(searchTerm);
+  }
+
+  const handleCheckBoxChange = event => {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    setEmploymentType(name);
+    console.log(employmentType);
   }
 
   return (
-    <SearchContainer>
+    <SearchContainer onSubmit={handleSubmit}>
       <FormHeaders>Search Jobs</FormHeaders>
       <br></br>
       <SearchAndButton>
@@ -113,7 +130,7 @@ const Search = () => {
       <br></br>
       <CheckContainer>
         <label htmlFor="entry-level">
-          <input type="checkbox" id="entry-level" name="entry-level" value="entry-level" />
+          <input type="checkbox" id="entry-level" name="entry-level" value="entry-level" onClick={() => console.log(name)} />
           Entry-Level
         </label>
         <br></br>
