@@ -81,6 +81,7 @@ const Navbar = () => {
       <NavLinkContainer>
         <NavLink to="/findjobs">Find Jobs</NavLink>
         <NavLink to="/profile">Post Jobs</NavLink>
+        <NavLink to="/calendar">Calendar</NavLink>
         <NavLink to="/login">Log In</NavLink>
       </NavLinkContainer>
     </Nav>
