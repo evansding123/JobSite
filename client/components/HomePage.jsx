@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Search from './Search.jsx';
 import JobList from './JobList.jsx';
+import { Link, useHistory } from 'react-router-dom';
+import { useAuth, logout } from '../src/contexts/AuthContext.js';
+import list from './exampleList.js';
 
 const Nav = styled.div`
   display: flex;
@@ -64,33 +67,79 @@ const ContentContainer = styled.div`
   display: flex;
   text-decoration: none;
   flex-direction: row;
-  align-items: left;
-  justify-content: left;
+  align-items: center;
+  justify-content: center;
   background-color: #274358;
   margin-top: 5%;
   height: 80%;
   width: 80%;
 `
 
+const NoResults = styled.div`
+  background-color: #274358;
+  margin-left: 10%;
+  margin-left: 8%;
+  font-size: 5vh;
+  color: white;
+  font-family: Helvetica;
+`;
+
 const HomePage = () => {
+  const [error, setError] = useState('');
+  const { currentUser, logout } = useAuth();
+  const history = useHistory();
+  const [listings, updateListings] = useState(list);
+  const [listingsCopy, updateListingsCopy] = useState(list);
+
+  async function handleLogout() {
+    setError('');
+
+    try {
+      await logout();
+      history.push('/login');
+    } catch {
+      setError('Failed to log out');
+    }
+  }
+
+  const search = (searchTerm) => {
+    const jobList = listingsCopy.slice();
+    const noMatches = null;
+    const matches = [];
+
+    for (var i = 0; i < jobList.length; i++) {
+      if (jobList[i].position.toLowerCase().includes(searchTerm.toLowerCase()) || jobList[i].company.toLowerCase().includes(searchTerm.toLowerCase()) || jobList[i].location.toLowerCase().includes(searchTerm.toLowerCase())) {
+        matches.push(jobList[i]);
+      }
+    }
+    if (matches.length >= 1) {
+      updateListings(matches);
+    } else {
+      updateListings(null)
+    }
+  }
+
   return (
     <div>
       <Background>
-        <Nav>
+        {/* <Nav>
           <Job>Job</Job>
           <Site>Site</Site>
-          <NavButtons>Find Jobs</NavButtons>
+          <Link className="homepage" to='/'><NavButtons>Find Jobs</NavButtons></Link>
           <NavButtons>Employers</NavButtons>
-          <NavButtons>Log In</NavButtons>
-        </Nav>
+          { !currentUser && <Link className="login" to='/login'><NavButtons>Log In</NavButtons></Link> }
+          { currentUser && <NavButtons onClick={handleLogout}>Log Out</NavButtons> }
+        </Nav> */}
+      {listings === null ? <NoResults onClick={() => {updateListings(listingsCopy)}}>No Results - Return Home</NoResults> : <Background>
         <ContentContainer>
-          <Search />
-          <JobList />
+          <Search search={search}/>
+          <JobList listings={listings} />
         </ContentContainer>
-      </Background>
       <Footer>
-      © 2021 Indeed
+        © 2021 JobSite
       </Footer>
+      </Background>}
+      </Background>
     </div>
   )
 }
