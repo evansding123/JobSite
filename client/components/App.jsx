@@ -2,14 +2,16 @@ import React from 'react';
 
 import ReactCalendar from './ReactCalendar.jsx';
 import HomePage from './HomePage.jsx';
+import LandingPage from './LandingPage.jsx';
 
 const App = (props) => {
   return(
     <>
-    <ReactCalendar />
+      <LandingPage />
+    {/* <ReactCalendar />
     <div>
       <HomePage />
-    </div>
+    </div> */}
     </>
   );
 }

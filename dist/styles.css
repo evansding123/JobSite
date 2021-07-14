@@ -168,3 +168,16 @@ form {
   color:  #E9EB9E;
 }
 
+#showcase {
+  background-image: url('/img/showcase.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
