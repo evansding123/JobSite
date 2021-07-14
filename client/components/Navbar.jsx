@@ -12,6 +12,8 @@ const Nav = styled.div`
   height: 6vh;
   padding-right: 1px;
   padding-top: 1.5vh;
+  position: sticky;
+  top: 0;
 `;
 
 const NavLink = styled(Link)`
@@ -40,8 +42,9 @@ const LogoContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: center;
+  align-items: end;
   width: 50vw;
+  padding-left: 20px;
 `;
 
 const LogoLink = styled.a`
@@ -52,11 +55,16 @@ const LogoLink = styled.a`
 const Job = styled.div`
   font-family: Helvetica;
   color: #E9EB9E;
+  font-size: 2.8rem;
+  align-self: flex-end;
+  font-weight: bold;
 `;
 
 const Site = styled.div`
   font-family: Helvetica;
   color: #799469;
+  font-size: 2.6rem;
+  align-self: flex-end;
 `;
 
 const Navbar = () => {
