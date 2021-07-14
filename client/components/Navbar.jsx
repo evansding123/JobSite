@@ -99,7 +99,7 @@ const Navbar = () => {
       <NavLinkContainer>
         <NavLink to="/findjobs">Find Jobs</NavLink>
         <NavLink to="/profile">Post Jobs</NavLink>
-        {currentUser !== null
+        {currentUser
           ? <NavLink onClick={handleLogout}>Log Out ({currentUser.email})</NavLink>
           : <NavLink className="login" to='/login'>Log In</NavLink>
         }
