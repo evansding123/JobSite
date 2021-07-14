@@ -73,7 +73,7 @@ const PopUp = (props) => {
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = useState(true);
   const [formInfo, setFormInfo] = useState({
-    username: 'purpleswan857',
+    email: 'xavier.duran@example.com',
     time: props.date.substring(0,16)
   });
 

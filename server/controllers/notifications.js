@@ -10,7 +10,7 @@ module.exports = {
       }
       array.shift();
       //console.log(array);
-      const queryData = await models.notifications.addNotification(array, req.body.username);
+      const queryData = await models.notifications.addNotification(array, req.body.email);
       res.status(201).send(queryData);
     } catch (error) {
       res.status(404).send(error);
