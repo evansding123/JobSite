@@ -9,6 +9,7 @@ import PostAJob from './PostAJob.jsx';
 import styled from 'styled-components';
 import LandingPage from './LandingPage.jsx';
 import Navbar from './Navbar.jsx';
+import ScrollToTop from './ScrollToTop.jsx';
 import {
   BrowserRouter as Router,
   Switch,
@@ -21,6 +22,7 @@ const App = (props) => {
   return(
     <>
       <Router>
+        <ScrollToTop />
         <AuthProvider>
           <Navbar/>
           <Switch>
