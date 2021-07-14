@@ -21,8 +21,9 @@ module.exports = {
     }
   },
 
-  getNotification: async (date, username) => {
-    const query = `SELECT * FROM notifications WHERE date = ${date} AND accounts_notifications_appointments.accounts_id = ((SELECT username from accounts) = ${username}))`;
+  getNotification: async (date, email) => {
+    console.log(date,email);
+    const query = `SELECT * FROM notifications RIGHT JOIN accounts_notifications_appointments ON accounts_notifications_appointments.accounts_id = (SELECT id FROM accounts WHERE email = '${email}') AND notifications.date = '${date}'`;
     try {
       const res = await pool.query(query);
       return res;
@@ -46,5 +47,5 @@ module.exports = {
 
 
     //query for jobseeker side
-    // const query = SELECT * FROM notifications RIGHT JOIN WHERE accounts_notifications_appoinments.notifications_id = notifications.id
+    // const query = `SELECT * FROM notifications RIGHT JOIN ON accounts_notifications_appoinments.notifications_id = notifications.id AND accounts_notifications_appointments.guest = ${email}`
     //joinng on accounts table with accounts id

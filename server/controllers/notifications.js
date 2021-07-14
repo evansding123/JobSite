@@ -19,7 +19,9 @@ module.exports = {
 
   getNotification: async(req, res) => {
     try {
-      const queryData = await models.notifications.getNotification(req.params.date);
+      console.log(req.query);
+      const{date, email} = req.query;
+      const queryData = await models.notifications.getNotification(date, email);
       res.status(200).send(queryData);
     } catch(error) {
       res.status(404).send(error);
