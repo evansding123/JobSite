@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import { Modal } from '@material-ui/core';
+import { shadows } from '@material-ui/system';
 import { spacing, palette } from '@material-ui/system';
 import {
   alpha,
@@ -12,16 +14,9 @@ import {
 } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
-
-import axios from 'axios';
-
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
-
-function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
+const getModalStyle = () => {
+  const top = 50;
+  const left = 50;
 
   return {
     top: `${top}%`,
@@ -35,15 +30,17 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     width: 400,
     backgroundColor: '#274358',
-    border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
     borderRadius: 10,
     color: '#E9EB9E'
   },
   input: {
-    color: '#E9EB9E',
-    backgroundColor: '#192a34'
+    color: '#FFFFFF',
+    backgroundColor: '#49475B'
+  },
+  bottom: {
+    marginBottom: 10
   }
 }));
 
@@ -69,26 +66,24 @@ const CssTextField = withStyles({
   },
 })(TextField);
 
-
-
-
 const PopUp = (props) => {
   const classes = useStyles();
   const [text, addText] = useState('');
+  const [eventDate, addEvent] = useState(new Date());
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = useState(true);
+  const [formInfo, setFormInfo] = useState({
+    username: 'purpleswan857',
+    time: props.date.substring(0,16)
+  });
 
   let dateString = '';
 
-  if(props.date !== undefined) {
-    dateString = props.date.substring(0,props.date.length);
+
+  if (props.date !== undefined) {
+    dateString = props.date.substring(0,16);
+    //visualDate = props.visualdate ....
   }
-
-
-  const handleOpen = () => {
-    setOpen(true);
-
-  };
 
   const handleClose = () => {
     setOpen(false);
@@ -96,38 +91,69 @@ const PopUp = (props) => {
   };
 
   const handleChange = (event) => {
-    addText(event.target.value);
 
+    const obj = {
+      [event.target.name]: event.target.value,
+    }
+    setFormInfo(formInfo => {
+      formInfo[event.target.name] = event.target.value
+      return formInfo;
+  });
+    //addText(event.target.value);
   }
 
   const handleSubmit = (event) => {
+    event.preventDefault();
     console.log('submitted');
-    axios.post('/post', {
-      date: props.date,
-      text: text
-      //what do we need to send a post request?
-      //date, industry, message, remote,
+    axios.post('/notification/addnotification', formInfo)
+    .then((response) => {
+      console.log(response);
     })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+
+  const handleDate = (event) => {
+    addEvent();
   }
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
       <p>{dateString}</p>
-      <form onChange = {handleChange}>
-        <CssTextField value = {text} id="outlined-basic" label="please add event" variant="outlined" />
+
+      <form onSubmit={handleSubmit}>
+        <CssTextField className = {classes.bottom} onChange={handleChange} id="standard-basic" label="Add title" name = 'title'/>
+
+        <CssTextField
+              id="datetime-local"
+              type="datetime-local"
+              defaultValue={dateString}
+              className={classes.textField}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              name="time"
+              onChange={handleChange}
+         />
+        <CssTextField onChange={handleChange} id="standard-basic" label="Add guests" name="guests"/>
+        <br/>
+        <CssTextField onChange={handleChange}  name="location" id="standard-basic" label="Add location" />
+        <br/>
+        <CssTextField onChange={handleChange}  name="description" id="standard-basic" label="Description" />
         <Box mt = {3}>
-          <Button className = {classes.input} type = 'submit' onSubmit = {handleSubmit}>Add Event</Button>
+          <Button className={classes.input} type='submit' >Add Event</Button>
         </Box>
       </form>
     </div>
   );
 
   return (
-    <div>
+    <Box>
       <Modal open={open} onClose={handleClose}>
         {body}
       </Modal>
-    </div>
+    </Box>
 
   );
 }
