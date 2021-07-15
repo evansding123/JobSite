@@ -13,6 +13,7 @@ import LandingPage from './LandingPage.jsx';
 import Navbar from './Navbar.jsx';
 import ScrollToTop from './ScrollToTop.jsx';
 import EmployerPage from './EmployerPage.jsx';
+import NotesPage from './NotesPage.jsx';
 import {
   BrowserRouter as Router,
   Switch,
@@ -58,6 +59,9 @@ const App = (props) => {
             </Route>
             <Route path="/employers">
             <EmployerPage />
+            </Route>
+            <Route path="/notes">
+              <NotesPage />
             </Route>
           </Switch>
         </AuthProvider>

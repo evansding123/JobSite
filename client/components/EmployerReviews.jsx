@@ -9,13 +9,13 @@ const fakeReviews = [
   {
     id: 1,
     review: 'Jobsite makes it so easy to reach a large, targeted candidate pool in a short amount of time',
-    name: 'Evans Ding, Software Engineer at Facebook',
+    name: 'Evans Ding, Accountant at Facebook',
     icon: <FacebookIcon/>,
   },
   {
     id: 2,
     review: 'We have found so many quality candidates on Jobsite than we have on competitor sites',
-    name: 'John Yasis, Software Engineer at Google',
+    name: 'John Yasis, Nurse at Kaiser Permanante',
   },
   {
     id: 3,
