@@ -11,11 +11,12 @@ import Paper from '@material-ui/core/Paper';
 const PromoContainer = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
 `;
 const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: auto;
 `;
 
 const useStyles = makeStyles(() => ({
