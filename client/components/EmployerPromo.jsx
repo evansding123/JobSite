@@ -1,10 +1,17 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import styled from 'styled-components';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
+
+const TextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+`;
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -16,6 +23,13 @@ const useStyles = makeStyles(() => ({
     height: '100%',
     width: '100%',
   },
+  text: {
+    color: '#FFFFFF',
+  },
+  body: {
+    color: '#FFFFFF',
+
+  },
 }));
 
 export default function EmployerPromo() {
@@ -23,6 +37,14 @@ export default function EmployerPromo() {
 
   return (
     <div id="employer-promo">
+      <TextContainer>
+        <Typography gutterBottom variant="h4" className={classes.text} >
+          CAPTURE WHAT MATTERS
+        </Typography>
+        <Typography gutterBottom variant="h6"className={classes.body} >
+          Keep applicant information handy with our new Notes tool.
+        </Typography>
+      </TextContainer>
       <Card raised className={classes.root}>
         <CardMedia
           className={classes.media}
