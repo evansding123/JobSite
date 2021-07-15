@@ -1,10 +1,26 @@
+
+
+.slick-slide{
+  /* margin-left: 1%; */
+  /* margin-right:  5px; */
+  margin-left: 2px;
+  margin-top: 10px;
+}
+
+/* .slick-list {
+  margin-left: 10%;
+} */
+
 .react-calendar {
-  width: 100%;
+  width: 99%;
   max-width: 100%;
   background: white;
   border: 1px solid #a0a096;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
   line-height: 1.125em;
+  margin: auto;
+  margin-top: 1%;
+  border-radius: 10px;
 }
 .react-calendar--doubleView {
   width: 700px;
@@ -41,7 +57,12 @@
   min-width: 44px;
   background: none;
   border: 1px solid black;
+  background-color: yellow;
 }
+.react-calendar__navigation__label > span{
+  font-weight: 800;
+}
+
 .react-calendar__navigation button:enabled:hover,
 .react-calendar__navigation button:enabled:focus {
   background-color: #e6e6e6;
@@ -124,6 +145,7 @@
   /* column-gap: 0em; */
   flex-basis: content;
 
+
   /* row-gap: 0em; */
 
   /* column-width: 1em; */
@@ -137,9 +159,14 @@
   border-top: 1px solid black;
   width: 1em;
   height: 8em;
+  z-index: 0;
 
   /* border-left: 1px solid black; */
 
+}
+
+.react-calendar__navigation__label__labelText react-calendar__navigation__label__labelText--from {
+  font-weight: 800;
 }
 
 .CalendarMonth {
@@ -166,6 +193,47 @@ p{
 
 form {
   color:  #E9EB9E;
+}
+
+#employer-showcase {
+  background-image: url('img/emp-showcase.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#employer-promo {
+  background-color: #363056;
+  background-size: cover;
+  background-position: center;
+  height: 110vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#upsidedown-triangle {
+  height: 0;
+  width: 0;
+  border-left: 50vw solid transparent;
+  border-right: 50vw solid transparent;
+  border-top: 20vh solid #363056;
+}
+
+#employer-reviews {
+  background-size: cover;
+  background-position: center;
+  height: 120vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #showcase {
