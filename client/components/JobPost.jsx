@@ -13,6 +13,7 @@ const PostContainer = styled.div`
   height: 35%;
   width: 90%;
   margin-bottom: 3vh;
+  padding-top: 3vh;
   line-height: 1.3;
   &:hover ${PostContainer} {
     border-color: #E9EB9E;

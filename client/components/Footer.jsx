@@ -9,9 +9,12 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 
 const FooterBackground = styled.div`
   background-color: #192A34;
-  width: 100%;
-  height: 150px;
-  margin-left: 2%;
+  margin-left: -10%;
+  margin-left: -10%;
+  margin-left: -8%;
+  margin-top: -10vh;
+  background-color: #192A34;
+  height: 40vh;
 `;
 
 const StyledDiv = styled.div`
@@ -24,7 +27,7 @@ const StyledDiv = styled.div`
   justify-content: center;
   margin-top: 4%;
   margin-right: -5%;
-  padding-top: 2%;
+  padding-top: 6%;
 `;
 
 const IconList = styled.div`
@@ -91,7 +94,7 @@ const Footer = (props) => (
     <FooterText>
       © 2021 JobSite
       Do Not Sell My Personal Information
-      Accessibility at Indeed
+      Accessibility at JobSite
       Privacy Center
       Cookies
       Privacy

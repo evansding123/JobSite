@@ -93,6 +93,7 @@ const NoResults = styled.div`
 
 const HomePageContainer = styled.div`
   overflow: hidden;
+  margin-left: -10%;
 `;
 
 const HomePage = () => {
@@ -100,8 +101,6 @@ const HomePage = () => {
   const [listingsCopy, updateListingsCopy] = useState(list);
   const [postDetail, showPostDetail] = useState(false);
   const [currentPost, setCurrentPost] = useState(list[0]);
-
-
   const showDetail = (post) => {
     setCurrentPost(post);
     showPostDetail(!postDetail);
