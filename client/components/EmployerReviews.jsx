@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import styled from 'styled-components';
@@ -34,10 +34,15 @@ const useStyles = makeStyles(() => ({
     color: '#FFFFFF',
     marginBottom:'8vh',
   },
+  quote: {
+    fontStyle: 'italic',
+  }
 }));
+
 
 export default function EmployerReviews() {
   const classes = useStyles();
+  const [active, setActive] = useState(false);
 
   return (
     <div id="employer-reviews">
@@ -46,7 +51,7 @@ export default function EmployerReviews() {
       </Typography>
         {fakeReviews.map(({ id, review, name, icon }) => (
           <ReviewContainer key={id}>
-            <Typography gutterBottom variant="h4" align="center">
+            <Typography gutterBottom variant="h4" align="center" className={classes.quote}>
               {review}
             </Typography>
             <Typography gutterBottom variant="h6" align="center">
@@ -57,3 +62,4 @@ export default function EmployerReviews() {
     </div>
   );
 }
+

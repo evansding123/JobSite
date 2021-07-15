@@ -29,6 +29,7 @@ const useStyles = makeStyles(() => ({
   },
   text: {
     color: '#FFFFFF',
+    marginBottom: '5vh',
   },
   body: {
     color: '#FFFFFF',
@@ -70,12 +71,11 @@ export default function EmployerPromo() {
         <Typography gutterBottom variant="h3" className={classes.text} >
           How it Works
         </Typography>
-
       <PromoContainer>
         <TextContainer>
           {list.map(( {step, title, body }) => (
             <Paper elevation={5} className={classes.paper} key={step}>
-              <Typography gutterBottom variant="h6" className={classes.text} >
+              <Typography gutterBottom variant="h5" className={classes.text} >
                 {title}
               </Typography>
               <Typography gutterBottom variant="body1"className={classes.body}>
