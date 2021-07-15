@@ -6,9 +6,10 @@ import NotesMain from './NotesMain.jsx';
 
 const Tester = styled.div`
   display: grid;
+  poistion: relative;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);
-  height: 110vh;
+  height: 100vh;
   width: 100vh;
 `;
 
@@ -21,6 +22,7 @@ const List = styled.div`
 grid-column: 1 / 5;
 grid-row: 1 / 12;
 background: #274358;
+border-radius: 10px;
 `;
 
 export default function NotesPage(props) {
