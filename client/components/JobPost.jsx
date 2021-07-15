@@ -11,8 +11,9 @@ const PostContainer = styled.div`
   background-color: #192A34;
   border-radius: 10px;
   height: 35%;
-  width: 70%;
+  width: 90%;
   margin-bottom: 3vh;
+  padding-top: 3vh;
   line-height: 1.3;
   &:hover ${PostContainer} {
     border-color: #E9EB9E;
@@ -44,34 +45,49 @@ const Apply = styled.span`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  &:hover ${Apply} {
+    color: #49475B;
+    pointer: cursor;
+  }
 `
 
 const Applied = styled.span`
-  color: white;
+  color: E9EB9E;
   padding-bottom: 3vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  &:hover ${Applied} {
+    color: #white;
+    pointer: cursor;
+  }
 `
 
-const JobPost = ({ item }) => {
-  const [post, expandPost] = useState(false);
+const JobPost = ({ item, showDetail }) => {
+  const [apply, instapply] = useState(false);
   return (
     <PostContainer onClick={() => {
-      expandPost(!post);
+      showDetail(item);
     }}>
         <Text>
-        <Position>{item.position}</Position>
-        <CompanyAndLocation>
-        {item.company}
-        <br></br>
-        {item.location}
-        <br></br>
-        </CompanyAndLocation>
-        <Description>{item.description}</Description>
+          <Position>
+            {item.position}
+          </Position>
+          <CompanyAndLocation>
+            {item.company}
+            <br></br>
+            {item.location}
+            <br></br>
+          </CompanyAndLocation>
+          <Description>
+            {item.description}
+          </Description>
         </Text>
-        {!post ? <Apply>Instapply</Apply> : <Applied>Applied</Applied>}
+        {
+          !apply ? <Apply onClick={() => {instapply(!apply)}}>Instapply</Apply > :
+          <Applied onClick={() => {instapply(!apply)}}>Applied</Applied>
+        }
     </PostContainer>
   )
 }
