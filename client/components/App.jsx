@@ -44,7 +44,7 @@ const App = (props) => {
             <Route path="/calendar">
               <ReactCalendar />
             </Route>
-            <Route path="/profile">
+            <Route path="/addjob">
               <CreateJob />
             </Route>
             <Route path="/login">

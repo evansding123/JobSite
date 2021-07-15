@@ -6,7 +6,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   background-color: ${theme.colors.surface};
-  height: 100vw;
+  height: 65vw;
 `;
 
 const Header = styled.h1`
@@ -48,7 +48,6 @@ const Select = styled.select`
   margin: 20px 0;
   height: 30px;
   width: 100%;
-
 `;
 
 const Submit = styled.button`
@@ -59,7 +58,6 @@ const Submit = styled.button`
   color: white;
   font-weight: normal;
   border-radius: 2px;
-
 `;
 
 const TextArea = styled.textarea`
@@ -86,7 +84,7 @@ export default function CreateJob() {
   }
 
   function handleSubmit(e) {
-    alert(form);
+    alert(form); // test for now
     setForm(initialForm);
     e.preventDefault();
   }
@@ -98,20 +96,15 @@ export default function CreateJob() {
           <Header>Post a Job</Header>
           <Form onSubmit={handleSubmit}>
             <Input onChange={handleChange} value={form.title} name="title" type="text" placeholder="Title *" required></Input>
-
             <Input onChange={handleChange} value={form.location} name="location" type="text" placeholder="Location *" required></Input>
-
             <Input onChange={handleChange} value={form.compensation} name="compensation" type="number" placeholder="Compensation *" required></Input>
-
             <Select onChange={handleChange} value={form.experience} name="experience" placeholder="Experience Level *" required>
               <option value="EntryLevel" default>Entry Level</option>
               <option value="MidLevel">Mid Level</option>
               <option value="SeniorLevel">Senior Level</option>
               <option value="ExecutiveLevel">Executive Level</option>
             </Select>
-
             <TextArea onChange={handleChange} value={form.description} name="description" maxLength="1000" placeholder="Description *" required></TextArea>
-
             <Submit type="submit"><strong>SUBMIT</strong></Submit>
           </Form>
         </InnerContainer>

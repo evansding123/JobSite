@@ -8,7 +8,6 @@
 */
 
 const data = require('./json.js');
-console.log(data)
 const splitWhole = ((data.results.length % 2) === 0 ? data.results.length / 2 : (data.results.length - 1) / 2);
 const fillerData = {
   lorem: `Sed ut perspiciatis unde omnis iste natus error sit voluptatem\
