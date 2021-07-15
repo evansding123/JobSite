@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link, useHistory } from "react-router-dom";
-import { useAuth, logout } from '../src/contexts/AuthContext.js';
+import { useAuth } from '../src/contexts/AuthContext.js';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import AccountIcon from './AccountIcon.jsx';
 
@@ -79,22 +79,10 @@ const NotificationI = styled(NotificationsIcon)`
 
 
 const Navbar = () => {
-  const { currentUser, logout } = useAuth();
+  const { currentUser } = useAuth();
   const history = useHistory();
-  const [error, setError] = useState('');
 
-  console.log(currentUser);
 
-  async function handleLogout() {
-    setError('');
-
-    try {
-      await logout();
-      history.push('/login');
-    } catch {
-      setError('Failed to log out');
-    }
-  }
 
   return (
     <Nav>
@@ -109,7 +97,7 @@ const Navbar = () => {
         <NavLink to="/profile">Post Jobs</NavLink>
         {/* TODO: Add notification and profile icons w links here */}
         {currentUser
-          ? <> <NotificationI /> <AccountIcon /> <NavLink onClick={handleLogout}>Log Out </NavLink>  </>
+          ? <> <NotificationI /> <AccountIcon /> </>
           : <NavLink className="login" to='/login'>Log In</NavLink>
         }
       </NavLinkContainer>
