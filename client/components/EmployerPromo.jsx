@@ -38,8 +38,8 @@ const useStyles = makeStyles(() => ({
     backgroundColor: '#363056',
     margin: ' 2% 4%',
     padding: '4%',
-    opacity: '10%',
-    '&hover': {
+    opacity: '30%',
+    '&:hover': {
       opacity: '100%',
     },
   }
