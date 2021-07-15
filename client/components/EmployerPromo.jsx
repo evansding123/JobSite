@@ -10,13 +10,13 @@ import CardMedia from '@material-ui/core/CardMedia';
 
 const useStyles = makeStyles(() => ({
   root: {
-    width: '21vw',
-    height: '30vw',
-    marginRight: '1vw',
-    marginLeft: '1vw',
+    width: '50vw',
+    height: '35vh',
+    margin: '3em 10em'
   },
   media: {
-    height: '25vw',
+    height: '100%',
+    width: '100%',
   },
 }));
 
