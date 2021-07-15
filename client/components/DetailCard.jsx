@@ -14,6 +14,7 @@ const DetailContainer = styled.div`
   height: 20%;
   width: 40%;
   padding-right: 2vw;
+  padding-top: 2vw;
   margin-right: 10vw;
   margin-left: 1vw;
   margin-bottom: 6vh;
@@ -64,6 +65,7 @@ const Scroll = styled.div`
   max-height: 15vw;
   overflow-x: hidden;
   overflow-y: scroll;
+  padding-left: 2vw;
 `;
 
 const DetailCard = ({ post }) => {

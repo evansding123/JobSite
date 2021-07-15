@@ -27,10 +27,7 @@
     "@emotion/styled": "^11.3.0",
     "@material-ui/core": "^4.12.1",
     "@material-ui/icons": "^4.11.2",
-<<<<<<< HEAD
     "@material-ui/system": "^4.12.1",
-=======
->>>>>>> main
     "axios": "^0.21.1",
     "express": "^4.17.1",
     "firebase": "^8.7.1",
