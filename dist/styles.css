@@ -168,6 +168,16 @@ form {
   color:  #E9EB9E;
 }
 
+#employer-showcase {
+  background-image: url('img/emp-showcase.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 #employer-promo {
   background-color: #363056;
   background-size: cover;
@@ -188,14 +198,15 @@ form {
   border-top: 20vh solid #363056;
 }
 
-#employer-showcase {
-  background-image: url('img/emp-showcase.jpg');
+#employer-reviews {
   background-size: cover;
   background-position: center;
-  height: 80vh;
+  height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #showcase {
@@ -207,7 +218,6 @@ form {
   display: flex;
   flex-direction: column;
 }
-
 
 * {
   margin: 0;

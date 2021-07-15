@@ -25,6 +25,7 @@ export default function EmployerPage() {
       <EmployerMainPhoto/>
       <EmployerPromo />
       <div id="upsidedown-triangle"/>
+      <EmployerReviews />
     </div>
   );
 }

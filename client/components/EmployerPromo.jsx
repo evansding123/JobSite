@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
 import IconButton from '@material-ui/core/IconButton';
@@ -65,7 +65,6 @@ const list = [
 
 export default function EmployerPromo() {
   const classes = useStyles();
-  const [hover, setHover] = useState(true);
 
   return (
     <div id="employer-promo">
