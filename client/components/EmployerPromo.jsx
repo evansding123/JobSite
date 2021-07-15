@@ -11,8 +11,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 const useStyles = makeStyles(() => ({
   root: {
     width: '50vw',
-    height: '35vh',
-    margin: '3em 10em'
+    height: '55vh',
+    margin: 'auto',
   },
   media: {
     height: '100%',
