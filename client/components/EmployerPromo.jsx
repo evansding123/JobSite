@@ -24,7 +24,7 @@ export default function EmployerPromo() {
   const classes = useStyles();
 
   return (
-    <div id="employer-reviews">
+    <div id="employer-promo">
       <Card raised className={classes.root}>
         <CardMedia
           className={classes.media}
