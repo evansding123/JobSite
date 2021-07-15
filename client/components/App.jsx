@@ -12,6 +12,7 @@ import FooterIcons from './Footer.jsx';
 import LandingPage from './LandingPage.jsx';
 import Navbar from './Navbar.jsx';
 import ScrollToTop from './ScrollToTop.jsx';
+import EmployerPage from './EmployerPage.jsx';
 import {
   BrowserRouter as Router,
   Switch,
@@ -54,6 +55,9 @@ const App = (props) => {
             </Route>
             <Route path="/signup">
               <Signup />
+            </Route>
+            <Route path="/employers">
+            <EmployerPage />
             </Route>
           </Switch>
         </AuthProvider>

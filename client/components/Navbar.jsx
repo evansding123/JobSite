@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link, useHistory } from "react-router-dom";
-import { useAuth, logout } from '../src/contexts/AuthContext.js';
+import { useAuth } from '../src/contexts/AuthContext.js';
+import AccountIcon from './AccountIcon.jsx';
+import NotificationIcon from './NotificationIcon.jsx';
 
 const Nav = styled.div`
   display: flex;
@@ -70,23 +72,12 @@ const Site = styled.div`
   align-self: flex-end;
 `;
 
+
+
+
 const Navbar = () => {
-  const { currentUser, logout } = useAuth();
+  const { currentUser } = useAuth();
   const history = useHistory();
-  const [error, setError] = useState('');
-
-  console.log(currentUser);
-
-  async function handleLogout() {
-    setError('');
-
-    try {
-      await logout();
-      history.push('/login');
-    } catch {
-      setError('Failed to log out');
-    }
-  }
 
   return (
     <Nav>
@@ -98,14 +89,10 @@ const Navbar = () => {
       </LogoLink>
       <NavLinkContainer>
         <NavLink to="/findjobs">Find Jobs</NavLink>
-        <NavLink to="/addjob">Post Jobs</NavLink>
+        <NavLink to="/profile">Post Jobs</NavLink>
+        {/* TODO: Add notification and profile icons w links here */}
         {currentUser
-          ? (
-            <>
-              <NavLink to="/calendar">Calendar</NavLink>
-              <NavLink onClick={handleLogout}>Log Out ({currentUser.email})</NavLink>
-            </>
-          )
+          ? <>  <NotificationIcon /> <AccountIcon /> </>
           : <NavLink className="login" to='/login'>Log In</NavLink>
         }
 
