@@ -106,6 +106,17 @@ const HomePage = () => {
     showPostDetail(!postDetail);
   }
 
+  async function handleLogout() {
+    setError('');
+
+    try {
+      await logout();
+      history.push('/login');
+    } catch {
+      setError('Failed to log out');
+    }
+  }
+
   const search = (searchTerm) => {
     const jobList = listingsCopy.slice();
     const noMatches = null;
@@ -122,15 +133,14 @@ const HomePage = () => {
       updateListings(null);
     }
   }
-
   return (
     <HomePageContainer>
       {listings === null ?
-        <NoResults onClick={() => {updateListings(listingsCopy)}}>No Results - Return Home</NoResults> :
+        <NoResults onClick={() => { updateListings(listingsCopy) }}>No Results - Return Home</NoResults> :
         <Background>
           <Banner />
           <ContentContainer>
-            <Search search={search}/>
+            <Search search={search} />
             <JobList listings={listings} showDetail={showDetail} />
             {!postDetail ? <DetailCard post={currentPost} /> : <DetailCard post={currentPost} />}
           </ContentContainer>
