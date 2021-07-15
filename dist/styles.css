@@ -178,6 +178,16 @@ form {
   flex-direction: column;
 }
 
+#employer-showcase {
+  background-image: url('img/emp-showcase.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 60vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 * {
   margin: 0;
   padding: 0;

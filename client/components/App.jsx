@@ -10,6 +10,7 @@ import styled from 'styled-components';
 import LandingPage from './LandingPage.jsx';
 import Navbar from './Navbar.jsx';
 import ScrollToTop from './ScrollToTop.jsx';
+import EmployerPage from './EmployerPage.jsx';
 import {
   BrowserRouter as Router,
   Switch,
@@ -27,10 +28,12 @@ const App = (props) => {
           <Navbar/>
           <Switch>
             <Route exact path="/">
-              <LandingPage />
+              <EmployerPage />
+              {/* <LandingPage /> */}
             </Route>
             <Route path="/findjobs">
-              <HomePage />
+              <LandingPage />
+              {/* <HomePage /> */}
             </Route>
             <Route path="/calendar">
               <ReactCalendar />
