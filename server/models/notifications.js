@@ -2,18 +2,16 @@ const pool = require('../../db/index.js');
 
 module.exports = {
   addNotification: async (values = [], email) => {
-    console.log(values);
-
 
     try {
       const query1 = `INSERT INTO notifications (date, title, guests, location, notification, start_time) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id;`
 
       const res1 = await pool.query(query1, values);
-      console.log(res1.rows[0]);
+
 
       const query2 = `INSERT INTO accounts_notifications_appointments (notifications_id, accounts_id) VALUES (${res1.rows[0].id}, (SELECT id FROM accounts WHERE email = '${email}'))`
 
-      const res2 = await pool.query(query2);
+      await pool.query(query2);
       return res1;
     } catch (error) {
       console.log(error);
@@ -22,7 +20,7 @@ module.exports = {
   },
 
   getNotification: async (month, email) => {
-    console.log(month,email);
+    //console.log(month,email);
     const query =
       `SELECT
       date, title, guests, start_time, end_time, location, notification
@@ -30,7 +28,7 @@ module.exports = {
       INNER JOIN accounts_notifications_appointments
       ON accounts_notifications_appointments.notifications_id = notifications.id
       WHERE accounts_notifications_appointments.accounts_id = (SELECT id FROM accounts WHERE email ='${email}')
-      AND EXTRACT (MONTH FROM notifications.date) = 7
+      AND EXTRACT (MONTH FROM notifications.date) = ${month}
       ORDER BY notifications.date;`
 
     try {

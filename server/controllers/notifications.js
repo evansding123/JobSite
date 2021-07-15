@@ -19,16 +19,16 @@ module.exports = {
     }
   },
 
-  getNotification: async(req, res) => {
+  getNotification: async (req, res) => {
     try {
-      console.log(req.query);
+      //console.log(req.query);
       const{date, email} = req.query;
       let month = date.slice(5, 7);
 
 
       const queryData = await models.notifications.getNotification(month, email);
       res.status(200).send(queryData);
-    } catch(error) {
+    } catch (error) {
       res.status(404).send(error);
     }
   }

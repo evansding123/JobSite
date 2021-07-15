@@ -34,57 +34,31 @@ const ReactCalendar = (props) => {
         email: 'laertes.ferreira@example.com', //change to auth email
       }
     })
-    .then((response) => {
-      //do something with response
-      console.log(response);
-      let resultArray = [];
-      for(var i = 0; i < response.data.rows.length; i++) {
-        resultArray.push(response.data.rows[i]);
-      }
-      addData(resultArray);
+      .then((response) => {
+        //do something with response
+        console.log(response);
+        let resultArray = [];
+        for(var i = 0; i < response.data.rows.length; i++) {
+          resultArray.push(response.data.rows[i]);
+        }
+        addData(resultArray);
 
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }, []);
 
-  const handleInfo = () => {
-    console.log('clicked');
-
-
-  }
 
 
   const handleClick = (event) => {
 
     onChange(event);
+    //if event has the same date as the props passed up from appdata, then change state?
+    //probaby have to push the props into an array
+    //set state of particuar date on click if the array contains the date of event
 
 
-    // axios.get('/notification/getnotification', {
-    //   params: {
-    //     date: event.toISOString(),
-    //     email: 'xavier.duran@example.com',
-    //   }
-    // })
-    // .then((response) => {
-    //   //do something with response
-    //   console.log(response);
-    //   addData(response.data);
-
-    // })
-    // .catch((error) => {
-    //   console.log(error)
-    // })
-
-    // for(var i = 0; i < data.rows.length; i++) {
-    //   // console.log('in for loop', data.rows[i].date);
-    //   if(data.rows[i].date === event.toISOString()) {
-    //     //console.log('matched!');
-    //     resultArray.push(data.rows[i].date)
-    //   }
-    // }
-    // addAppt(resultArray);
     setClicked(true);
   }
 
@@ -97,14 +71,14 @@ const ReactCalendar = (props) => {
     return differenceInCalendarDays(a,b) === 0;
   }
 
-  function tileContent({ date, view }) {
+  const tileContent = ({ date, view }) => {
     // Add class to tiles in month view only
     if (view === 'month') {
       // Check if a date React-Calendar wants to check is on the list of dates to add class to
       if(data.length !== 0) {
         let appointment = (data.find(dDate => isSameDay(parseISO(dDate.date), parseISO(date.toISOString()))));
         if(appointment !== undefined) {
-          return <AccessAlarmIcon onClick ={handleInfo}></AccessAlarmIcon>
+          return <AccessAlarmIcon></AccessAlarmIcon>
         }
       }
     }
