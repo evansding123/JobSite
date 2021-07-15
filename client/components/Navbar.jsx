@@ -13,8 +13,6 @@ const Nav = styled.div`
   font-family: Roboto, Helvetica, sans-serif;
   height: 6vh;
   padding-right: 1px;
-  padding-top: 1.5vh;
-  padding-bottom: 1.5vh;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -26,6 +24,8 @@ const NavLink = styled(Link)`
   text-decoration: none;
   color: white;
   font-weight: 700;
+  text-transform: uppercase;
+  transition: all .2s ease-in-out;
 
   NavLink:visited {
     color: white;
@@ -97,16 +97,16 @@ const Navbar = () => {
         </LogoContainer>
       </LogoLink>
       <NavLinkContainer>
-        <NavLink to="/findjobs">FIND JOBS</NavLink>
-        <NavLink to="/addjob">POST JOBS</NavLink>
+        <NavLink to="/findjobs">Find Jobs</NavLink>
+        <NavLink to="/addjob">Post Jobs</NavLink>
         {currentUser
           ? (
             <>
-              <NavLink to="/calendar">CALENDAR</NavLink>
-              <NavLink onClick={handleLogout}>LOG OUT ({currentUser.email})</NavLink>
+              <NavLink to="/calendar">Calendar</NavLink>
+              <NavLink onClick={handleLogout}>Log Out ({currentUser.email})</NavLink>
             </>
           )
-          : <NavLink className="login" to='/login'>LOG IN</NavLink>
+          : <NavLink className="login" to='/login'>Log In</NavLink>
         }
 
       </NavLinkContainer>
