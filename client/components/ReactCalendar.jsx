@@ -9,16 +9,9 @@ import parseISO from 'date-fns/parseISO';
 import parseJSON from 'date-fns/parseJSON';
 import Button from '@material-ui/core/Button';
 import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
-import { createTheme, withStyles, makeStyles, ThemeProvider } from '@material-ui/core/styles';
 
-import Paper from '@material-ui/core/Paper';
 // import {useAuth, logout} from '../src/contexts/AuthContext.js';
 
-const useStyles = makeStyles((theme) => ({
-  margin: {
-    zIndex: 2000
-  },
-}));
 
 const ReactCalendar = (props) => {
   const [clicked, setClicked] = useState(false);
@@ -28,7 +21,7 @@ const ReactCalendar = (props) => {
 
   // const {login} = useAuth();
 
-  const classes = useStyles();
+
 
 
 
@@ -38,7 +31,7 @@ const ReactCalendar = (props) => {
     axios.get('/notification/getnotification', {
       params: {
         date: new Date(),
-        email: 'laertes.ferreira@example.com',
+        email: 'laertes.ferreira@example.com', //change to auth email
       }
     })
     .then((response) => {
@@ -111,7 +104,7 @@ const ReactCalendar = (props) => {
       if(data.length !== 0) {
         let appointment = (data.find(dDate => isSameDay(parseISO(dDate.date), parseISO(date.toISOString()))));
         if(appointment !== undefined) {
-          return <AccessAlarmIcon onClick ={handleInfo} className = {classes.margin}></AccessAlarmIcon>
+          return <AccessAlarmIcon onClick ={handleInfo}></AccessAlarmIcon>
         }
       }
     }
