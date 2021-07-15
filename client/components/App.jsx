@@ -9,6 +9,7 @@ import PostAJob from './PostAJob.jsx';
 import styled from 'styled-components';
 import LandingPage from './LandingPage.jsx';
 import Navbar from './Navbar.jsx';
+import Notes from './Notes.jsx';
 import {
   BrowserRouter as Router,
   Switch,
@@ -29,6 +30,12 @@ const App = (props) => {
             </Route>
             <Route path="/findjobs">
               <HomePage />
+            </Route>
+            <Route path="/calendar">
+              <ReactCalendar />
+            </Route>
+            <Route path="/notes">
+              <Notes />
             </Route>
             <Route path="/profile">
               <PostAJob />

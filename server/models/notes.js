@@ -10,10 +10,10 @@ module.exports = {
       throw error;
     }
   },
-  getNotes: async (username) => {
-    const query = `SELECT note FROM accounts INNER JOIN notes ON accounts_id = accounts.id WHERE accounts.username = $1`;
+  getNotes: async (email) => {
+    const query = `SELECT note FROM accounts INNER JOIN notes ON accounts_id = accounts.id WHERE accounts.email = $1`;
     try {
-      const res = await pool.query(query, username);
+      const res = await pool.query(query, email);
       return res;
     } catch (error) {
       throw error;
