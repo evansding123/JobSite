@@ -7,6 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 
 import EmployerMainPhoto from './EmployerMainPhoto.jsx';
+import EmployerReviews from './EmployerReviews.jsx';
 
 
 const useStyles = makeStyles(() => ({
@@ -19,8 +20,10 @@ export default function EmployerPage() {
   const classes = useStyles();
 
   return (
-    <div className="employer-landingpage">
+    <div id="employer-landingpage">
       <EmployerMainPhoto/>
+      <EmployerReviews />
+      <div id="upsidedown-triangle"/>
     </div>
   );
 }

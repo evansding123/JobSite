@@ -49,7 +49,7 @@ export default function EmployerMainPhoto(props) {
         Let's give it a try.
         <Link to='/signup' style={{ textDecoration: 'none' }}>
           <Button className={classes.button}  variant="outlined">
-            POST A JOB FOR FREE
+            POST JOBS FOR FREE
           </Button>
         </Link>
       </EmployeeShowcase>

@@ -168,6 +168,25 @@ form {
   color:  #E9EB9E;
 }
 
+#employer-reviews {
+  background-color: #363056;
+  background-size: cover;
+  background-position: center;
+  height: 60vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#upsidedown-triangle {
+  height: 0;
+  width: 0;
+  border-left: 50vw solid transparent;
+  border-right: 50vw solid transparent;
+  border-top: 20vh solid #363056;
+}
+
+
 #showcase {
   background-image: url('img/showcase.jpg');
   background-size: cover;

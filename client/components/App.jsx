@@ -28,12 +28,10 @@ const App = (props) => {
           <Navbar/>
           <Switch>
             <Route exact path="/">
-              <EmployerPage />
-              {/* <LandingPage /> */}
+              <LandingPage />
             </Route>
             <Route path="/findjobs">
-              <LandingPage />
-              {/* <HomePage /> */}
+              <HomePage />
             </Route>
             <Route path="/calendar">
               <ReactCalendar />
@@ -46,6 +44,9 @@ const App = (props) => {
             </Route>
             <Route path="/signup">
             <Signup />
+            </Route>
+            <Route path="/employers">
+            <EmployerPage />
             </Route>
           </Switch>
         </AuthProvider>
