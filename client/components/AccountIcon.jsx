@@ -8,14 +8,13 @@ import { useAuth, logout } from '../src/contexts/AuthContext.js';
 
 const AccountCircle = styled(AccountCircleIcon)`
   color: white;
-  margin-right: 1vh;
+  margin-right: 3vh;
   &:hover ${AccountCircle} {
     color: #E9EB9E;
     border: none;
+    cursor: pointer;
   }
 `
-
-
 
 function AccountIcon () {
   const [anchorEl, setAnchorEl] = useState(null);
