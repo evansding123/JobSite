@@ -32,7 +32,7 @@ const Note = styled.div`
   font-family: Helvetica;
   color: #ffffff;
   grid-column: 2 / 12;
-  margin: 5px;
+  margin: 10px;
   padding: 5px;
   background: #274358;
   border-radius: 5px;
