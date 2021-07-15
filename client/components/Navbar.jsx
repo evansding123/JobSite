@@ -10,6 +10,7 @@ const Nav = styled.div`
   align-items: center;
   justify-content: space-between;
   background-color: #192A34;
+  font-family: Roboto, Helvetica, sans-serif;
   height: 6vh;
   padding-right: 1px;
   padding-top: 1.5vh;
@@ -20,11 +21,12 @@ const Nav = styled.div`
 `;
 
 const NavLink = styled(Link)`
-  font-family: Helvetica;
   font-size: 14px;
   padding-right: 1vw;
   text-decoration: none;
   color: white;
+  font-weight: 700;
+
   NavLink:visited {
     color: white;
   }
@@ -56,15 +58,13 @@ const LogoLink = styled.a`
 `;
 
 const Job = styled.div`
-  font-family: Helvetica;
   color: #E9EB9E;
   font-size: 2.8rem;
   align-self: flex-end;
-  font-weight: bold;
+  font-weight: 700;
 `;
 
 const Site = styled.div`
-  font-family: Helvetica;
   color: #799469;
   font-size: 2.6rem;
   align-self: flex-end;
@@ -97,16 +97,16 @@ const Navbar = () => {
         </LogoContainer>
       </LogoLink>
       <NavLinkContainer>
-        <NavLink to="/findjobs">Find Jobs</NavLink>
-        <NavLink to="/addjob">Post Jobs</NavLink>
+        <NavLink to="/findjobs">FIND JOBS</NavLink>
+        <NavLink to="/addjob">POST JOBS</NavLink>
         {currentUser
           ? (
             <>
-              <NavLink to="/calendar">Calendar</NavLink>
-              <NavLink onClick={handleLogout}>Log Out ({currentUser.email})</NavLink>
+              <NavLink to="/calendar">CALENDAR</NavLink>
+              <NavLink onClick={handleLogout}>LOG OUT ({currentUser.email})</NavLink>
             </>
           )
-          : <NavLink className="login" to='/login'>Log In</NavLink>
+          : <NavLink className="login" to='/login'>LOG IN</NavLink>
         }
 
       </NavLinkContainer>
