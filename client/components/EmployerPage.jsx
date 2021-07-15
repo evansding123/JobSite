@@ -8,6 +8,7 @@ import SearchIcon from '@material-ui/icons/Search';
 
 import EmployerMainPhoto from './EmployerMainPhoto.jsx';
 import EmployerReviews from './EmployerReviews.jsx';
+import EmployerPromo from './EmployerPromo.jsx';
 
 
 const useStyles = makeStyles(() => ({
@@ -22,7 +23,7 @@ export default function EmployerPage() {
   return (
     <div id="employer-landingpage">
       <EmployerMainPhoto/>
-      <EmployerReviews />
+      <EmployerPromo />
       <div id="upsidedown-triangle"/>
     </div>
   );
