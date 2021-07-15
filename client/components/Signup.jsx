@@ -100,7 +100,7 @@ const Signup = (props) => {
           inputRef={passwordConfirmRef}
         />
         <div>
-          <Link to='/'>
+          <Link to='/' style={{ textDecoration: 'none' }}>
             <Button variant="contained" onClick={()=> console.log('clicked')}>
               Cancel
             </Button>
@@ -109,7 +109,7 @@ const Signup = (props) => {
             Signup
           </Button>
         </div>
-        <div> Already signed up? <Link to="/login" style={{color:'white'}}>Log in</Link> here</div>
+        <div> Already signed up? <Link to="/login" style={{color:'white', textDecoration: 'none'}}>Log in</Link> here</div>
       </form>
       </div>
     </>

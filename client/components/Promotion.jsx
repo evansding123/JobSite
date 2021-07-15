@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom';
 
 const PromotionBody = styled.div`
   padding-left: 3vw;
@@ -38,10 +39,11 @@ const useStyles = makeStyles({
   },
   body: {
     padding: '2vw 3vw',
-    fontWeight: '400',
+    fontWeight: '300',
   },
   button: {
-    backgroundColor: '#192A34',
+    backgroundColor: '#363056',
+    background: 'linear-gradient(180deg, #363056 30%, #4a496f 90%)',
     color: '#FFFFFF',
     border: '2px solid #799496',
     borderRadius: '50px',
@@ -68,12 +70,14 @@ const Promotion = (props) => {
         <Typography gutterBottom variant="h4" className={classes.title}>
           {promotionTitle}
         </Typography>
-        <Typography gutterBottom variant="h5" className={classes.body}>
+        <Typography gutterBottom variant="h6" className={classes.body}>
           {promotionBody}
         </Typography>
-        <Button className={classes.button} variant="outlined">
-          CREATE YOUR ACCOUNT
-        </Button>
+        <Link to='/signup' style={{ textDecoration: 'none' }}>
+          <Button className={classes.button} variant="outlined">
+            CREATE YOUR ACCOUNT
+          </Button>
+        </Link>
       </PromotionBody>
     </Card>
   )
