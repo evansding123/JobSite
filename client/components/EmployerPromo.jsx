@@ -9,8 +9,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Paper from '@material-ui/core/Paper';
 
 const PromoContainer = styled.div`
-  margin: 3%;
-  text-align: center;
+  display: flex;
+  flex-direction: row;
 `;
 const TextContainer = styled.div`
   display: flex;
@@ -45,11 +45,11 @@ export default function EmployerPromo() {
   const classes = useStyles();
 
   return (
-    <PromoContainer>
+    <div id="employer-promo">
         <Typography gutterBottom variant="h3" className={classes.text} >
           How it Works
         </Typography>
-      <div id="employer-promo">
+      <PromoContainer>
         <TextContainer>
           <Paper elevation={3} className={classes.paper}>
             <Typography gutterBottom variant="h6" className={classes.text} >
@@ -82,7 +82,7 @@ export default function EmployerPromo() {
             image="/img/notes-tool.jpg"
           />
         </Card>
+      </PromoContainer>
       </div>
-    </PromoContainer>
   );
 }
