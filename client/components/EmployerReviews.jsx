@@ -5,11 +5,25 @@ import InputBase from '@material-ui/core/InputBase';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
+
+
+const fakeReviews = [
+  {
+    id: 1,
+    review: 'Jobsite makes it so easy to reach a large, targeted candidate pool in a short amount of time',
+    name: 'Evans Ding',
+  },
+  {
+    id: 2,
+    review: 'We have found so many quality candidates on Jobsite than we have on competitor sites',
+    name: 'John Yasis',
+  },
+  {
+    id: 3,
+    review: 'Jobsite means more than job postings for us. It is their technology and support that really make them a true partner',
+    name: 'Brandon Parker',
+  }
+];
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -17,17 +31,12 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function EmployerPromo() {
+export default function EmployerReviews() {
   const classes = useStyles();
 
   return (
-    <div>
-      <Card>
-        <CardMedia
-          className="notes-tool"
-          image="/img/notes-tool.jpg"
-        />
-      </Card>
+    <div id="employer-reviews">
+
     </div>
   );
 }
