@@ -50,15 +50,15 @@ export default function EmployerPromo() {
         </Typography>
       <PromoContainer>
         <TextContainer>
-          <Paper elevation={3} className={classes.paper}>
+          <Paper elevation={5} className={classes.paper}>
             <Typography gutterBottom variant="h6" className={classes.text} >
               STEP 1: Create Your Job Post
             </Typography>
           <Typography gutterBottom variant="body1"className={classes.body}>
             Once you post your job, it gets sent to matching candidates, then invites them to apply.
           </Typography>
-          </Paper>
-          <Paper className={classes.paper}>
+          </Paper >
+          <Paper elevation={5} className={classes.paper}>
             <Typography gutterBottom variant="h6" className={classes.text} >
               STEP 2: Schedule Interviews
             </Typography>
@@ -66,7 +66,7 @@ export default function EmployerPromo() {
               Use JobSite's calendar tool to schedule phone and video interviews.
             </Typography>
           </Paper>
-          <Paper className={classes.paper}>
+          <Paper elevation={5} className={classes.paper}>
             <Typography gutterBottom variant="h6" className={classes.text} >
               STEP 3: Review Your Great Matches
             </Typography>
