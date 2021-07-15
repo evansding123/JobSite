@@ -1,17 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import PopUp from './PopUp.jsx';
+import ApptInfo from './ApptInfo.jsx';
 import axios from 'axios';
 import { differenceInCalendarDays } from 'date-fns';
 import { compareAsc, format } from 'date-fns';
 import parseISO from 'date-fns/parseISO';
 import parseJSON from 'date-fns/parseJSON';
+import Button from '@material-ui/core/Button';
+import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
+import { createTheme, withStyles, makeStyles, ThemeProvider } from '@material-ui/core/styles';
+
+import Paper from '@material-ui/core/Paper';
+// import {useAuth, logout} from '../src/contexts/AuthContext.js';
+
+const useStyles = makeStyles((theme) => ({
+  margin: {
+    zIndex: 2000
+  },
+}));
 
 const ReactCalendar = (props) => {
   const [clicked, setClicked] = useState(false);
   const [value, onChange] = useState(new Date());
   const [data, addData] = useState([]);
-  const [appt, addAppt] = useState([]);
+
+
+  // const {login} = useAuth();
+
+  const classes = useStyles();
+
+
 
   let resultArray = [];
 
@@ -27,7 +46,7 @@ const ReactCalendar = (props) => {
       console.log(response);
       let resultArray = [];
       for(var i = 0; i < response.data.rows.length; i++) {
-        resultArray.push(response.data.rows[i].date);
+        resultArray.push(response.data.rows[i]);
       }
       addData(resultArray);
 
@@ -37,9 +56,12 @@ const ReactCalendar = (props) => {
     })
   }, []);
 
-  const handleMonth = (value, event) => {
-    console.log(value, event);
+  const handleInfo = () => {
+    console.log('clicked');
+
+
   }
+
 
   const handleClick = (event) => {
 
@@ -78,7 +100,7 @@ const ReactCalendar = (props) => {
   }
 
   const isSameDay = (a,b) => {
-    console.log(a);
+
     return differenceInCalendarDays(a,b) === 0;
   }
 
@@ -86,11 +108,10 @@ const ReactCalendar = (props) => {
     // Add class to tiles in month view only
     if (view === 'month') {
       // Check if a date React-Calendar wants to check is on the list of dates to add class to
-
       if(data.length !== 0) {
-        if (data.find(dDate => isSameDay(parseISO(dDate), parseISO(date.toISOString())))) {
-
-          return <div>event here</div>
+        let appointment = (data.find(dDate => isSameDay(parseISO(dDate.date), parseISO(date.toISOString()))));
+        if(appointment !== undefined) {
+          return <AccessAlarmIcon onClick ={handleInfo} className = {classes.margin}></AccessAlarmIcon>
         }
       }
     }
@@ -99,11 +120,15 @@ const ReactCalendar = (props) => {
 
   let box = clicked ? <PopUp date={value.toISOString()} callback = {handleClose}/> : <div></div>;
 
+  let info =  <ApptInfo data = {data}/>
+
+
   return (
     <div>
       <Calendar onChange={handleClick} value={value} tileContent = {tileContent}>
       </Calendar>
       <div>{box}</div>
+      <div>{info}</div>
     </div>
   );
 }

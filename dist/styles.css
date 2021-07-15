@@ -1,3 +1,12 @@
+
+.info {
+
+  z-index: 9999 !important;
+
+}
+
+
+
 .react-calendar {
   width: 100%;
   max-width: 100%;
@@ -124,6 +133,7 @@
   /* column-gap: 0em; */
   flex-basis: content;
 
+
   /* row-gap: 0em; */
 
   /* column-width: 1em; */
@@ -137,6 +147,7 @@
   border-top: 1px solid black;
   width: 1em;
   height: 8em;
+  z-index: 0;
 
   /* border-left: 1px solid black; */
 

@@ -23,7 +23,14 @@ module.exports = {
 
   getNotification: async (date, email) => {
     console.log(date,email);
-    const query = `SELECT * FROM notifications INNER JOIN accounts_notifications_appointments ON accounts_notifications_appointments.accounts_id = (SELECT id FROM accounts WHERE email = '${email}')`;
+    const query =
+      `SELECT
+      date, title, guests, start_time, end_time, location, notification
+      FROM notifications
+      INNER JOIN accounts_notifications_appointments
+      ON accounts_notifications_appointments.notifications_id = notifications.id
+      WHERE accounts_notifications_appointments.accounts_id = (SELECT id FROM accounts WHERE email ='${email}');`
+
     try {
       const res = await pool.query(query);
       return res;
