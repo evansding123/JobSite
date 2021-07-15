@@ -82,8 +82,6 @@ const Navbar = () => {
   const { currentUser } = useAuth();
   const history = useHistory();
 
-
-
   return (
     <Nav>
       <LogoLink href="/">
