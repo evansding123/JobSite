@@ -10,9 +10,14 @@ app.use(express.json());
 app.use(express.static('./dist'));
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
 app.use('/', router);
+app.get('*', (req, res) => res.sendFile(path.resolve('dist', 'index.html')));
+
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
 });
 
 module.exports = app;
+
+
+
