@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Search from './Search.jsx';
 import JobList from './JobList.jsx';
+import Banner from './Banner.jsx';
+import DetailCard from './DetailCard.jsx';
 import list from './exampleList.js';
 
 const Nav = styled.div`
   display: flex;
   text-decoration: none;
   flex-direction: row;
-  align-items: left;
+  align-items: baseline;
   justify-content: left;
   background-color: #192A34;
   height: 6vh;
@@ -37,7 +39,6 @@ const Site = styled.div`
 const Background = styled.div`
   background-color: #274358;
   margin-left: -10%;
-  margin-left: -8%;
 `;
 
 const Footer = styled.div`
@@ -65,26 +66,46 @@ const ContentContainer = styled.div`
   display: flex;
   text-decoration: none;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   background-color: #274358;
-  margin-top: 5%;
+  padding-right: 20%;
   height: 80%;
-  width: 80%;
+  width: 90%;
+  border-top: 6px solid;
+  border-color: #E9EB9E;
 `
 
 const NoResults = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   background-color: #274358;
   margin-left: 10%;
   margin-left: 8%;
-  font-size: 5vh;
+  padding-right: 6%;
+  padding-top: 4%;
+  font-size: 30px;
   color: white;
   font-family: Helvetica;
+`;
+
+const HomePageContainer = styled.div`
+  overflow: hidden;
 `;
 
 const HomePage = () => {
   const [listings, updateListings] = useState(list);
   const [listingsCopy, updateListingsCopy] = useState(list);
+  const [postDetail, showPostDetail] = useState(false);
+  const [currentPost, setCurrentPost] = useState(list[0]);
+
+
+  const showDetail = (post) => {
+    setCurrentPost(post);
+    showPostDetail(!postDetail);
+  }
 
   const search = (searchTerm) => {
     const jobList = listingsCopy.slice();
@@ -99,20 +120,23 @@ const HomePage = () => {
     if (matches.length >= 1) {
       updateListings(matches);
     } else {
-      updateListings(null)
+      updateListings(null);
     }
   }
 
   return (
-    <div>
-      {listings === null ? <NoResults onClick={() => {updateListings(listingsCopy)}}>No Results - Return Home</NoResults> : <Background>
-        <ContentContainer>
-          <Search search={search}/>
-          <JobList listings={listings} />
-        </ContentContainer>
-      </Background>}
-
-    </div>
+    <HomePageContainer>
+      {listings === null ?
+        <NoResults onClick={() => {updateListings(listingsCopy)}}>No Results - Return Home</NoResults> :
+        <Background>
+          <Banner />
+          <ContentContainer>
+            <Search search={search}/>
+            <JobList listings={listings} showDetail={showDetail} />
+            {!postDetail ? <DetailCard post={currentPost} /> : <DetailCard post={currentPost} />}
+          </ContentContainer>
+        </Background>}
+    </HomePageContainer>
   )
 }
 

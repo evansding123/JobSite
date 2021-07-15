@@ -3,6 +3,7 @@ import ReactCalendar from './ReactCalendar.jsx';
 import HomePage from './HomePage.jsx';
 import Profile from './Profile.jsx';
 import PostAJob from './PostAJob.jsx';
+import FooterIcons from './Footer.jsx';
 import styled from 'styled-components';
 import {
   BrowserRouter as Router,
@@ -31,6 +32,7 @@ const NavLink = styled(Link)`
 font-family: Helvetica;
 font-size: 2.5vh;
 padding-right: 2vw;
+padding-top: 1vw;
 text-decoration: none;
 color: white;
 NavLink:visited {
@@ -96,7 +98,8 @@ border-radius: 10px;
 const Background = styled.div`
   background-color: #274358;
   margin-left: -10%;
-  margin-left: -8%;
+  margin-right: -10%;
+  padding-right: 5%;
 `;
 
 const App = (props) => {
@@ -123,6 +126,7 @@ const App = (props) => {
           </Switch>
       </Router>
       <Footer>
+        <FooterIcons />
       </Footer>
     </Background>
   );

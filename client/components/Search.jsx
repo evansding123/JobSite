@@ -4,71 +4,70 @@ import TextField from '@material-ui/core/TextField';
 import list from './exampleList.js';
 
 const SearchContainer = styled.form`
-font-family: Helvetica;
-display: flex;
-text-decoration: none;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-background-color: #192A34;
-width: 40%;
-margin-top: 5vh;
-margin-left: 30%;
-margin-bottom: 10%;
-border: 1px solid;
-border-color: #49475B;
-border-radius: 10px;
+  font-family: Helvetica;
+  display: flex;
+  text-decoration: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #192A34;
+  width: 40%;
+  margin-top: 5vh;
+  padding-bottom: 3vh;
+  margin-left: 30%;
+  margin-bottom: 10%;
+  border: 1px solid;
+  border-color: #49475B;
+  border-radius: 10px;
 `
 
 const StyledInput = styled(TextField)`
-font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
-width: 80%;
-background-color: white;
-border-radius: 3px;
+  font-family: 'Helvetica', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, Helvetica, sans-serif;
+  width: 80%;
+  background-color: white;
+  border-radius: 3px;
 `;
 
 const FormHeaders = styled.div`
-color: #E9EB9E;
-font-family: Helvetica;
-padding-top: 9%;
+  color: #E9EB9E;
+  font-family: Helvetica;
+  padding-top: 9%;
 `;
 
 const CheckContainer = styled.div`
-color: white;
-font-family: Helvetica;
-font-size: 1.5vh;
+  color: white;
+  font-family: Helvetica;
+  font-size: 1.5vh;
 `;
 
 const SearchAndButton = styled.div`
-display: flex;
-text-decoration: none;
-flex-direction: row;
-align-items: center;
-justify-content: center;
+  display: flex;
+  text-decoration: none;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 `;
 
 const StyledButton = styled.button`
-font-family: Helvetica;
-font-weight: bold;
-height: 49px;
-width: 49px;
-border: none;
-background-color: #49475B;
-color: white;
-cursor: pointer;
-border-radius: 5px;
-transition: 0.3s;
-&:hover ${StyledButton} {
-  color: #E9EB9E;
+  font-family: Helvetica;
+  font-weight: bold;
+  height: 49px;
+  width: 49px;
   border: none;
-}
+  background-color: #49475B;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+  &:hover ${StyledButton} {
+    color: #E9EB9E;
+    border: none;
+  }
 `;
 
 const Search = ({ search }) => {
-
   const [searchTerm, setSearch] = useState('');
   const [employmentType, setEmploymentType] = useState(true);
-
   const handleChange = event => {
     setSearch(event.target.value);
     search(searchTerm);
@@ -77,14 +76,11 @@ const Search = ({ search }) => {
     setSearch(event.target.value);
     search(searchTerm);
   }
-
   const handleCheckBoxChange = event => {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
-
     setEmploymentType(name);
-    console.log(employmentType);
   }
 
   return (
@@ -106,23 +102,23 @@ const Search = ({ search }) => {
       <br></br>
       <CheckContainer>
         <label htmlFor="full-time">
-          <input type="checkbox" id="full-time" name="full-time" value="full-time" />
-            Full-Time
+          <input type="checkbox" id="full-time" name="full-time" value="full-time"  />
+          Full-Time
         </label>
         <br></br>
         <label htmlFor="part-time">
           <input type="checkbox" id="part-time" name="part-time" value="part-time" />
-            Part-Time
+          Part-Time
         </label>
         <br></br>
         <label htmlFor="temp">
           <input type="checkbox" id="temp" name="temp" value="temp" />
-            Temporary
+          Temporary
         </label>
         <br></br>
         <label htmlFor="intern">
           <input type="checkbox" id="intern" name="intern" value="intern" />
-            Internship
+          Internship
         </label>
       </CheckContainer>
     <br></br>
@@ -211,28 +207,28 @@ const Search = ({ search }) => {
       <br></br>
       <CheckContainer>
         <label htmlFor="5m">
-        <input type="checkbox" id="5m" name="5m" value="5m" />
-        5 miles
+          <input type="checkbox" id="5m" name="5m" value="5m" />
+          5 miles
         </label>
         <br></br>
         <label htmlFor="20m">
-        <input type="checkbox" id="20m" name="20m" value="20m" />
-        20 miles
+          <input type="checkbox" id="20m" name="20m" value="20m" />
+          20 miles
         </label>
         <br></br>
         <label htmlFor="50m">
-        <input type="checkbox" id="50m" name="50m" value="50m" />
-        50 miles
+          <input type="checkbox" id="50m" name="50m" value="50m" />
+          50 miles
         </label>
         <br></br>
         <label htmlFor="100m">
-        <input type="checkbox" id="100m" name="100m" value="100m" />
-        100 miles
+          <input type="checkbox" id="100m" name="100m" value="100m" />
+          100 miles
         </label>
         <br></br>
         <label htmlFor="anywhere">
-        <input type="checkbox" id="anywhere" name="anywhere" value="anywhere" />
-        Anywhere
+          <input type="checkbox" id="anywhere" name="anywhere" value="anywhere" />
+          Anywhere
         </label>
       </CheckContainer>
       <br></br>
