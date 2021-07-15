@@ -13,6 +13,9 @@ import {
   createTheme,
 } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import format from 'date-fns/format';
+import parseISO from 'date-fns/parseISO';
+
 
 const getModalStyle = () => {
   const top = 50;
@@ -121,7 +124,7 @@ const PopUp = (props) => {
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <p>{dateString}</p>
+      <p>{format(parseISO(dateString), 'MMMM do, yyyy')}</p>
 
       <form onSubmit={handleSubmit}>
         <CssTextField className = {classes.bottom} onChange={handleChange} id="standard-basic" label="Add title" name = 'title'/>

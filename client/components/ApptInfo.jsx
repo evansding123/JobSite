@@ -24,17 +24,24 @@ var settings = {
   infinite: true,
   speed: 500,
   slidesToShow: 4,
-  slidesToScroll: 1,
-  adaptiveHeight: true
+  slidesToScroll: 2,
+  adaptiveHeight: false
 };
 
 const useStyles = makeStyles({
   root: {
-    minWidth: '80%',
-    maxWidth: '80%',
+    minWidth: '70%',
+    maxWidth: '75%',
     padding: 0,
-    marginBottom: 10,
+    marginBottom: '20%',
     borderRadius: '10px 10px 10px 10px',
+    backgroundColor: '#49475b',
+    border: '1px solid #456B83',
+    color: 'white',
+    fontFamily: '\'Roboto\', sans-serif',
+    height: '100%',
+    fontSize: 10,
+    marginLeft: '12%'
   },
   bullet: {
     display: 'inline-block',
@@ -42,10 +49,14 @@ const useStyles = makeStyles({
     transform: 'scale(0.8)',
   },
   title: {
+    display: 'flex',
     fontSize: 14,
+    borderRadius: '5px',
+    backgroundColor: '#405e74',
+    justifyContent: 'center'
   },
   pos: {
-    marginBottom: 12,
+    marginBottom: 0,
   },
 });
 
@@ -75,7 +86,6 @@ const ApptInfo = (props) => {
               </Typography>
             </CardContent>
             <CardContent>{item.start_time}</CardContent>
-            <CardContent>{item.end_time}</CardContent>
             <CardContent>{item.guests}</CardContent>
             <CardContent>{item.location}</CardContent>
             <CardContent>{item.notification}</CardContent>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import Calendar from 'react-calendar';
 import PopUp from './PopUp.jsx';
 import ApptInfo from './ApptInfo.jsx';
@@ -9,9 +10,25 @@ import parseISO from 'date-fns/parseISO';
 import parseJSON from 'date-fns/parseJSON';
 import Button from '@material-ui/core/Button';
 import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
+import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
+import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+
 
 // import {useAuth, logout} from '../src/contexts/AuthContext.js';
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const CalendarContainer = styled.div`
+  width: 95vw;
+`;
 
 const ReactCalendar = (props) => {
   const [clicked, setClicked] = useState(false);
@@ -91,12 +108,24 @@ const ReactCalendar = (props) => {
 
 
   return (
-    <div>
-      <Calendar onChange={handleClick} value={value} tileContent = {tileContent}>
-      </Calendar>
+    <>
+      <Container>
+        <CalendarContainer>
+          <Calendar
+            onChange={handleClick}
+            value={value}
+            tileContent = {tileContent}
+            nextLabel = {<Button><NavigateNextIcon fontSize={'small'} /></Button>}
+            next2Label = {<Button><ArrowRightIcon fontSize={'small'} /></Button>}
+            prevLabel = {<Button><NavigateBeforeIcon fontSize={'small'} /></Button>}
+            prev2Label = {<Button><ArrowLeftIcon fontSize={'small'} /></Button>}
+           >
+          </Calendar>
+        </CalendarContainer>
+      </Container>
       <div>{box}</div>
       <div>{info}</div>
-    </div>
+    </>
   );
 }
 
