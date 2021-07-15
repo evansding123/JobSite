@@ -6,6 +6,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
+import Paper from '@material-ui/core/Paper';
 
 const TextContainer = styled.div`
   display: flex;
@@ -28,8 +29,10 @@ const useStyles = makeStyles(() => ({
   },
   body: {
     color: '#FFFFFF',
-
   },
+  paper: {
+    backgroundColor: '#363056',
+  }
 }));
 
 export default function EmployerPromo() {
@@ -38,11 +41,28 @@ export default function EmployerPromo() {
   return (
     <div id="employer-promo">
       <TextContainer>
-        <Typography gutterBottom variant="h4" className={classes.text} >
-          CAPTURE WHAT MATTERS
+          <Typography gutterBottom variant="h3" className={classes.text} >
+            How it Works
+          </Typography>
+        <Paper elevation={3} classes={classes.paper}>
+          <Typography gutterBottom variant="h5" className={classes.text} >
+            STEP 1: Create Your Job Post
+          </Typography>
+        <Typography gutterBottom variant="h6"className={classes.body} >
+          Once you post your job, it gets sent to matching candidates, then invites them to apply.
+        </Typography>
+        </Paper>
+        <Typography gutterBottom variant="h5" className={classes.text} >
+          STEP 2: Schedule Interviews
         </Typography>
         <Typography gutterBottom variant="h6"className={classes.body} >
-          Keep applicant information handy with our new Notes tool.
+          Use JobSite's calendar tool to schedule phone and video interviews.
+        </Typography>
+        <Typography gutterBottom variant="h5" className={classes.text} >
+          STEP 3: Review Your Great Matches
+        </Typography>
+        <Typography gutterBottom variant="h6"className={classes.body} >
+          As candidates apply, use JobSite's notes tool to organize thoughts and keep track of feedback.
         </Typography>
       </TextContainer>
       <Card raised className={classes.root}>
