@@ -9,10 +9,13 @@ import { useAuth, logout } from '../src/contexts/AuthContext.js';
 const AccountCircle = styled(AccountCircleIcon)`
   color: white;
   margin-right: 3vh;
+  transition: all .2s ease-in-out;
+
   &:hover ${AccountCircle} {
     color: #E9EB9E;
     border: none;
     cursor: pointer;
+    transform: scale(1.2);
   }
 `
 
