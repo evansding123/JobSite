@@ -6,7 +6,7 @@ module.exports = {
 
 
     try {
-      const query1 = `INSERT INTO notifications (date, title, guests, location, notification) VALUES ($1, $2, $3, $4, $5) RETURNING id;`
+      const query1 = `INSERT INTO notifications (date, title, guests, location, notification, start_time) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id;`
 
       const res1 = await pool.query(query1, values);
       console.log(res1.rows[0]);
@@ -21,15 +21,17 @@ module.exports = {
     }
   },
 
-  getNotification: async (date, email) => {
-    console.log(date,email);
+  getNotification: async (month, email) => {
+    console.log(month,email);
     const query =
       `SELECT
       date, title, guests, start_time, end_time, location, notification
       FROM notifications
       INNER JOIN accounts_notifications_appointments
       ON accounts_notifications_appointments.notifications_id = notifications.id
-      WHERE accounts_notifications_appointments.accounts_id = (SELECT id FROM accounts WHERE email ='${email}');`
+      WHERE accounts_notifications_appointments.accounts_id = (SELECT id FROM accounts WHERE email ='${email}')
+      AND EXTRACT (MONTH FROM notifications.date) = 7
+      ORDER BY notifications.date;`
 
     try {
       const res = await pool.query(query);

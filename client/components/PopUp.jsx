@@ -95,6 +95,7 @@ const PopUp = (props) => {
     const obj = {
       [event.target.name]: event.target.value,
     }
+    console.log(obj);
     setFormInfo(formInfo => {
       formInfo[event.target.name] = event.target.value
       return formInfo;
@@ -104,7 +105,7 @@ const PopUp = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('submitted');
+    console.log(formInfo);
     axios.post('/notification/addnotification', formInfo)
     .then((response) => {
       console.log(response);

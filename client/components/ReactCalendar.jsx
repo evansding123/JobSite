@@ -37,8 +37,8 @@ const ReactCalendar = (props) => {
   useEffect(() => {
     axios.get('/notification/getnotification', {
       params: {
-        date: '2021-07-02',
-        email: 'xavier.duran@example.com',
+        date: new Date(),
+        email: 'laertes.ferreira@example.com',
       }
     })
     .then((response) => {
