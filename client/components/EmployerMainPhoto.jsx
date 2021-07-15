@@ -7,6 +7,8 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
+import { Link } from 'react-router-dom';
+
 
 const EmployeeShowcase = styled.div`
   display: flex;
@@ -45,9 +47,11 @@ export default function EmployerMainPhoto(props) {
         hiring a little easier.
         <br />
         Let's give it a try.
-        <Button className={classes.button}  variant="outlined">
-          POST A JOB FOR FREE
-        </Button>
+        <Link to='/signup' style={{ textDecoration: 'none' }}>
+          <Button className={classes.button}  variant="outlined">
+            POST A JOB FOR FREE
+          </Button>
+        </Link>
       </EmployeeShowcase>
     </div>
   );
