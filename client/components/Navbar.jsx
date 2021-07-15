@@ -19,28 +19,33 @@ const Nav = styled.div`
 `;
 
 const NavLink = styled(Link)`
-  font-size: 14px;
-  padding-right: 1vw;
   text-decoration: none;
   color: white;
   font-weight: 700;
   text-transform: uppercase;
-  transition: all .2s ease-in-out;
+  transition: all .3s ease-in-out;
+  margin-left: 8px;
+  margin-right: 8px;
+  height: 100%;
+  border-bottom: transparent solid 2px;
 
   NavLink:visited {
     color: white;
   }
   &:hover ${NavLink} {
     color: #E9EB9E;
-    border: none;
+    border-bottom: #E9EB9E solid 2px;
   }
 `;
 
 const NavLinkContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  height: 100%;
+  font-size: 14px;
+  line-height: 6vh;
 `;
 
 const LogoContainer = styled.div`
