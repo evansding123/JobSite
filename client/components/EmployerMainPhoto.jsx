@@ -16,7 +16,7 @@ const EmployeeShowcase = styled.div`
   justify-content: center;
   align-items: flex-start;
   padding-left: 13vw;
-  height: 75vh;
+  height: 80vh;
   color: white;
   font-size: 45px;
   background: rgba(0, 0, 0, .3);

@@ -35,7 +35,7 @@ export default function EmployerReviews() {
   const classes = useStyles();
 
   return (
-    <div id="employer-reviews">
+    <div >
 
     </div>
   );

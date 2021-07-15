@@ -38,8 +38,24 @@ const useStyles = makeStyles(() => ({
     backgroundColor: '#363056',
     margin: ' 2% 4%',
     padding: '4%',
+    opacity: '10%',
   }
 }));
+
+const list = [
+  {
+    title:'STEP 1: Create Your Job Post',
+    body: ' Once you post your job, it gets sent to matching candidates, then invites them to apply.'
+  },
+  {
+    title:'STEP 2: Schedule Interviews',
+    body: 'Use JobSite\'s calendar tool to schedule phone and video interviews.'
+  },
+  {
+    title:'STEP 3: Review Your Great Matches',
+    body: 'As candidates apply, use JobSite\'s notes tool to organize thoughts and keep track of feedback.'
+  },
+]
 
 export default function EmployerPromo() {
   const classes = useStyles();
@@ -49,32 +65,19 @@ export default function EmployerPromo() {
         <Typography gutterBottom variant="h3" className={classes.text} >
           How it Works
         </Typography>
+
       <PromoContainer>
         <TextContainer>
-          <Paper elevation={5} className={classes.paper}>
-            <Typography gutterBottom variant="h6" className={classes.text} >
-              STEP 1: Create Your Job Post
-            </Typography>
-          <Typography gutterBottom variant="body1"className={classes.body}>
-            Once you post your job, it gets sent to matching candidates, then invites them to apply.
-          </Typography>
-          </Paper >
-          <Paper elevation={5} className={classes.paper}>
-            <Typography gutterBottom variant="h6" className={classes.text} >
-              STEP 2: Schedule Interviews
-            </Typography>
-            <Typography gutterBottom variant="body1"className={classes.body} >
-              Use JobSite's calendar tool to schedule phone and video interviews.
-            </Typography>
-          </Paper>
-          <Paper elevation={5} className={classes.paper}>
-            <Typography gutterBottom variant="h6" className={classes.text} >
-              STEP 3: Review Your Great Matches
-            </Typography>
-            <Typography gutterBottom variant="body1"className={classes.body} >
-              As candidates apply, use JobSite's notes tool to organize thoughts and keep track of feedback.
-            </Typography>
-          </Paper>
+          {list.map(( {title, body }) => (
+            <Paper elevation={5} className={classes.paper}>
+              <Typography gutterBottom variant="h6" className={classes.text} >
+                {title}
+              </Typography>
+              <Typography gutterBottom variant="body1"className={classes.body}>
+                {body}
+              </Typography>
+            </Paper >
+          ))}
         </TextContainer>
         <Card raised className={classes.root}>
           <CardMedia

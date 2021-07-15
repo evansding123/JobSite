@@ -172,7 +172,7 @@ form {
   background-color: #363056;
   background-size: cover;
   background-position: center;
-  height: 90vh;
+  height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -192,7 +192,7 @@ form {
   background-image: url('img/emp-showcase.jpg');
   background-size: cover;
   background-position: center;
-  height: 70vh;
+  height: 80vh;
   width: 100%;
   display: flex;
   flex-direction: column;
