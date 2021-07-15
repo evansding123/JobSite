@@ -20,9 +20,8 @@ const TextContainer = styled.div`
 
 const useStyles = makeStyles(() => ({
   root: {
-    width: '50vw',
+    width: '46vw',
     height: '55vh',
-    margin: 'auto',
   },
   media: {
     height: '100%',
