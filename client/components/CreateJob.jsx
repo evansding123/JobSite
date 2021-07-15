@@ -96,7 +96,7 @@ export default function CreateJob() {
   function handleSubmit(e) {
     alert('Job posted!'); // test for now
     setForm(initialForm);
-    // console.log(form);
+    // console.log(form); test for now
     e.preventDefault();
   }
 
