@@ -68,12 +68,20 @@ const CssTextField = withStyles({
 
 const PopUp = (props) => {
   const classes = useStyles();
+<<<<<<< HEAD
   const [text, addText] = useState('');
+=======
+
+>>>>>>> main
   const [eventDate, addEvent] = useState(new Date());
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = useState(true);
   const [formInfo, setFormInfo] = useState({
+<<<<<<< HEAD
     username: 'purpleswan857',
+=======
+    email: 'laertes.ferreira@example.com', //change to auth email
+>>>>>>> main
     time: props.date.substring(0,16)
   });
 
@@ -91,6 +99,18 @@ const PopUp = (props) => {
   };
 
   const handleChange = (event) => {
+<<<<<<< HEAD
+=======
+
+    const obj = {
+      [event.target.name]: event.target.value,
+    }
+    //console.log(obj);
+    setFormInfo(formInfo => {
+      formInfo[event.target.name] = event.target.value
+      return formInfo;
+  });
+>>>>>>> main
 
     const obj = {
       [event.target.name]: event.target.value,
@@ -104,6 +124,7 @@ const PopUp = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+<<<<<<< HEAD
     console.log('submitted');
     axios.post('/notification/addnotification', formInfo)
     .then((response) => {
@@ -112,6 +133,16 @@ const PopUp = (props) => {
     .catch((err) => {
       console.log(err);
     })
+=======
+    console.log(formInfo);
+    axios.post('/notification/addnotification', formInfo)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+>>>>>>> main
   }
 
   const handleDate = (event) => {

@@ -98,12 +98,23 @@ const Navbar = () => {
       </LogoLink>
       <NavLinkContainer>
         <NavLink to="/findjobs">Find Jobs</NavLink>
+<<<<<<< HEAD
         <NavLink to="/profile">Post Jobs</NavLink>
         {currentUser
           ? <div>
               <NavLink onClick={handleLogout}>Log Out ({currentUser.email})</NavLink>
               <NavLink to="/calendar">Calendar</NavLink>
             </div>
+=======
+        <NavLink to="/addjob">Post Jobs</NavLink>
+        {currentUser
+          ? (
+            <>
+              <NavLink to="/calendar">Calendar</NavLink>
+              <NavLink onClick={handleLogout}>Log Out ({currentUser.email})</NavLink>
+            </>
+          )
+>>>>>>> main
           : <NavLink className="login" to='/login'>Log In</NavLink>
         }
 
