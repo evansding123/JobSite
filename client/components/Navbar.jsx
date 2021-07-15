@@ -100,10 +100,12 @@ const Navbar = () => {
         <NavLink to="/findjobs">Find Jobs</NavLink>
         <NavLink to="/addjob">Post Jobs</NavLink>
         {currentUser
-          ? <div>
-              <NavLink onClick={handleLogout}>Log Out ({currentUser.email})</NavLink>
+          ? (
+            <>
               <NavLink to="/calendar">Calendar</NavLink>
-            </div>
+              <NavLink onClick={handleLogout}>Log Out ({currentUser.email})</NavLink>
+            </>
+          )
           : <NavLink className="login" to='/login'>Log In</NavLink>
         }
 

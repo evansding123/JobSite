@@ -10,6 +10,7 @@ import CreateJob from './CreateJob.jsx';
 import styled, { createGlobalStyle } from 'styled-components';
 import LandingPage from './LandingPage.jsx';
 import Navbar from './Navbar.jsx';
+import ScrollToTop from './ScrollToTop.jsx';
 import {
   BrowserRouter as Router,
   Switch,
@@ -32,6 +33,7 @@ const App = (props) => {
   return(
     <>
       <Router>
+        <ScrollToTop />
         <AuthProvider>
           <Navbar/>
           <Switch>

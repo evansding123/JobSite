@@ -6,10 +6,10 @@ const MottoContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding-left: 50px;
+  padding-left: 90px;
   height: 75vh;
   color: white;
-  font-size: 24px;
+  font-size: 28px;
   background: rgba(0, 0, 0, .6);
   font-family: Roboto, Arial, Helvetica, sans-serif;
 `;
@@ -27,3 +27,4 @@ const MainPhoto = () => {
 }
 
 export default MainPhoto;
+
