@@ -59,6 +59,11 @@ CREATE TABLE "notes" (
 CREATE TABLE "notifications" (
   "id" serial PRIMARY KEY,
   "date"  date NOT NULL DEFAULT CURRENT_DATE,
+  "title" varchar(255),
+  "guests" varchar(255),
+  "start_time" varchar(255),
+  "end_time" varchar(255),
+  "location" varchar(255) NOT NULL,
   "notification" text NOT NULL
 );
 
@@ -117,7 +122,7 @@ CREATE INDEX ON "job_seekers_applied_jobs" ("job_seekers_id");
 CREATE INDEX ON "job_seekers_applied_jobs" ("jobs_id");
 
 COPY "accounts" (username,password,email,longitude,latitude,location_address)
-FROM '/home/parker/hackreactor/JobSite/db/accounts.csv' --insert your direct path to your .csv files
+FROM '/Users/evansding/Desktop/BlueOcean/JobSite/accounts.csv' --insert your direct path to your .csv files
 DELIMITER ','
 CSV HEADER;
 

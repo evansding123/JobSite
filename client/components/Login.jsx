@@ -72,7 +72,7 @@ function Login() {
         inputRef={passwordRef}
       />
       <div>
-        <Link to='/'>
+        <Link to='/' style={{ textDecoration: 'none' }}>
           <Button variant="contained">
             Cancel
           </Button>

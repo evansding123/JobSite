@@ -98,6 +98,7 @@ const Navbar = () => {
           ? <> <NotificationI /> <AccountIcon /> </>
           : <NavLink className="login" to='/login'>Log In</NavLink>
         }
+
       </NavLinkContainer>
     </Nav>
   )

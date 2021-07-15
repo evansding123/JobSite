@@ -21,23 +21,23 @@ const ContentContainer = styled.div`
 `
 
 const Container = styled.div`
-font-family: Helvetica;
-display: flex;
-text-decoration: none;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-background-color: #192A34;
-width: 40%;
-margin-top: 5vh;
-margin-left: 30%;
-margin-bottom: 10%;
-border: 1px solid;
-border-color: #49475B;
-border-radius: 10px;
+  font-family: Helvetica;
+  display: flex;
+  text-decoration: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #192A34;
+  width: 40%;
+  margin-top: 5vh;
+  margin-left: 30%;
+  margin-bottom: 10%;
+  border: 1px solid;
+  border-color: #49475B;
+  border-radius: 10px;
 `
 const StyledH2 = styled.h2`
-color: white;
+  color: white;
 `
 
 const Profile = () => {

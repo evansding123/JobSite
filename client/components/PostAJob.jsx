@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import CreateJob from './CreateJob.jsx';
 
 const Background = styled.div`
   background-color: #274358;
@@ -43,13 +44,7 @@ color: white;
 
 const PostAJob = () => {
   return (
-    <Background>
-      <ContentContainer>
-        <Container>
-          <StyledH2>PostAJob Form</StyledH2>
-        </Container>
-      </ContentContainer>
-    </Background>
+    <CreateJob />
   )
 }
 
