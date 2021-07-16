@@ -66,12 +66,8 @@ const PopularSearches = (props) => {
                 className={classes.media}
                 image={src}
               />
-              <CardHeader
-                titleTypographyProps={{ variant: 'subtitle2' }}
-                title={industry}
-              />
               <CardContent>
-                <Typography gutterBottom variant="h5" component="h2" className={classes.industry}>
+                <Typography gutterBottom variant="subtitle1" component="h2" className={classes.industry}>
                   {industry}
                 </Typography>
               </CardContent>

@@ -49,14 +49,16 @@ function Login() {
     } catch {
       setError('Failed to sign in')
     }
+
+    setLoading(false);
   };
 
   return (
     <>
     <div style={{height: '100vh', width: '100%', background: '#274358'}}>
-    {error && <div>{ error }</div>}
     <form className={classes.root} onSubmit={handleSubmit}>
     <h3>Log In</h3>
+    {error && <h4 style={{margin: '3vh'}}>{ error }</h4>}
       <TextField
         label="Email"
         variant="filled"
@@ -73,7 +75,7 @@ function Login() {
       />
       <div>
         <Link to='/' style={{ textDecoration: 'none' }}>
-          <Button variant="contained">
+          <Button variant="contained" style={{ backgroundColor: '#d9d9d9', color: '#49475B' }}>
             Cancel
           </Button>
         </Link>

@@ -42,9 +42,9 @@ CREATE TYPE experience AS ENUM (
 
 CREATE TABLE "accounts" (
   "id" serial PRIMARY KEY,
-  "username" varchar(255) NOT NULL,
-  "password" varchar(255) NOT NULL,
-  "email" varchar(255) NOT NULL,
+  "first_name" varchar(255) NOT NULL,
+  "last_name" varchar(255) NOT NULL,
+  "email" varchar(255) NOT NULL UNIQUE,
   "longitude" varchar(255),
   "latitude" varchar(255),
   "location_address" varchar(255)
@@ -69,6 +69,7 @@ CREATE TABLE "notifications" (
 
 CREATE TABLE "accounts_notifications_appointments" (
   "id" serial PRIMARY KEY,
+  --maybe we need to add a guest email here?
   "accounts_id" integer NOT NULL, --foreign key
   "notifications_id" integer NOT NULL --foreign key
 );
