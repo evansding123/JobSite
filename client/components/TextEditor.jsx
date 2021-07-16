@@ -25,7 +25,7 @@ export default function MyEditor() {
         wrapperClassName="wrapperClassName"
         editorClassName="editorClassName"
         onEditorStateChange={setEditorState}
-      />;
+      />
     </div>
   );
 }
