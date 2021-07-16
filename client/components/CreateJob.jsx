@@ -80,7 +80,7 @@ const today = new Date().toString();
 
 export default function CreateJob() {
   const { currentUser } = useAuth();
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState(currentUser ? currentUser.email : '');
   const initialForm = {
     industry: '',
     employment_type: '',
@@ -91,6 +91,7 @@ export default function CreateJob() {
     date: `${today}`,
     employers_id: email
   };
+
   const [form, setForm] = useState(initialForm);
   const industryFields = ['Agriculture', 'Construction', 'Consulting', 'Education', 'Healthcare', 'Hospitality', 'Law', 'Manufacturing', 'Transportation', 'Tech', 'Utilities', 'Other'];
   const industry = industryFields.map((i) => <option key={i} value={i}>{i}</option> )
