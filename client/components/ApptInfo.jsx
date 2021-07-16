@@ -24,8 +24,8 @@ var settings = {
   infinite: true,
   speed: 500,
   slidesToShow: 4,
-  slidesToScroll: 1,
-  adaptiveHeight: true
+  slidesToScroll: 2,
+  adaptiveHeight: false
 };
 
 const useStyles = makeStyles({
@@ -33,20 +33,28 @@ const useStyles = makeStyles({
     minWidth: '80%',
     maxWidth: '80%',
     padding: 0,
-    marginBottom: 10,
+    marginBottom: '20%',
     borderRadius: '10px 10px 10px 10px',
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
+    backgroundColor: 'grey',
+    border: '1px solid #49475b',
+    color: 'white',
+    fontFamily: '\'Roboto\', sans-serif',
+    height: '100%',
     fontSize: 14,
+    marginLeft: '12%'
+  },
+
+  title: {
+    display: 'flex',
+    fontSize: 14,
+    borderRadius: '5px',
+    backgroundColor: '#405e74',
+    justifyContent: 'center'
   },
   pos: {
-    marginBottom: 12,
-  },
+    marginBottom: 0,
+
+  }
 });
 
 
@@ -57,40 +65,48 @@ const ApptInfo = (props) => {
   const classes = useStyles();
 
 
-  let result;
-
-  if(props.data.length !== 0 ) {
-     result =
+    let result =
      <Slider {...settings}>
        {props.data.map((item) => {
         return (
           <>
           <Card className = {classes.root} variant = 'outlined'>
             <CardContent>
-              <Typography className={classes.title}>{item.title}</Typography>
+              <Typography variant ='overline' className={classes.title}>{item.title}</Typography>
             </CardContent>
             <CardContent>
-              <Typography className={classes.pos} color="textSecondary" >
+              <Typography className = {classes.pos} >
                 {format(parseISO(item.date), 'MMMM do, yyyy')}
               </Typography>
             </CardContent>
-            <CardContent>{item.start_time}</CardContent>
-            <CardContent>{item.end_time}</CardContent>
-            <CardContent>{item.guests}</CardContent>
-            <CardContent>{item.location}</CardContent>
-            <CardContent>{item.notification}</CardContent>
+            <CardContent>
+              <Typography className = {classes.pos}>
+              {format(parseISO(item.date), 'p')}
+              </Typography>
+            </CardContent>
+            <CardContent>
+              <Typography className={classes.pos}>
+                {item.guests}
+              </Typography>
+            </CardContent>
+            <CardContent>
+              <Typography className = {classes.pos}>
+                {item.location}
+              </Typography>
+              </CardContent>
+            <CardContent>
+              <Typography className = {classes.pos} paragraph = {true}>
+                {item.notification}
+              </Typography>
+              </CardContent>
           </Card>
-
           </>
         )
         })}
      </Slider>
-  } else {
-    result = <div></div>
-  }
+
   return (
     <div>{result}</div>
-
   );
 }
 

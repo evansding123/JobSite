@@ -5,9 +5,8 @@ router.post('/jobs/addjob', controllers.jobs.postJob);
 router.post('/notes/addnote', controllers.notes.postNote);
 router.post('/notification/addnotification', controllers.notifications.postNotification);
 router.post('/accounts/addaccount', controllers.accounts.postAccount);
-router.get('/notification/getnotification', controllers.notifications.getNotification);
 router.get('/notes/getnote', controllers.notes.getNotes);
-
-
+router.get('/notification/getnotification', controllers.notifications.getNotification)
+router.get('/notification/getjobnotification', controllers.notifications.getJobNotification)
 
 module.exports = router;
