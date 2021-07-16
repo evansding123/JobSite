@@ -46,9 +46,6 @@ const App = (props) => {
             <Route path="/findjobs">
               <HomePage />
             </Route>
-            <Route path="/calendar">
-              <ReactCalendar />
-            </Route>
             <Route path="/addjob">
               <CreateJob />
             </Route>
@@ -61,9 +58,10 @@ const App = (props) => {
             <Route path="/employers">
             <EmployerPage />
             </Route>
-            <Route path="/notes">
-              <NotesPage />
-            </Route>
+            <PrivateRouter component={ReactCalendar} path="/calendar">
+            </PrivateRouter>
+            <PrivateRouter component={NotesPage} path="/notes">
+            </PrivateRouter>
           </Switch>
         </AuthProvider>
       </Router>
