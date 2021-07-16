@@ -1,13 +1,16 @@
 import React from 'react';
-import axios from 'axios';
 import styled from 'styled-components';
-import {Editor, EditorState} from 'draft-js';
-import 'draft-js/dist/Draft.css';
+import ReactDOM from 'react-dom';
+import MyEditor from './TextEditor.jsx';
 
+const MainComponent = styled.div`
+  display: flex;
+  height: 500px;
+`;
 export default function NotesMain(props) {
   return (
-    <div>
-      can you see me?
-    </div>
+    <MainComponent>
+      <MyEditor />
+    </MainComponent>
   )
 };
