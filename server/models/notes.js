@@ -19,4 +19,22 @@ module.exports = {
       throw error;
     }
   },
+  getOneNote: async (id) => {
+    const query = `SELECT * FROM notes WHERE id = $1`;
+    try {
+      const res = await pool.query(query, [id]);
+      return res;
+    } catch (error) {
+      throw error;
+    }
+  },
+  updateNote: async (updatedNote, id) => {
+    const query = `UPDATE notes SET note = $1 WHERE id = $2`;;
+    try {
+      const res = await pool.query([updatedNote, id]);
+      return res;
+    } catch (error) {
+      throw error;
+    }
+  },
 };

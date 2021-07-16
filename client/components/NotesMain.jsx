@@ -37,10 +37,11 @@ export default function NotesMain({ current }) {
   const addNewNote = async () => {
     try {
       const exists = await axios.get('/notes/getnote/:id');
-      console.log(exists);
+      console.log(exists.data);
       if (exists) {
         try {
-          const response = await axios.post('/notes/addnote');
+          //need to get the current logged in account_id to create a new note
+          const response = await axios.post('/notes/addnote', [editorState, 1]);
         }catch (error) {
           throw error;
         }
