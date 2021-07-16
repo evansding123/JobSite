@@ -56,14 +56,16 @@ const Signup = (props) => {
     } catch {
       setError('Failed to create an account')
     }
+
+    setLoading(false);
   };
 
   return (
     <>
 <div style={{height: '100vh', width: '100%', background: '#274358'}}>
-      {error && <div>{ error }</div>}
       <form className={classes.root} onSubmit={handleSubmit}>
       <h3>Create An Account (it's free!)</h3>
+      {error && <h6 style={{margin: '3vh'}}>{ error }</h6>}
         <TextField
           label="First Name"
           variant="filled"
@@ -101,7 +103,7 @@ const Signup = (props) => {
         />
         <div>
           <Link to='/' style={{ textDecoration: 'none' }}>
-            <Button variant="contained" onClick={()=> console.log('clicked')}>
+            <Button variant="contained" onClick={()=> console.log('clicked')} style={{ backgroundColor: '#d9d9d9', color: '#49475B' }}>
               Cancel
             </Button>
           </Link>

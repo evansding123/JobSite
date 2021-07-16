@@ -14,7 +14,7 @@ const Nav = styled.div`
   background-color: #192A34;
   font-family: Roboto, Helvetica, sans-serif;
   height: 6vh;
-  padding-right: 1px;
+  padding: 5px 20px;
   position: sticky;
   top: 0;
   z-index: 10;

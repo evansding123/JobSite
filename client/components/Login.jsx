@@ -49,6 +49,8 @@ function Login() {
     } catch {
       setError('Failed to sign in')
     }
+
+    setLoading(false);
   };
 
   return (
@@ -73,7 +75,7 @@ function Login() {
       />
       <div>
         <Link to='/' style={{ textDecoration: 'none' }}>
-          <Button variant="contained">
+          <Button variant="contained" style={{ backgroundColor: '#d9d9d9', color: '#49475B' }}>
             Cancel
           </Button>
         </Link>
