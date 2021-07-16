@@ -1,7 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import ReactDOM from 'react-dom';
-import MyEditor from './TextEditor.jsx';
+import { EditorState } from "draft-js";
+import "draft-js/dist/Draft.css";
+import { Editor } from "react-draft-wysiwyg";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 
 const MainComponent = styled.div`
@@ -11,9 +14,25 @@ const MainComponent = styled.div`
   background-color: white;
 `;
 export default function NotesMain(props) {
+  const [editorState, setEditorState] = React.useState(() =>
+  EditorState.createEmpty()
+  );
+
+  const editor = React.useRef(null);
+  function focusEditor() {
+    editor.current.focus();
+  }
+
+
   return (
     <MainComponent>
-      <MyEditor />
+      <Editor
+      editorState={editorState}
+      toolbarClassName="toolbarClassName"
+      wrapperClassName="wrapperClassName"
+      editorClassName="editorClassName"
+      onEditorStateChange={setEditorState}
+      />
     </MainComponent>
   )
 };
