@@ -80,7 +80,7 @@ const today = new Date().toString();
 
 export default function CreateJob() {
   const { currentUser } = useAuth();
-  const [email, setEmail] = useState(currentUser ? currentUser.email : '');
+  const [email, setEmail] = useState('');
   const initialForm = {
     industry: '',
     employment_type: '',
@@ -100,7 +100,6 @@ export default function CreateJob() {
   const remote = remoteFields.map((field) => <option key={field} value={field}>{field}</option>)
   const experienceFields = ['Entry', 'Mid-level', 'Senior', 'Executive'];
   const experience = experienceFields.map((exp) => <option key={exp} value={exp}>{exp}</option>)
-  console.log('currentUser:', currentUser.email);
 
   function handleChange(e) {
     let updatedForm = { ...form };
@@ -113,10 +112,10 @@ export default function CreateJob() {
     setForm(initialForm);
     console.log([form.industry, form.title, form.salary, form.remote, form.experience, form.date, form.employers_id]);
     alert('Job posted!'); // test for now
-    axios.post('/jobs/addjob', [form.industry, form.title, form.title, form.salary, form.remote, form.experience, form.date, form.employers_id])
-      .then(function (response) {
-        console.log(response);
-      });
+    // axios.post('/jobs/addjob', [form.industry, form.title, form.title, form.salary, form.remote, form.experience, form.date, form.employers_id])
+    //   .then(function (response) {
+    //     console.log(response);
+    //   });
     e.preventDefault();
   }
 
