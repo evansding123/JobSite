@@ -21,11 +21,11 @@ import parseISO from 'date-fns/parseISO';
 
 var settings = {
   dots: true,
-  infinite: true,
+  infinite: false,
   speed: 500,
-  slidesToShow: 4,
+  slidesToShow: 1,
   slidesToScroll: 2,
-  adaptiveHeight: false
+  adaptiveHeight: true
 };
 
 const useStyles = makeStyles({
