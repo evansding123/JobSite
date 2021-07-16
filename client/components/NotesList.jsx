@@ -70,16 +70,15 @@ export default function NotesList({ notes, setCurrent }) {
   const classes = useStyles();
   const fakeNotes = Array(10).fill('"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo?')
   const notesList = fakeNotes.map((note, i) => (
-    <>
+    <div key={i}>
     <ListItem
-      key={i}
       className={classes.text}
       button
     >
       <ListItemText>{note}</ListItemText>
     </ListItem>
       <Divider />
-    </>
+    </div>
   ));
   // <Paper className={classes.paper} elevation={5}><p>{note}</p></Paper>
   return (
