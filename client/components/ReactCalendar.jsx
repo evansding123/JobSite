@@ -17,7 +17,7 @@ import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
 
-// import {useAuth, logout} from '../src/contexts/AuthContext.js';
+import {useAuth, currentUser} from '../src/contexts/AuthContext.js';
 
 const Container = styled.div`
   display: flex;
@@ -36,11 +36,7 @@ const ReactCalendar = (props) => {
   const [data, addData] = useState([]);
 
 
-  // const {login} = useAuth();
-
-
-
-
+  const {login, currentUser} = useAuth();
 
   let resultArray = [];
 
@@ -48,7 +44,7 @@ const ReactCalendar = (props) => {
     axios.get('/notification/getnotification', {
       params: {
         date: new Date(),
-        email: 'laertes.ferreira@example.com', //change to auth email
+        email: currentUser.email, //change to auth email
       }
     })
       .then((response) => {
@@ -115,10 +111,10 @@ const ReactCalendar = (props) => {
             onChange={handleClick}
             value={value}
             tileContent = {tileContent}
-            nextLabel = {<Button><NavigateNextIcon fontSize={'small'} /></Button>}
-            next2Label = {<Button><ArrowRightIcon fontSize={'small'} /></Button>}
-            prevLabel = {<Button><NavigateBeforeIcon fontSize={'small'} /></Button>}
-            prev2Label = {<Button><ArrowLeftIcon fontSize={'small'} /></Button>}
+            nextLabel = {<Button><ArrowRightIcon fontSize={'large'} /></Button>}
+            next2Label = {<Button><NavigateNextIcon fontSize={'small'} /></Button>}
+            prevLabel = {<Button><ArrowLeftIcon fontSize={'large'} /></Button>}
+            prev2Label = {<Button><NavigateBeforeIcon fontSize={'small'} /></Button>}
            >
           </Calendar>
         </CalendarContainer>
