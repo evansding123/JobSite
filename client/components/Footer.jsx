@@ -9,12 +9,13 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 
 const FooterBackground = styled.div`
   background-color: #192A34;
-  margin-left: -10%;
-  margin-left: -10%;
-  margin-left: -8%;
-  margin-top: -10vh;
   background-color: #192A34;
-  height: 40vh;
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
 `;
 
 const StyledDiv = styled.div`
@@ -25,20 +26,21 @@ const StyledDiv = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 4%;
-  margin-right: -5%;
-  padding-top: 6%;
+  padding: 10px 0;
 `;
+  // margin-top: 4%;
+  // margin-right: -5%;
+  // padding-top: 6%;
 
 const IconList = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-top: 1%;
-  margin-left: 5%;
-  padding-bottom: 2%;
-`;
+  `;
+  // margin-top: 1%;
+  // margin-left: 5%;
+  // padding-bottom: 2%;
 
 const Icon = styled.a`
   display: flex;
@@ -62,8 +64,8 @@ const FooterText = styled.div`
     color: #799469;
     border: none;
   }
-  padding-left: 15%;
-`;
+  `;
+  // padding-left: 15%;
 
 const Footer = (props) => (
   <FooterBackground>

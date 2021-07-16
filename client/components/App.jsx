@@ -21,6 +21,7 @@ import {
   Link
 } from "react-router-dom";
 import { theme } from '../src/constants';
+import PrivateRouter from './PrivateRouter.jsx';
 
 const GlobalStyle = createGlobalStyle`
   body {
