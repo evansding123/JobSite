@@ -28,7 +28,6 @@ export default function NotesPage(props) {
   const getAllNotes = async () => {
     try {
       const response = await axios.get('/notes/getnote');
-      console.log(response, 'eh');
     } catch (error) {
       throw error;
     }

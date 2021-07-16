@@ -36,15 +36,16 @@ export default function NotesMain(props) {
 
   const addNewNote = async () => {
     try {
+      const response = await axios.get('/notes/getnote/:id');
 
     } catch(error) {
-
+      throw error;
     }
   }
 
   return (
     <MainComponent>
-      <Button className={classes.button} variant="outlined">Save Note</Button>
+      <Button onClick={addNewNote} className={classes.button} variant="outlined">Save Note</Button>
       <Editor
       editorState={editorState}
       toolbarClassName="toolbarClassName"
