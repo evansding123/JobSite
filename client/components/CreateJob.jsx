@@ -92,9 +92,14 @@ export default function CreateJob() {
     employers_id: email
   };
   const [form, setForm] = useState(initialForm);
-  const industryFields = [];
+  const industryFields = ['Agriculture', 'Construction', 'Consulting', 'Education', 'Healthcare', 'Hospitality', 'Law', 'Manufacturing', 'Transportation', 'Tech', 'Utilities', 'Other'];
+  const industry = industryFields.map((i) => <option key={i} value={i}>{i}</option> )
+  const employmentFields = ['Full Time', 'Part Time', 'Temporary', 'Internship'];
+  const employment = employmentFields.map((e) => <option key={e} value={e}>{e}</option>)
   const remoteFields = ['Remote', 'Onsite', 'Mixed'];
   const remote = remoteFields.map((field) => <option key={field} value={field}>{field}</option>)
+  const experienceFields = ['Entry', 'Mid-level', 'Senior', 'Executive'];
+  const experience = experienceFields.map((exp) => <option key={exp} value={exp}>{exp}</option>)
   console.log('currentUser:', currentUser.email);
 
   function handleChange(e) {
@@ -123,25 +128,11 @@ export default function CreateJob() {
           <Form onSubmit={handleSubmit}>
             <Select onChange={handleChange} value={form.industry} name="industry" required>
               <option value="" defaultValue>Select Industry *</option>
-              <option value="Agriculture">Agriculture</option>
-              <option value="Construction" >Construction</option>
-              <option value="Consulting" >Consulting</option>
-              <option value="Education" >Education</option>
-              <option value="Healthcare" >Healthcare</option>
-              <option value="Hospitality" >Hospitality</option>
-              <option value="Law" >Law</option>
-              <option value="Manufacturing" >Manufacturing</option>
-              <option value="Transportation" >Transportation</option>
-              <option value="Tech" >Tech</option>
-              <option value="Utilities" >Utilities</option>
-              <option value="Other" >Other</option>
+              {industry}
             </Select>
             <Select onChange={handleChange} value={form.employment_type} name="employment_type" required>
               <option value="" defaultValue>Select Employment Type *</option>
-              <option value="Full Time" >Full Time</option>
-              <option value="Part Time">Part Time</option>
-              <option value="Temporary">Temporary</option>
-              <option value="Internship">Internship</option>
+              {employment}
             </Select>
             <Select onChange={handleChange} value={form.remote} name="remote" required>
               <option value="" defaultValue>Select Telework Options *</option>
@@ -151,10 +142,7 @@ export default function CreateJob() {
             <Input onChange={handleChange} value={form.salary} name="salary" type="number" placeholder="Salary *" required></Input>
             <Select onChange={handleChange} value={form.experience} name="experience" required>
               <option value="" defaultValue>Select Experience Level *</option>
-              <option value="Entry" defaultValue>Entry Level</option>
-              <option value="Mid-level">Mid Level</option>
-              <option value="Senior">Senior Level</option>
-              <option value="Executive">Executive Level</option>
+              {experience}
             </Select>
             {/* <TextArea onChange={handleChange} value={form.description} name="description" maxLength="1000" placeholder="Description *" required></TextArea> */}
             <Submit type="submit"><strong>SUBMIT</strong></Submit>
