@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import NotesMain from './NotesMain.jsx';
@@ -22,17 +22,27 @@ const List = styled.div`
 `;
 
 export default function NotesPage(props) {
+  const [notes, setNotes] = useState([]);
+  const [current, setCurrent] = useState(false);
 
-  const getAllNotes = () => {
-
+  const getAllNotes = async () => {
+    try {
+      const response = await axios.get('/notes/getnote');
+      console.log(response, 'eh');
+    } catch (error) {
+      throw error;
+    }
   }
+
+  useEffect(() => {
+    getAllNotes();
+  }, [])
 
   return (
     <Tester>
       <List>
-        <NotesList/>
+        <NotesList notes={notes} setCurrent={setCurrent}/>
       </List>
-
       <NotesMain/>
     </Tester>
   )

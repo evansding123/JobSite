@@ -42,9 +42,9 @@ const useStyles = makeStyles({
 }});
 
 
-export default function NotesList(props) {
+export default function NotesList({ notes, setCurrent }) {
   const classes = useStyles();
-  const notes = Array(10).fill('"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo?')
+  const fakeNotes = Array(10).fill('"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo?')
   const notesList = notes.map((note) => <Note><p>{note}</p></Note>);
   // <Paper className={classes.paper} elevation={5}><p>{note}</p></Paper>
   return (

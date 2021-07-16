@@ -10,4 +10,13 @@ module.exports = {
       throw error;
     }
   },
+  getNotes: async () => {
+    const query = `SELECT * FROM notes LIMIT 10`;;
+    try {
+      const res = await pool.query(query);
+      return res;
+    } catch (error) {
+      throw error;
+    }
+  },
 };
