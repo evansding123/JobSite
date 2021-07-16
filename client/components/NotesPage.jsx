@@ -28,6 +28,7 @@ export default function NotesPage(props) {
   const getAllNotes = async () => {
     try {
       const response = await axios.get('/notes/getnote');
+      setNotes(response.data);
     } catch (error) {
       throw error;
     }
@@ -42,7 +43,7 @@ export default function NotesPage(props) {
       <List>
         <NotesList notes={notes} setCurrent={setCurrent}/>
       </List>
-      <NotesMain/>
+      <NotesMain current={current}/>
     </Tester>
   )
 };

@@ -23,7 +23,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function NotesMain(props) {
+export default function NotesMain({ current }) {
   const classes = useStyles();
   const [editorState, setEditorState] = React.useState(() =>
   EditorState.createEmpty()
@@ -36,8 +36,15 @@ export default function NotesMain(props) {
 
   const addNewNote = async () => {
     try {
-      const response = await axios.get('/notes/getnote/:id');
-
+      const exists = await axios.get('/notes/getnote/:id');
+      console.log(exists);
+      if (exists) {
+        try {
+          const response = await axios.post('/notes/addnote');
+        }catch (error) {
+          throw error;
+        }
+      }
     } catch(error) {
       throw error;
     }
@@ -46,13 +53,14 @@ export default function NotesMain(props) {
   return (
     <MainComponent>
       <Button onClick={addNewNote} className={classes.button} variant="outlined">Save Note</Button>
-      <Editor
+      { current ? <div>Note</div> : (<Editor
       editorState={editorState}
       toolbarClassName="toolbarClassName"
       wrapperClassName="wrapperClassName"
       editorClassName="editorClassName"
       onEditorStateChange={setEditorState}
-      />
+      />)}
+
     </MainComponent>
   )
 };
