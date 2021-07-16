@@ -6,6 +6,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import Button from '@material-ui/core/Button';
+import Divider from '@material-ui/core/Divider';
+
 // const innerList = styled.div`
 //   display: grid;
 //   grid-template-columns: repeat(12, 1fr);
@@ -51,7 +54,15 @@ const useStyles = makeStyles((theme) => ({
     padding: '16px',
     background: 'linear-gradient(to bottom right, #274358, #274354)',
   },
-
+  button: {
+    width: '100%',
+    color: '#ffffff',
+    background: 'linear-gradient(to bottom right, #274358, #274354)',
+    outline: 'white',
+  },
+  list: {
+    padding: '0'
+  }
 }));
 
 
@@ -59,17 +70,23 @@ export default function NotesList({ notes, setCurrent }) {
   const classes = useStyles();
   const fakeNotes = Array(10).fill('"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo?')
   const notesList = fakeNotes.map((note, i) => (
+    <>
     <ListItem
       key={i}
       className={classes.text}
     >
       <ListItemText>{note}</ListItemText>
     </ListItem>
+      <Divider />
+    </>
   ));
   // <Paper className={classes.paper} elevation={5}><p>{note}</p></Paper>
   return (
     <Overflow>
-      <List>
+      <Button className={classes.button} variant="outlined" onClick={() => {setCurrent(false)}}>
+        + New Note
+      </Button>
+      <List className={classes.list}>
         {notesList}
       </List>
     </Overflow>
