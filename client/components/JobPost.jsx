@@ -14,7 +14,7 @@ const PostContainer = styled.div`
   width: 90%;
   margin-bottom: 3vh;
   padding-top: 3vh;
-  line-height: 1.3;
+  line-height: 1.4;
   &:hover ${PostContainer} {
     border-color: #E9EB9E;
     pointer: cursor;
@@ -80,6 +80,7 @@ const JobPost = ({ item, showDetail }) => {
             {item.location}
             <br></br>
           </CompanyAndLocation>
+          <br></br>
           <Description>
             {item.description}
           </Description>
