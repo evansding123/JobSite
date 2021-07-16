@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { theme } from '../src/constants';
+import { useAuth } from '../src/contexts/AuthContext.js';
 
 const Container = styled.div`
   display: flex;
@@ -73,19 +74,28 @@ const today = new Date().toString();
 [industry, employment_type, title, salary, remote, experience, date, employers_id]
 */
 
-const initialForm = {
-  industry: '',
-  employment_type: '',
-  title: '',
-  salary: '',
-  remote: '',
-  experience: '',
-  date: `${today}`,
-  employers_id: ''
-};
+
+
+
 
 export default function CreateJob() {
+  const { currentUser } = useAuth();
+  const [email, setEmail] = useState(currentUser ? currentUser.email : '');
+  const initialForm = {
+    industry: '',
+    employment_type: '',
+    title: '',
+    salary: '',
+    remote: '',
+    experience: '',
+    date: `${today}`,
+    employers_id: email
+  };
   const [form, setForm] = useState(initialForm);
+  const industryFields = [];
+  const remoteFields = ['Remote', 'Onsite', 'Mixed'];
+  const remote = remoteFields.map((field) => <option key={field} value={field}>{field}</option>)
+  console.log('currentUser:', currentUser.email);
 
   function handleChange(e) {
     let updatedForm = { ...form };
@@ -94,9 +104,14 @@ export default function CreateJob() {
   }
 
   function handleSubmit(e) {
-    alert('Job posted!'); // test for now
+    setEmail(currentUser.email);
     setForm(initialForm);
-    // console.log(form); test for now
+    console.log([form.industry, form.title, form.salary, form.remote, form.experience, form.date, form.employers_id]);
+    alert('Job posted!'); // test for now
+    axios.post('/jobs/addjob', [form.industry, form.title, form.title, form.salary, form.remote, form.experience, form.date, form.employers_id])
+      .then(function (response) {
+        console.log(response);
+      });
     e.preventDefault();
   }
 
@@ -127,6 +142,10 @@ export default function CreateJob() {
               <option value="Part Time">Part Time</option>
               <option value="Temporary">Temporary</option>
               <option value="Internship">Internship</option>
+            </Select>
+            <Select onChange={handleChange} value={form.remote} name="remote" required>
+              <option value="" defaultValue>Select Telework Options *</option>
+              {remote}
             </Select>
             <Input onChange={handleChange} value={form.title} name="title" type="text" placeholder="Title *" required></Input>
             <Input onChange={handleChange} value={form.salary} name="salary" type="number" placeholder="Salary *" required></Input>
