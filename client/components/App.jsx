@@ -49,9 +49,10 @@ const App = (props) => {
             <Route path="/calendar">
               <ReactCalendar />
             </Route>
-            <Route path="/addjob">
+            <PrivateRouter component={CreateJob} path="/addjob" />
+            {/* <Route path="/addjob">
               <CreateJob />
-            </Route>
+            </Route> */}
             <Route path="/login">
               <Login />
             </Route>
