@@ -15,6 +15,10 @@ const AccountCircle = styled(AccountCircleIcon)`
     cursor: pointer;
   }
 `
+const MenuLink = styled(Link)`
+  text-decoration: none;
+
+`
 
 function AccountIcon () {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -55,8 +59,9 @@ function AccountIcon () {
     onClose={handleClose}
   >
     <MenuItem onClick={handleClose}>Profile</MenuItem>
-    <MenuItem onClick={handleClose}>My account</MenuItem>
+    <MenuItem onClick={handleClose}> <MenuLink to="/calendar">Calendar</MenuLink></MenuItem>
     <MenuItem onClick={handleLogout}> Logout</MenuItem>
+
   </Menu>
   </>
   )
