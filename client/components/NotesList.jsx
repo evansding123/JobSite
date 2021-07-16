@@ -12,7 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const Note = styled.div`
   font-family: Helvetica;
   color: #ffffff;
-  margin: 12px;
+  // margin: 12px;
   padding: 16px;
   background: linear-gradient(to bottom right, #274358, #274354);
   border-radius: 4px;
@@ -45,7 +45,7 @@ const useStyles = makeStyles({
 export default function NotesList({ notes, setCurrent }) {
   const classes = useStyles();
   const fakeNotes = Array(10).fill('"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo?')
-  const notesList = notes.map((note) => <Note><p>{note}</p></Note>);
+  const notesList = fakeNotes.map((note) => <Note><p>{note}</p></Note>);
   // <Paper className={classes.paper} elevation={5}><p>{note}</p></Paper>
   return (
     <Overflow>
