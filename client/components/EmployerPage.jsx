@@ -11,12 +11,6 @@ import EmployerReviews from './EmployerReviews.jsx';
 import EmployerPromo from './EmployerPromo.jsx';
 
 
-const useStyles = makeStyles(() => ({
-  root: {
-
-  },
-}));
-
 export default function EmployerPage() {
   const classes = useStyles();
 
