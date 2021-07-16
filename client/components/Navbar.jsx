@@ -14,7 +14,7 @@ const Nav = styled.div`
   background-color: #192A34;
   font-family: Roboto, Helvetica, sans-serif;
   height: 6vh;
-  padding-right: 1px;
+  padding: 5px 20px;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -95,7 +95,10 @@ const Navbar = () => {
       <NavLinkContainer>
         <NavLink to="/findjobs">Find Jobs</NavLink>
         <NavLink to="/addjob">Post Jobs</NavLink>
+<<<<<<< HEAD
         <NavLink to="/employers">Employers</NavLink>
+=======
+>>>>>>> 51bd6f3e3a294d89f9b78198ac5c05d494929768
         {/* TODO: Add notification and profile icons w links here */}
         {currentUser
           ? <>  <NotificationIcon /> <AccountIcon /> </>
