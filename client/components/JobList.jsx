@@ -21,6 +21,9 @@ const Scroll = styled.div`
   max-height: 60vw;
   overflow-x: hidden;
   overflow-y: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+}
 `;
 
 const JobList = ({ listings, showDetail }) => {

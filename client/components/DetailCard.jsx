@@ -11,12 +11,13 @@ const DetailContainer = styled.div`
   background-color: #192A34;
   border-radius: 10px;
   margin-top: 5vh;
-  height: 20%;
-  width: 40%;
-  padding-right: 2vw;
+  height: 25%;
+  width: 45%;
+  padding-right: 1vw;
+  padding-left: 1vw;
   padding-top: 2vw;
   margin-right: 10vw;
-  margin-left: 1vw;
+  margin-left: 2vw;
   margin-bottom: 6vh;
   line-height: 1.3;
   &:hover ${DetailContainer} {
@@ -34,7 +35,8 @@ const Description = styled.div`
 `;
 
 const Text = styled.div`
-  padding-left: 10%;
+  padding-left: 3vh;
+  padding-right: 3vh;
   color: white;
 `;
 
@@ -66,6 +68,8 @@ const Scroll = styled.div`
   overflow-x: hidden;
   overflow-y: scroll;
   padding-left: 2vw;
+  ::-webkit-scrollbar {
+    display: none;
 `;
 
 const DetailCard = ({ post }) => {
@@ -85,6 +89,7 @@ const DetailCard = ({ post }) => {
           <br></br>
           <Scroll>
             <ul>
+              <br></br>
               <li>{post.description}</li>
               <li>{post.description}</li>
               <li>{post.description}</li>

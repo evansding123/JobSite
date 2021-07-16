@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from 'styled-components';
 import TextField from '@material-ui/core/TextField';
+import Slider from './Slider.jsx';
 import list from './exampleList.js';
 
 const SearchContainer = styled.form`
@@ -11,14 +12,15 @@ const SearchContainer = styled.form`
   align-items: center;
   justify-content: center;
   background-color: #192A34;
-  width: 40%;
+  width: 43%;
   margin-top: 5vh;
   padding-bottom: 3vh;
-  margin-left: 30%;
+  margin-left: 40%;
   margin-bottom: 10%;
   border: 1px solid;
   border-color: #49475B;
   border-radius: 10px;
+  line-height: 1.5;
 `
 
 const StyledInput = styled(TextField)`
@@ -65,22 +67,46 @@ const StyledButton = styled.button`
   }
 `;
 
+const filter = [
+  {id: 1, option: 'fullTime', checked: false},
+  {id: 2, option: 'partTime', checked: false},
+  {id: 3, option: 'Temporary', checked: false},
+  {id: 4, option: 'Internship', checked: false},
+  {id: 5, option: 'Entry-Level', checked: false},
+  {id: 6, option: 'Mid-Level', checked: false},
+  {id: 7, option: 'Senior-Level', checked: false},
+  {id: 8, option: 'Internship', checked: false},
+  {id: 10, option: 'Remote', checked: false},
+  {id: 11, option: 'Onsite', checked: false},
+  {id: 12, option: 'Checked', checked: false},
+]
+
 const Search = ({ search }) => {
   const [searchTerm, setSearch] = useState('');
-  const [employmentType, setEmploymentType] = useState(true);
+  const [filterList, setFilterList] = useState(filter);
+  const [selected, setSelected] = useState([]);
+
   const handleChange = event => {
+    event.preventDefault()
     setSearch(event.target.value);
-    search(searchTerm);
   }
+
   const handleSubmit = event => {
+    event.preventDefault()
     setSearch(event.target.value);
-    search(searchTerm);
+    search(searchTerm, filterList);
+    setSearch('');
   }
-  const handleCheckBoxChange = event => {
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-    setEmploymentType(name);
+
+  const handleCheckBoxChange = (event) => {
+    const selectedId = event.target.id;
+    const filterCopy = filterList.slice();
+    for (let item of filterCopy) {
+      if (item.id.toString() === selectedId) {
+        item.checked = !item.checked;
+      }
+    }
+    setFilterList(filterCopy);
   }
 
   return (
@@ -102,22 +128,22 @@ const Search = ({ search }) => {
       <br></br>
       <CheckContainer>
         <label htmlFor="full-time">
-          <input type="checkbox" id="full-time" name="full-time" value="full-time"  />
+          <input type="checkbox" id="1" name="full-time" value="full-time" onChange={handleCheckBoxChange} />
           Full-Time
         </label>
         <br></br>
         <label htmlFor="part-time">
-          <input type="checkbox" id="part-time" name="part-time" value="part-time" />
+          <input type="checkbox" id="2" name="part-time" value="part-time" onChange={handleCheckBoxChange} />
           Part-Time
         </label>
         <br></br>
         <label htmlFor="temp">
-          <input type="checkbox" id="temp" name="temp" value="temp" />
+          <input type="checkbox" id="3" name="temp" value="temp" onChange={handleCheckBoxChange} />
           Temporary
         </label>
         <br></br>
         <label htmlFor="intern">
-          <input type="checkbox" id="intern" name="intern" value="intern" />
+          <input type="checkbox" id="4" name="intern" value="intern" onChange={handleCheckBoxChange} />
           Internship
         </label>
       </CheckContainer>
@@ -126,45 +152,45 @@ const Search = ({ search }) => {
       <br></br>
       <CheckContainer>
         <label htmlFor="entry-level">
-          <input type="checkbox" id="entry-level" name="entry-level" value="entry-level" onClick={() => console.log(name)} />
+          <input type="checkbox" id="5" name="entry-level" value="entry-level" onChange={handleCheckBoxChange} />
           Entry-Level
         </label>
         <br></br>
         <label htmlFor="mid-level">
-          <input type="checkbox" id="mid-level" name="mid-level" value="mid-level" />
+          <input type="checkbox" id="6" name="mid-level" value="mid-level" onChange={handleCheckBoxChange} />
           Mid-Level
         </label>
         <br></br>
         <label htmlFor="senior">
-          <input type="checkbox" id="senior" name="senior" value="senior" />
+          <input type="checkbox" id="7" name="senior" value="senior" onChange={handleCheckBoxChange} />
           Senior-Level
         </label>
         <br></br>
         <label htmlFor="exec">
-          <input type="checkbox" id="exec" name="exec" value="exec" />
+          <input type="checkbox" id="8" name="exec" value="exec" onChange={handleCheckBoxChange} />
           Executive-Level
         </label>
       </CheckContainer>
       <br></br>
-      <FormHeaders>Salary</FormHeaders>
+      <FormHeaders>Salary Range</FormHeaders>
       <br></br>
-      <input type="range" min="1" max="100" className="slider" id="salary" />
+      <Slider />
       <br></br>
       <FormHeaders>Remote/Onsite</FormHeaders>
       <br></br>
       <CheckContainer>
         <label htmlFor="remote">
-          <input type="checkbox" id="remote" name="remote" value="remote" />
+          <input type="checkbox" id="10" name="remote" value="remote" onChange={handleCheckBoxChange} />
           Remote
         </label>
         <br></br>
         <label htmlFor="onsite">
-          <input type="checkbox" id="onsite" name="onsite" value="onsite" />
+          <input type="checkbox" id="11" name="onsite" value="onsite" onChange={handleCheckBoxChange} />
           Onsite
         </label>
         <br></br>
         <label htmlFor="mixed">
-          <input type="checkbox" id="mixed" name="mixed" value="mixed" />
+          <input type="checkbox" id="12" name="mixed" value="mixed" onChange={handleCheckBoxChange} />
           Mixed
         </label>
       </CheckContainer>

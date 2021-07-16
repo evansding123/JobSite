@@ -9,11 +9,19 @@ import { useAuth, logout } from '../src/contexts/AuthContext.js';
 const AccountCircle = styled(AccountCircleIcon)`
   color: white;
   margin-right: 3vh;
+  margin-left: 1vh;
+  transition: all .2s ease-in-out;
+
   &:hover ${AccountCircle} {
     color: #E9EB9E;
     border: none;
     cursor: pointer;
+    transform: scale(1.2);
   }
+`
+const MenuLink = styled(Link)`
+  text-decoration: none;
+  color: black;
 `
 
 function AccountIcon () {
@@ -35,12 +43,10 @@ function AccountIcon () {
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
-    console.log(event.currentTarget)
   };
 
   const handleClose = () => {
     setAnchorEl(null);
-    console.log('clicked')
   };
 
   return (
@@ -55,8 +61,10 @@ function AccountIcon () {
     onClose={handleClose}
   >
     <MenuItem onClick={handleClose}>Profile</MenuItem>
-    <MenuItem onClick={handleClose}>My account</MenuItem>
+    <MenuItem onClick={handleClose}> <MenuLink to="/calendar">Calendar</MenuLink></MenuItem>
+    <MenuItem onClick={handleClose}> <MenuLink to="/notes">Notes</MenuLink></MenuItem>
     <MenuItem onClick={handleLogout}> Logout</MenuItem>
+
   </Menu>
   </>
   )

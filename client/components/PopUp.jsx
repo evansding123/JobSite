@@ -13,6 +13,11 @@ import {
   createTheme,
 } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import format from 'date-fns/format';
+import parseISO from 'date-fns/parseISO';
+import {useAuth, currentUser} from '../src/contexts/AuthContext.js';
+
+
 
 const getModalStyle = () => {
   const top = 50;
@@ -72,12 +77,17 @@ const PopUp = (props) => {
   const [eventDate, addEvent] = useState(new Date());
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = useState(true);
+  const {login, currentUser} = useAuth();
+
   const [formInfo, setFormInfo] = useState({
-    email: 'laertes.ferreira@example.com', //change to auth email
+    email: currentUser.email, //change to auth email
     time: props.date.substring(0,16)
   });
 
+
   let dateString = '';
+
+
 
 
   if (props.date !== undefined) {
@@ -121,7 +131,7 @@ const PopUp = (props) => {
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <p>{dateString}</p>
+      <p>{format(parseISO(dateString), 'MMMM do, yyyy')}</p>
 
       <form onSubmit={handleSubmit}>
         <CssTextField className = {classes.bottom} onChange={handleChange} id="standard-basic" label="Add title" name = 'title'/>

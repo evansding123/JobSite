@@ -13,6 +13,7 @@ import LandingPage from './LandingPage.jsx';
 import Navbar from './Navbar.jsx';
 import ScrollToTop from './ScrollToTop.jsx';
 import EmployerPage from './EmployerPage.jsx';
+import NotesPage from './NotesPage.jsx';
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,6 +21,7 @@ import {
   Link
 } from "react-router-dom";
 import { theme } from '../src/constants';
+import PrivateRouter from './PrivateRouter.jsx';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -58,6 +60,9 @@ const App = (props) => {
             </Route>
             <Route path="/employers">
             <EmployerPage />
+            </Route>
+            <Route path="/notes">
+              <NotesPage />
             </Route>
           </Switch>
         </AuthProvider>
