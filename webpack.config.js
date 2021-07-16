@@ -4,7 +4,7 @@ const path = require('path');
 const config = {
   entry: './client/src/index.js',
   output: {
-  
+
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
   },
@@ -25,6 +25,10 @@ const config = {
             ],
           },
         },
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
