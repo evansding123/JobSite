@@ -23,7 +23,7 @@ var settings = {
   dots: true,
   infinite: false,
   speed: 500,
-  slidesToShow: 1,
+  slidesToShow: 4,
   slidesToScroll: 2,
   adaptiveHeight: true
 };
