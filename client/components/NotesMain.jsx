@@ -3,9 +3,13 @@ import styled from 'styled-components';
 import ReactDOM from 'react-dom';
 import MyEditor from './TextEditor.jsx';
 
+
+
+
 const MainComponent = styled.div`
-  display: flex;
-  height: 500px;
+  grid-row: 1 / 12;
+  grid-column: 5 / 13;
+  border: 1px solid white;
 `;
 export default function NotesMain(props) {
   return (
