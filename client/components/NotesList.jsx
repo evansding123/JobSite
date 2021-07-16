@@ -61,7 +61,7 @@ export default function NotesList({ notes, setCurrent }) {
   const notesList = fakeNotes.map((note, i) => (
     <ListItem
       key={i}
-      classes={classes.text}
+      className={classes.text}
     >
       <ListItemText>{note}</ListItemText>
     </ListItem>
