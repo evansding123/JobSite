@@ -74,6 +74,7 @@ export default function NotesList({ notes, setCurrent }) {
     <ListItem
       key={i}
       className={classes.text}
+      button
     >
       <ListItemText>{note}</ListItemText>
     </ListItem>
