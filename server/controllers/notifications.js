@@ -31,6 +31,18 @@ module.exports = {
     } catch (error) {
       res.status(404).send(error);
     }
+  },
+
+  getJobNotification: async (req, res) => {
+    try {
+      console.log(req.query);
+      const{email} = req.query;
+
+      const queryData = await models.notifications.getJobNotification(email);
+      res.status(200).send(queryData);
+    } catch (error) {
+      res.status(404).send(error);
+    }
   }
 
 };

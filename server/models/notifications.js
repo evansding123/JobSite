@@ -38,6 +38,24 @@ module.exports = {
       console.log(error);
       throw error;
     }
+  },
+
+
+  getJobNotification : async (email) => {
+
+    const query =
+      `SELECT
+      date, title, guests, start_time, end_time, location, notification
+      FROM notifications WHERE guests = '${email}';`
+
+      try {
+        const res = await pool.query(query);
+        return res;
+      } catch (error) {
+        console.log(error);
+        throw error;
+      }
+
   }
 };
 
