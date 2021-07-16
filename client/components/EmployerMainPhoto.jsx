@@ -47,7 +47,7 @@ export default function EmployerMainPhoto(props) {
         hiring a little easier.
         <br />
         Let's give it a try.
-        <Link to='/login' style={{ textDecoration: 'none' }}>
+        <Link to='/addjob' style={{ textDecoration: 'none' }}>
           <Button className={classes.button}  variant="outlined">
             POST JOBS FOR FREE
           </Button>
