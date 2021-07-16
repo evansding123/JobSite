@@ -21,11 +21,11 @@ import parseISO from 'date-fns/parseISO';
 
 var settings = {
   dots: true,
-  infinite: false,
+  infinite: true,
   speed: 500,
   slidesToShow: 4,
   slidesToScroll: 2,
-  adaptiveHeight: true
+  adaptiveHeight: false
 };
 
 const useStyles = makeStyles({
@@ -85,7 +85,7 @@ const ApptInfo = (props) => {
               </Typography>
             </CardContent>
             <CardContent>
-              <Typography color = 'textSecondary'className={classes.pos}>
+              <Typography className={classes.pos}>
                 {item.guests}
               </Typography>
             </CardContent>
