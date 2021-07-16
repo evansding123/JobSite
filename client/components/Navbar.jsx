@@ -95,6 +95,7 @@ const Navbar = () => {
       <NavLinkContainer>
         <NavLink to="/findjobs">Find Jobs</NavLink>
         <NavLink to="/addjob">Post Jobs</NavLink>
+        <NavLink to="/employers">Employers</NavLink>
         {/* TODO: Add notification and profile icons w links here */}
         {currentUser
           ? <>  <NotificationIcon /> <AccountIcon /> </>

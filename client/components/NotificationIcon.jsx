@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import Badge from '@material-ui/core/Badge';
 
 const NotificationI = styled(NotificationsIcon)`
   color: white;
-  margin-right: 1vh;
   transition: all .2s ease-in-out;
 
   &:hover ${NotificationI} {
@@ -16,9 +16,13 @@ const NotificationI = styled(NotificationsIcon)`
 `
 
 function NotificationIcon () {
+  const [ badgeVisibility, setBadgeVisibility ] = useState(false);
+  //
   return (
     <>
-      <NotificationI />
+    <Badge variant="dot" color="secondary" invisible={badgeVisibility} overlap="circular">
+      <NotificationI onClick={()=> {setBadgeVisibility(true)}}/>
+      </Badge>
     </>
   )
 }
