@@ -23,6 +23,10 @@ const List = styled.div`
 
 export default function NotesPage(props) {
 
+  const getAllNotes = () => {
+
+  }
+
   return (
     <Tester>
       <List>
