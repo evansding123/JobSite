@@ -12,7 +12,9 @@ const Image = Styled(ImageListItem)`
 const StyledDiv = Styled.div`
   padding-left: 10%;
   border-top: 6px solid;
-  border-color: #799469;
+  border-bottom: 6px solid;
+  border-top-color: #799469;
+  border-bottom-color: #E9EB9E;
   margin-top: 1%;
 `;
 
