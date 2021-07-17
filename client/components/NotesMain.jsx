@@ -54,7 +54,7 @@ export default function NotesMain({ current }) {
   return (
     <MainComponent>
       <Button onClick={addNewNote} className={classes.button} variant="outlined">Save Note</Button>
-      { current ? <div>Note</div> : (<Editor
+      { current ? <div>{current}</div> : (<Editor
       editorState={editorState}
       toolbarClassName="toolbarClassName"
       wrapperClassName="wrapperClassName"

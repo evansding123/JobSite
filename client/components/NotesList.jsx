@@ -8,6 +8,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
+import { useAuth }  from '../src/contexts/AuthContext.js';
 
 // const innerList = styled.div`
 //   display: grid;
@@ -51,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '16px',
     background: '#274358',
     overflow: 'hidden',
+    alignItems: 'start',
     '&:hover': {
       background: '#214e6b',
     }
@@ -68,6 +70,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function NotesList({ notes, setCurrent }) {
   const classes = useStyles();
+  const { currentUser } = useAuth();
   const fakeNotes = Array(10).fill('Take dog out')
   const notesList = notes.map(({ note }, i) => (
     <div key={i}>
