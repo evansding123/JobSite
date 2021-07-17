@@ -17,4 +17,21 @@ module.exports = {
       res.status(404).send(error);
     }
   },
+  getOneNote: async (req, res) => {
+    try {
+      const queryData = await models.notes.getOneNote(req.body);
+      res.status(200).send(queryData.rows);
+    } catch (error) {
+      res.status(404).send(error);
+    }
+  },
+  updateNote: async (updatedNote, id) => {
+    const query = `UPDATE notes SET note = $1 WHERE id = $2`;;
+    try {
+      const queryData = await models.notes.updateNote(req.body);
+      res.status(200).send(queryData.rows);
+    } catch (error) {
+      res.status(404).send(error);
+    }
+  },
 }

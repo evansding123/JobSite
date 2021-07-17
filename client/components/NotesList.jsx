@@ -47,12 +47,12 @@ const useStyles = makeStyles((theme) => ({
   },
   },
   text: {
-    // fontFamily: 'Helvetica',
     color: '#ffffff',
-    // margin: 12px;
-    // border: '0.5px solid #2e5275';
     padding: '16px',
     background: 'linear-gradient(to bottom right, #274358, #274354)',
+    '&:hover': {
+      background: '#214e6b',
+    }
   },
   button: {
     width: '100%',
@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function NotesList({ notes, setCurrent }) {
   const classes = useStyles();
-  const fakeNotes = Array(10).fill('"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo?')
+  const fakeNotes = Array(10).fill('Take dog out')
   const notesList = fakeNotes.map((note, i) => (
     <div key={i}>
     <ListItem
