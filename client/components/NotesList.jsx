@@ -39,7 +39,6 @@ const useStyles = makeStyles((theme) => ({
     color: 'linear-gradient(to bottom right, #274358, #274354)',
     margin: '12px',
     padding: '16px',
-    // backgroundColor: 'linear-gradient(to bottom right, #274358, #274354)',
     borderRadius: '4px',
   '&:hover': {
     position: 'relative',
@@ -50,7 +49,8 @@ const useStyles = makeStyles((theme) => ({
     height: '13vh',
     color: '#ffffff',
     padding: '16px',
-    background: 'linear-gradient(to bottom right, #274358, #274354)',
+    background: '#274358',
+    overflow: 'hidden',
     '&:hover': {
       background: '#214e6b',
     }
@@ -66,22 +66,23 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-
 export default function NotesList({ notes, setCurrent }) {
   const classes = useStyles();
   const fakeNotes = Array(10).fill('Take dog out')
-  const notesList = fakeNotes.map((note, i) => (
+  const notesList = notes.map(({ note }, i) => (
     <div key={i}>
     <ListItem
       className={classes.text}
       button
+      onClick={() => {setCurrent(note)}}
     >
       <ListItemText>{note}</ListItemText>
     </ListItem>
       <Divider />
     </div>
   ));
-  // <Paper className={classes.paper} elevation={5}><p>{note}</p></Paper>
+
+
   return (
     <Overflow>
       <Button className={classes.button} variant="outlined" onClick={() => {setCurrent(false)}}>
