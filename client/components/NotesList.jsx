@@ -47,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
   },
   },
   text: {
+    height: '13vh',
     color: '#ffffff',
     padding: '16px',
     background: 'linear-gradient(to bottom right, #274358, #274354)',
