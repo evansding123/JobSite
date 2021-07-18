@@ -10,11 +10,6 @@ import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import { useAuth }  from '../src/contexts/AuthContext.js';
 
-// const innerList = styled.div`
-//   display: grid;
-//   grid-template-columns: repeat(12, 1fr);
-// `;
-
 const Note = styled.div`
   font-family: Helvetica;
   color: #ffffff;
@@ -84,7 +79,7 @@ export default function NotesList({ notes, setCurrent }) {
 
   return (
     <div>
-      <Button className={classes.button} variant="outlined" onClick={() => {setCurrent(false)}}>
+      <Button className={classes.button} variant="outlined" onClick={() => {setCurrent('')}}>
         + New Note
       </Button>
       <List className={classes.list}>

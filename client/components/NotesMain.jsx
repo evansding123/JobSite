@@ -28,22 +28,21 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-export default function NotesMain({ current, getAllNotes }) {
+export default function NotesMain({ display, getAllNotes, current, setCurrent }) {
   const classes = useStyles();
-  const [newNote, setNewNote] = useState('');
 
   const updateNewNote = (event) => {
-    setNewNote(event.target.value);
+    setCurrent(event.target.value);
   }
 
   const addNewNote = async () => {
-    if (newNote !== '') {
+    if (current !== '') {
       try {
         //need to get the current logged in account_id to create a new note
         const created = new Date();
         let parts = created.toString().split(' ');
         const date = `${parts[1]} ${parts[2]} ${parts[3]} ${parts[4].slice(0, 5)}`
-        const response = await axios.post('/notes/addnote', [newNote, 1, date]);
+        const response = await axios.post('/notes/addnote', [current, 1, date]);
         getAllNotes();
       } catch (error) {
         throw error;
@@ -54,9 +53,9 @@ export default function NotesMain({ current, getAllNotes }) {
   return (
     <MainComponent>
       <Button onClick={addNewNote} className={classes.button} variant="outlined">Save Note</Button>
-       { current ?
+       { display ?
        (<TextareaAutosize value={current} className={classes.textInput}/> ) : (
-       <TextareaAutosize placeholder="New note..."
+       <TextareaAutosize value={current} placeholder="New note..."
         className={classes.textInput}
         onChange={updateNewNote}
        />

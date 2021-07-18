@@ -24,8 +24,9 @@ const List = styled.div`
 
 export default function NotesPage(props) {
   const [notes, setNotes] = useState([]);
-  const [current, setCurrent] = useState(false);
+  const [current, setCurrent] = useState('');
   const { currentUser } = useAuth();
+  const [display, setDisplay] = useState(false);
 
   const getAllNotes = async () => {
     try {
@@ -43,9 +44,9 @@ export default function NotesPage(props) {
   return (
     <Tester>
       <List>
-        <NotesList notes={notes} setCurrent={setCurrent} />
+        <NotesList notes={notes} setCurrent={setCurrent} setDisplay={setDisplay}/>
       </List>
-      <NotesMain current={current} getAllNotes={getAllNotes}/>
+      <NotesMain display={display} current={current} getAllNotes={getAllNotes} setCurrent={setCurrent}/>
     </Tester>
   )
 };
