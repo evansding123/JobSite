@@ -10,10 +10,10 @@ module.exports = {
       throw error;
     }
   },
-  getNotes: async () => {
+  getNotes: async ({ account_id }) => {
     const query = `SELECT * FROM notes WHERE accounts_id = $1`;;
     try {
-      const res = await pool.query(query);
+      const res = await pool.query(query, [account_id]);
       return res;
     } catch (error) {
       throw error;

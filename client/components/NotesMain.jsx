@@ -29,31 +29,9 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-export default function NotesMain({ display, getAllNotes, current, setCurrent }) {
+export default function NotesMain({ display, getAllNotes, current, setCurrent, accountId }) {
   const classes = useStyles();
-  const [accountId, setAccountId] = useState('');
   const { currentUser } = useAuth();
-
-  const createAccount = async () => {
-    try {
-      const userInfo = ['fake', 'name', currentUser.email, 0, 0, '',];
-      try {
-        const accountInfo = await axios.get(`/accounts/${currentUser.email}`);
-        setAccountId(accountInfo.data[0].id);
-        if (accountInfo.data.length === 0) {
-          try {
-            await axios.post(`/accounts/addaccount`, userInfo);
-          } catch(error) {
-            throw error;
-          }
-        }
-      } catch(error) {
-        throw error;
-      }
-    } catch(error) {
-      throw error;
-    }
-  }
 
   const updateNewNote = (event) => {
     let newNote = current;
@@ -93,9 +71,6 @@ export default function NotesMain({ display, getAllNotes, current, setCurrent })
     }
   }
 
-  useEffect(() => {
-    createAccount();
-  }, []);
 
   return (
     <MainComponent>

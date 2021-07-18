@@ -10,8 +10,10 @@ module.exports = {
     }
   },
   getNotes: async (req, res) => {
+    //console.log(req.params, 'asdfasdf');
     try {
-      const queryData = await models.notes.getNotes(req.body);
+      const queryData = await models.notes.getNotes(req.params);
+      console.log(queryData);
       res.status(200).send(queryData.rows);
     } catch (error) {
       res.status(404).send(error);

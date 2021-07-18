@@ -27,26 +27,53 @@ export default function NotesPage(props) {
   const [current, setCurrent] = useState({ note: ''});
   const { currentUser } = useAuth();
   const [display, setDisplay] = useState(false);
+  const [accountId, setAccountId] = useState('');
+
+  const createAccount = async () => {
+    try {
+      const userInfo = ['fake', 'name', currentUser.email, 0, 0, '',];
+      try {
+        const accountInfo = await axios.get(`/accounts/${currentUser.email}`);
+        setAccountId(accountInfo.data[0].id);
+        if (accountInfo.data.length === 0) {
+          try {
+            await axios.post(`/accounts/addaccount`, userInfo);
+          } catch(error) {
+            throw error;
+          }
+        }
+      } catch(error) {
+        throw error;
+      }
+    } catch(error) {
+      throw error;
+    }
+  }
 
   const getAllNotes = async () => {
     try {
-      const response = await axios.get('/notes/getnote');
-      setNotes(response.data);
+      const response = await axios.get(`/notes/getnotes/${accountId}`);
+      //setNotes(response.data);
+      console.log(response);
     } catch (error) {
       throw error;
     }
   }
 
   useEffect(() => {
+    createAccount();
+  }, []);
+
+  useEffect(() => {
     getAllNotes();
-  }, [])
+  }, [accountId])
 
   return (
     <Tester>
       <List>
         <NotesList notes={notes} setCurrent={setCurrent} setDisplay={setDisplay} getAllNotes={getAllNotes}/>
       </List>
-      <NotesMain display={display} current={current} getAllNotes={getAllNotes} setCurrent={setCurrent}/>
+      <NotesMain display={display} current={current} getAllNotes={getAllNotes} setCurrent={setCurrent} accountId={accountId}/>
     </Tester>
   )
 };
