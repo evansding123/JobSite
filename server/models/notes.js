@@ -7,7 +7,6 @@ module.exports = {
       const res = await pool.query(query, values);
       return res;
     } catch (error) {
-      console.log(error);
       throw error;
     }
   },
