@@ -8,6 +8,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
+import DeleteIcon from '@material-ui/icons/Delete';
 import { useAuth }  from '../src/contexts/AuthContext.js';
 
 const Note = styled.div`
@@ -31,6 +32,13 @@ const NoteDate = styled.div`
   padding-top: 3%;
 `;
 
+const ListInfo = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #274358;
+`;
+
 const useStyles = makeStyles((theme) => ({
   text: {
     height: '13vh',
@@ -51,6 +59,13 @@ const useStyles = makeStyles((theme) => ({
   },
   list: {
     padding: '0',
+  },
+  delete: {
+    width: '5vw',
+    color: 'white',
+    '&:hover': {
+      color: '#214e6b',
+    }
   }
 }));
 
@@ -58,28 +73,34 @@ export default function NotesList({ notes, setCurrent }) {
   const classes = useStyles();
   const { currentUser } = useAuth();
 
-  const getNotesList = () => {
+  const deleteNote = () => {
+    console.log('hellloooo');
+  }
 
+  const getNotesList = () => {
     const sorted = notes.sort((first, second) => {
       return new Date(second.date) - new Date(first.date);
     });
 
     const notesList = sorted.map((note, i) => (
       <div key={i}>
-      <ListItem
-        className={classes.text}
-        button
-        onClick={() => {setCurrent(note)}}
-      >
-        <ListItemText>
-          <NoteText>
-            {note.note}
-          </NoteText>
-          <NoteDate>
-            {note.date}
-          </NoteDate>
-        </ListItemText>
-      </ListItem>
+        <ListInfo>
+          <ListItem
+            className={classes.text}
+            button
+            onClick={() => {setCurrent(note)}}
+          >
+            <ListItemText>
+              <NoteText>
+                {note.note}
+              </NoteText>
+              <NoteDate>
+                {note.date}
+              </NoteDate>
+            </ListItemText>
+          </ListItem>
+          <DeleteIcon onClick={deleteNote} className={classes.delete}/>
+        </ListInfo>
         <Divider />
       </div>
     ));
