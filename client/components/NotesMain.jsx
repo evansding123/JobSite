@@ -52,9 +52,7 @@ export default function NotesMain({ current, getAllNotes }) {
     <MainComponent>
       <Button onClick={addNewNote} className={classes.button} variant="outlined">Save Note</Button>
        { current ?
-       (<div>
-         {current}
-       </div>) : (
+       (<TextareaAutosize value={current} className={classes.textInput}/> ) : (
        <TextareaAutosize placeholder="New note..."
         className={classes.textInput}
         onChange={updateNewNote}
