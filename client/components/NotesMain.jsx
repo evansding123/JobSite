@@ -43,7 +43,6 @@ export default function NotesMain({ current, getAllNotes }) {
         const created = new Date();
         let parts = created.toString().split(' ');
         const date = `${parts[1]} ${parts[2]} ${parts[3]} ${parts[4].slice(0, 5)}`
-        console.log(date);
         const response = await axios.post('/notes/addnote', [newNote, 1, date]);
         getAllNotes();
       } catch (error) {

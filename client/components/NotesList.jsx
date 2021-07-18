@@ -27,23 +27,16 @@ const Note = styled.div`
 const fontWrap = styled.div`
   font-family: Helvetica;
 `
+const NoteText = styled.div`
+  overflow: hidden;
+  height: 3vh;
+`;
 
-//#274358 //40
-const Overflow = styled.div`
+const NoteDate = styled.div`
+  padding-top: 3%;
 `;
 
 const useStyles = makeStyles((theme) => ({
-  paper: {
-    fontFamily: 'Helvetica',
-    color: 'linear-gradient(to bottom right, #274358, #274354)',
-    margin: '12px',
-    padding: '16px',
-    borderRadius: '4px',
-  '&:hover': {
-    position: 'relative',
-    top: '-1px',
-  },
-  },
   text: {
     height: '13vh',
     color: '#ffffff',
@@ -62,14 +55,14 @@ const useStyles = makeStyles((theme) => ({
     outline: 'white',
   },
   list: {
-    padding: '0'
+    padding: '0',
   }
 }));
 
 export default function NotesList({ notes, setCurrent }) {
   const classes = useStyles();
   const { currentUser } = useAuth();
-  const notesList = notes.map(({ note }, i) => (
+  const notesList = notes.map(({ note, date }, i) => (
     <div key={i}>
     <ListItem
       className={classes.text}
@@ -77,26 +70,26 @@ export default function NotesList({ notes, setCurrent }) {
       onClick={() => {setCurrent(note)}}
     >
       <ListItemText>
-        {note}
+        <NoteText>
+          {note}
+        </NoteText>
+        <NoteDate>
+          {date}
+        </NoteDate>
       </ListItemText>
     </ListItem>
       <Divider />
     </div>
   ));
 
-  useEffect(() => {
-
-  }, [notes])
-
-
   return (
-    <Overflow>
+    <div>
       <Button className={classes.button} variant="outlined" onClick={() => {setCurrent(false)}}>
         + New Note
       </Button>
       <List className={classes.list}>
         {notesList}
       </List>
-    </Overflow>
+    </div>
   )
 };
