@@ -57,25 +57,34 @@ const useStyles = makeStyles((theme) => ({
 export default function NotesList({ notes, setCurrent }) {
   const classes = useStyles();
   const { currentUser } = useAuth();
-  const notesList = notes.map((note, i) => (
-    <div key={i}>
-    <ListItem
-      className={classes.text}
-      button
-      onClick={() => {setCurrent(note)}}
-    >
-      <ListItemText>
-        <NoteText>
-          {note.note}
-        </NoteText>
-        <NoteDate>
-          {note.date}
-        </NoteDate>
-      </ListItemText>
-    </ListItem>
-      <Divider />
-    </div>
-  ));
+
+  const getNotesList = () => {
+
+    const sorted = notes.sort((first, second) => {
+      return new Date(second.date) - new Date(first.date);
+    });
+
+    const notesList = sorted.map((note, i) => (
+      <div key={i}>
+      <ListItem
+        className={classes.text}
+        button
+        onClick={() => {setCurrent(note)}}
+      >
+        <ListItemText>
+          <NoteText>
+            {note.note}
+          </NoteText>
+          <NoteDate>
+            {note.date}
+          </NoteDate>
+        </ListItemText>
+      </ListItem>
+        <Divider />
+      </div>
+    ));
+    return notesList;
+  }
 
   return (
     <div>
@@ -83,7 +92,7 @@ export default function NotesList({ notes, setCurrent }) {
         + New Note
       </Button>
       <List className={classes.list}>
-        {notesList}
+        {getNotesList()}
       </List>
     </div>
   )

@@ -44,25 +44,22 @@ export default function NotesMain({ display, getAllNotes, current, setCurrent })
     if (current !== '') {
       try {
         const exists = await axios.get(`/notes/getnote/${current.id}/${current.accounts_id}`);
-        console.log(exists)
+        const created = new Date();
+        let parts = created.toString().split(' ');
+        var date = `${parts[1]} ${parts[2]} ${parts[3]} ${parts[4].slice(0, 5)}`;
+
         if (exists.data.length === 0) {
           try {
             //need to get the current logged in account_id to create a new note
-            const created = new Date();
-            let parts = created.toString().split(' ');
-            const date = `${parts[1]} ${parts[2]} ${parts[3]} ${parts[4].slice(0, 5)}`
             const response = await axios.post('/notes/addnote', [current.note, 1, date]);
-            console.log('hi', response);
             getAllNotes();
           } catch (error) {
             throw error;
           }
         } else {
           try {
-            const response = await axios.put('/notes', [current.note, current.id, 1]);
+            const response = await axios.put('/notes', [current.note, date, current.id, 1]);
             getAllNotes();
-            console.log('hihi', response);
-
           } catch(error) {
             throw error;
           }

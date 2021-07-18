@@ -29,12 +29,11 @@ module.exports = {
     }
   },
   updateNote: async (value = []) => {
-    const query = `UPDATE notes SET note = $1 WHERE id = $2 AND accounts_id = $3`;;
+    const query = `UPDATE notes SET note = $1, date = $2 WHERE id = $3 AND accounts_id = $4`;;
     try {
       const res = await pool.query(query, value);
       return res;
     } catch (error) {
-      console.log(error);
       throw error;
     }
   },
