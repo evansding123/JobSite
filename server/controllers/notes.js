@@ -25,8 +25,7 @@ module.exports = {
       res.status(404).send(error);
     }
   },
-  updateNote: async (updatedNote, id) => {
-    const query = `UPDATE notes SET note = $1 WHERE id = $2`;;
+  updateNote: async (req, res) => {
     try {
       const queryData = await models.notes.updateNote(req.body);
       res.status(200).send(queryData.rows);
