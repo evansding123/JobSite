@@ -55,7 +55,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function NotesList({ notes, setCurrent }) {
-  console.log(notes);
   const classes = useStyles();
   const { currentUser } = useAuth();
   const notesList = notes.map((note, i) => (

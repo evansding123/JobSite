@@ -19,10 +19,10 @@ module.exports = {
       throw error;
     }
   },
-  getOneNote: async (id) => {
-    const query = `SELECT * FROM notes WHERE id = $1`;
+  getOneNote: async ({ id, account_id }) => {
+    const query = `SELECT * FROM notes WHERE id = $1 AND accounts_id = $2`;
     try {
-      const res = await pool.query(query, [id]);
+      const res = await pool.query(query, [id, account_id]);
       return res;
     } catch (error) {
       throw error;

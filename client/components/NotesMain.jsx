@@ -43,8 +43,8 @@ export default function NotesMain({ display, getAllNotes, current, setCurrent })
   const addNewNote = async () => {
     if (current !== '') {
       try {
-        const exists = await axios.get(`/notes/getnote/${current.id}`);
-        if (exists) {
+        const exists = await axios.get(`/notes/getnote/${current.id}/${current.accounts_id}`);
+        if (exists.row.length === 0) {
           try {
             //need to get the current logged in account_id to create a new note
             const created = new Date();
@@ -53,6 +53,13 @@ export default function NotesMain({ display, getAllNotes, current, setCurrent })
             const response = await axios.post('/notes/addnote', [current.note, 1, date]);
             getAllNotes();
           } catch (error) {
+            throw error;
+          }
+        } else {
+          try {
+            await axios.put('/notes', [current.note, 1]);
+            getAllNotes();
+          } catch {
             throw error;
           }
         }
