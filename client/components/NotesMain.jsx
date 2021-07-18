@@ -45,10 +45,20 @@ export default function NotesMain({ display, getAllNotes, current, setCurrent, a
   const addNewNote = async () => {
     if (current !== '') {
       try {
-        const exists = await axios.get(`/notes/getnote/${current.id}/${current.accounts_id}`);
         const created = new Date();
         let parts = created.toString().split(' ');
         var date = `${parts[1]} ${parts[2]} ${parts[3]} ${parts[4].slice(0, 5)}`;
+
+        if (current.id === undefined) {
+          try {
+            const response = await axios.post('/notes/addnote', [current.note, accountId, date]);
+            getAllNotes();
+          } catch (error) {
+            throw error;
+          }
+          return;
+        }
+        const exists = await axios.get(`/notes/getnote/${current.id}/${accountId}`);
 
         if (exists.data.length === 0) {
           try {
