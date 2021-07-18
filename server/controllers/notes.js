@@ -19,7 +19,8 @@ module.exports = {
   },
   getOneNote: async (req, res) => {
     try {
-      const queryData = await models.notes.getOneNote(req.body);
+      const queryData = await models.notes.getOneNote(req.params);
+      console.log(req.params);
       res.status(200).send(queryData.rows);
     } catch (error) {
       res.status(404).send(error);

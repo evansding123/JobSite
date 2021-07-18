@@ -24,7 +24,7 @@ const List = styled.div`
 
 export default function NotesPage(props) {
   const [notes, setNotes] = useState([]);
-  const [current, setCurrent] = useState('');
+  const [current, setCurrent] = useState({ note: ''});
   const { currentUser } = useAuth();
   const [display, setDisplay] = useState(false);
 

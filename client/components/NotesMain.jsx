@@ -32,19 +32,31 @@ export default function NotesMain({ display, getAllNotes, current, setCurrent })
   const classes = useStyles();
 
   const updateNewNote = (event) => {
-    setCurrent(event.target.value);
+    setCurrent((prev) => {
+      console.log(prev);
+      return {
+        note: event.target.value
+      };
+    });
   }
 
   const addNewNote = async () => {
     if (current !== '') {
       try {
-        //need to get the current logged in account_id to create a new note
-        const created = new Date();
-        let parts = created.toString().split(' ');
-        const date = `${parts[1]} ${parts[2]} ${parts[3]} ${parts[4].slice(0, 5)}`
-        const response = await axios.post('/notes/addnote', [current, 1, date]);
-        getAllNotes();
-      } catch (error) {
+        const exists = await axios.get(`/notes/getnote/${current.id}`);
+        if (exists) {
+          try {
+            //need to get the current logged in account_id to create a new note
+            const created = new Date();
+            let parts = created.toString().split(' ');
+            const date = `${parts[1]} ${parts[2]} ${parts[3]} ${parts[4].slice(0, 5)}`
+            const response = await axios.post('/notes/addnote', [current.note, 1, date]);
+            getAllNotes();
+          } catch (error) {
+            throw error;
+          }
+        }
+      } catch(error) {
         throw error;
       }
     }
@@ -54,8 +66,8 @@ export default function NotesMain({ display, getAllNotes, current, setCurrent })
     <MainComponent>
       <Button onClick={addNewNote} className={classes.button} variant="outlined">Save Note</Button>
        { display ?
-       (<TextareaAutosize value={current} className={classes.textInput}/> ) : (
-       <TextareaAutosize value={current} placeholder="New note..."
+       (<TextareaAutosize value={current.note} className={classes.textInput} onChange={updateNewNote}/> ) : (
+       <TextareaAutosize value={current.note} placeholder="New note..."
         className={classes.textInput}
         onChange={updateNewNote}
        />

@@ -55,9 +55,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function NotesList({ notes, setCurrent }) {
+  console.log(notes);
   const classes = useStyles();
   const { currentUser } = useAuth();
-  const notesList = notes.map(({ note, date }, i) => (
+  const notesList = notes.map((note, i) => (
     <div key={i}>
     <ListItem
       className={classes.text}
@@ -66,10 +67,10 @@ export default function NotesList({ notes, setCurrent }) {
     >
       <ListItemText>
         <NoteText>
-          {note}
+          {note.note}
         </NoteText>
         <NoteDate>
-          {date}
+          {note.date}
         </NoteDate>
       </ListItemText>
     </ListItem>
