@@ -28,7 +28,6 @@ export default function NotesPage(props) {
   const { currentUser } = useAuth();
 
   const getAllNotes = async () => {
-    console.log('running')
     try {
       const response = await axios.get('/notes/getnote');
       setNotes(response.data);
@@ -36,6 +35,10 @@ export default function NotesPage(props) {
       throw error;
     }
   }
+
+  useEffect(() => {
+    getAllNotes();
+  }, [])
 
   return (
     <Tester>

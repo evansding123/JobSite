@@ -9,10 +9,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import { useAuth }  from '../src/contexts/AuthContext.js';
-import { EditorState } from "draft-js";
-import "draft-js/dist/Draft.css";
-import { Editor } from "react-draft-wysiwyg";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 // const innerList = styled.div`
 //   display: grid;
@@ -22,11 +18,9 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 const Note = styled.div`
   font-family: Helvetica;
   color: #ffffff;
-  // margin: 12px;
   border: 0.5px solid #2e5275;
   padding: 16px;
   background: linear-gradient(to bottom right, #274358, #274354);
-  //border-radius: 4px;
   box-shadow: 1px;
 `;
 
