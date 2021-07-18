@@ -11,7 +11,7 @@ module.exports = {
     }
   },
   getNotes: async () => {
-    const query = `SELECT * FROM notes LIMIT 10`;;
+    const query = `SELECT * FROM notes WHERE accounts_id = $1`;;
     try {
       const res = await pool.query(query);
       return res;

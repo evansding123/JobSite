@@ -9,7 +9,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { useAuth }  from '../src/contexts/AuthContext.js';
 
 const Note = styled.div`
   font-family: Helvetica;
@@ -64,14 +63,21 @@ const useStyles = makeStyles((theme) => ({
     width: '5vw',
     color: 'white',
     '&:hover': {
-      color: '#214e6b',
+      color: 'lightgray',
     }
   }
 }));
 
 export default function NotesList({ notes, setCurrent, getAllNotes }) {
   const classes = useStyles();
-  const { currentUser } = useAuth();
+
+  const createAccount = async () => {
+    try {
+      await axios.post(`/accounts/addaccount`, );
+    } catch(error) {
+
+    }
+  }
 
   const deleteNote = async ({ id, accounts_id }) => {
     try {

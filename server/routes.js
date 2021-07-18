@@ -3,6 +3,7 @@ const router = require('express').Router();
 
 router.post('/jobs/addjob', controllers.jobs.postJob);
 router.post('/accounts/addaccount', controllers.accounts.postAccount);
+router.get('/accounts/:email', controllers.accounts.getAccountId);
 router.post('/notes/addnote', controllers.notes.postNote);
 router.get('/notes/getnote/:id/:account_id', controllers.notes.getOneNote);
 router.get('/notes/getnote', controllers.notes.getNotes);

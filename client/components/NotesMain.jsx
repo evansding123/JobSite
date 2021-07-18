@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import { useAuth } from '../src/contexts/AuthContext.js';
 
 const MainComponent = styled.div`
   grid-row: 1 / 12;
@@ -30,6 +31,29 @@ const useStyles = makeStyles(() => ({
 
 export default function NotesMain({ display, getAllNotes, current, setCurrent }) {
   const classes = useStyles();
+  const [accountId, setAccountId] = useState('');
+  const { currentUser } = useAuth();
+
+  const createAccount = async () => {
+    try {
+      const userInfo = ['fake', 'name', currentUser.email, 0, 0, '',];
+      try {
+        const accountInfo = await axios.get(`/accounts/${currentUser.email}`);
+        setAccountId(accountInfo.data[0].id);
+        if (accountInfo.data.length === 0) {
+          try {
+            await axios.post(`/accounts/addaccount`, userInfo);
+          } catch(error) {
+            throw error;
+          }
+        }
+      } catch(error) {
+        throw error;
+      }
+    } catch(error) {
+      throw error;
+    }
+  }
 
   const updateNewNote = (event) => {
     let newNote = current;
@@ -50,15 +74,14 @@ export default function NotesMain({ display, getAllNotes, current, setCurrent })
 
         if (exists.data.length === 0) {
           try {
-            //need to get the current logged in account_id to create a new note
-            const response = await axios.post('/notes/addnote', [current.note, 1, date]);
+            const response = await axios.post('/notes/addnote', [current.note, accountId, date]);
             getAllNotes();
           } catch (error) {
             throw error;
           }
         } else {
           try {
-            const response = await axios.put('/notes', [current.note, date, current.id, 1]);
+            const response = await axios.put('/notes', [current.note, date, current.id, accountId]);
             getAllNotes();
           } catch(error) {
             throw error;
@@ -69,6 +92,10 @@ export default function NotesMain({ display, getAllNotes, current, setCurrent })
       }
     }
   }
+
+  useEffect(() => {
+    createAccount();
+  }, []);
 
   return (
     <MainComponent>
