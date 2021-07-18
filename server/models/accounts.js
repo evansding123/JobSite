@@ -7,7 +7,15 @@ module.exports = {
       const res = await pool.query(query, values);
       return res;
     } catch (error) {
-      console.log(error);
+      throw error;
+    }
+  },
+  getAccountId: async ({ email }) => {
+    const query = `SELECT id FROM accounts WHERE email = $1`;
+    try {
+      const res = await pool.query(query, [email]);
+      return res;
+    } catch (error) {
       throw error;
     }
   },
