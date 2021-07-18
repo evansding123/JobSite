@@ -88,7 +88,7 @@ export default function NotesList({ notes, setCurrent }) {
 
   return (
     <div>
-      <Button className={classes.button} variant="outlined" onClick={() => {setCurrent('')}}>
+      <Button className={classes.button} variant="outlined" onClick={() => {setCurrent({note: ''})}}>
         + New Note
       </Button>
       <List className={classes.list}>
