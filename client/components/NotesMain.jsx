@@ -40,7 +40,11 @@ export default function NotesMain({ current, getAllNotes }) {
     if (newNote !== '') {
       try {
         //need to get the current logged in account_id to create a new note
-        const response = await axios.post('/notes/addnote', [newNote, 1]);
+        const created = new Date();
+        let parts = created.toString().split(' ');
+        const date = `${parts[1]} ${parts[2]} ${parts[3]} ${parts[4].slice(0, 5)}`
+        console.log(date);
+        const response = await axios.post('/notes/addnote', [newNote, 1, date]);
         getAllNotes();
       } catch (error) {
         throw error;
