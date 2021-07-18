@@ -10,19 +10,19 @@ module.exports = {
       throw error;
     }
   },
-  getNotes: async ({ account_id }) => {
-    const query = `SELECT * FROM notes WHERE accounts_id = $1`;;
+  getNotes: async ({ accounts_id }) => {
+    const query = `SELECT * FROM notes WHERE accounts_id = $1`;
     try {
-      const res = await pool.query(query, [account_id]);
+      const res = await pool.query(query, [accounts_id]);
       return res;
     } catch (error) {
       throw error;
     }
   },
-  getOneNote: async ({ id, account_id }) => {
+  getOneNote: async ({ id, accounts_id }) => {
     const query = `SELECT * FROM notes WHERE id = $1 AND accounts_id = $2`;
     try {
-      const res = await pool.query(query, [id, account_id]);
+      const res = await pool.query(query, [id, accounts_id]);
       return res;
     } catch (error) {
       throw error;

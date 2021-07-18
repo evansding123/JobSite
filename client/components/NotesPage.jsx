@@ -51,10 +51,12 @@ export default function NotesPage(props) {
   }
 
   const getAllNotes = async () => {
+    if (accountId === '') {
+      return;
+    }
     try {
       const response = await axios.get(`/notes/getnotes/${accountId}`);
-      //setNotes(response.data);
-      console.log(response);
+      setNotes(response.data);
     } catch (error) {
       throw error;
     }

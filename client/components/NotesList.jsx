@@ -71,13 +71,6 @@ const useStyles = makeStyles((theme) => ({
 export default function NotesList({ notes, setCurrent, getAllNotes }) {
   const classes = useStyles();
 
-  const createAccount = async () => {
-    try {
-      await axios.post(`/accounts/addaccount`, );
-    } catch(error) {
-
-    }
-  }
 
   const deleteNote = async ({ id, accounts_id }) => {
     try {
