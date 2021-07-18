@@ -77,9 +77,6 @@ const Site = styled.div`
   align-self: flex-end;
 `;
 
-
-
-
 const Navbar = () => {
   const { currentUser } = useAuth();
   const history = useHistory();

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
@@ -8,7 +8,7 @@ import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 const MainComponent = styled.div`
   grid-row: 1 / 12;
@@ -21,32 +21,26 @@ const useStyles = makeStyles(() => ({
   button: {
     width: '100%',
   },
+  textInput: {
+    width: '100%',
+    height: '100%',
+  }
 }));
 
-export default function NotesMain({ current }) {
+export default function NotesMain({ current, getAllNotes }) {
   const classes = useStyles();
-  const [editorState, setEditorState] = React.useState(() =>
-  EditorState.createEmpty()
-  );
+  const [newNote, setNewNote] = useState('');
 
-  const editor = React.useRef(null);
-  function focusEditor() {
-    editor.current.focus();
+  const updateNewNote = (event) => {
+    setNewNote(event.target.value);
   }
 
   const addNewNote = async () => {
     try {
-      const exists = await axios.get('/notes/getnote/:id');
-      console.log(exists.data);
-      if (exists) {
-        try {
-          //need to get the current logged in account_id to create a new note
-          const response = await axios.post('/notes/addnote', [editorState, 1]);
-        }catch (error) {
-          throw error;
-        }
-      }
-    } catch(error) {
+      //need to get the current logged in account_id to create a new note
+      const response = await axios.post('/notes/addnote', [newNote, 1]);
+      getAllNotes();
+    } catch (error) {
       throw error;
     }
   }
@@ -54,14 +48,15 @@ export default function NotesMain({ current }) {
   return (
     <MainComponent>
       <Button onClick={addNewNote} className={classes.button} variant="outlined">Save Note</Button>
-      { current ? <div>{current}</div> : (<Editor
-      editorState={editorState}
-      toolbarClassName="toolbarClassName"
-      wrapperClassName="wrapperClassName"
-      editorClassName="editorClassName"
-      onEditorStateChange={setEditorState}
-      />)}
-
+       { current ?
+       (<div>
+         {current}
+       </div>) : (
+       <TextareaAutosize placeholder="New note..."
+        className={classes.textInput}
+        onChange={updateNewNote}
+       />
+       )}
     </MainComponent>
   )
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useStatem, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import Paper from '@material-ui/core/Paper';
@@ -9,6 +9,10 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import { useAuth }  from '../src/contexts/AuthContext.js';
+import { EditorState } from "draft-js";
+import "draft-js/dist/Draft.css";
+import { Editor } from "react-draft-wysiwyg";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 // const innerList = styled.div`
 //   display: grid;
@@ -71,7 +75,6 @@ const useStyles = makeStyles((theme) => ({
 export default function NotesList({ notes, setCurrent }) {
   const classes = useStyles();
   const { currentUser } = useAuth();
-  const fakeNotes = Array(10).fill('Take dog out')
   const notesList = notes.map(({ note }, i) => (
     <div key={i}>
     <ListItem
@@ -79,11 +82,17 @@ export default function NotesList({ notes, setCurrent }) {
       button
       onClick={() => {setCurrent(note)}}
     >
-      <ListItemText>{note}</ListItemText>
+      <ListItemText>
+        {note}
+      </ListItemText>
     </ListItem>
       <Divider />
     </div>
   ));
+
+  useEffect(() => {
+
+  }, [notes])
 
 
   return (

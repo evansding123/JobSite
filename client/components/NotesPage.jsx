@@ -3,6 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import NotesMain from './NotesMain.jsx';
 import NotesList from './NotesList.jsx';
+import { useAuth } from '../src/contexts/AuthContext.js';
 
 const Tester = styled.div`
   display: grid;
@@ -24,27 +25,24 @@ const List = styled.div`
 export default function NotesPage(props) {
   const [notes, setNotes] = useState([]);
   const [current, setCurrent] = useState(false);
+  const { currentUser } = useAuth();
 
   const getAllNotes = async () => {
+    console.log('running')
     try {
       const response = await axios.get('/notes/getnote');
       setNotes(response.data);
-      console.log(response.data);
     } catch (error) {
       throw error;
     }
   }
 
-  useEffect(() => {
-    getAllNotes();
-  }, [])
-
   return (
     <Tester>
       <List>
-        <NotesList notes={notes} setCurrent={setCurrent}/>
+        <NotesList notes={notes} setCurrent={setCurrent} />
       </List>
-      <NotesMain current={current}/>
+      <NotesMain current={current} getAllNotes={getAllNotes}/>
     </Tester>
   )
 };
