@@ -32,11 +32,11 @@ export default function NotesMain({ display, getAllNotes, current, setCurrent })
   const classes = useStyles();
 
   const updateNewNote = (event) => {
-    setCurrent((prev) => {
-      console.log(prev);
-      return {
-        note: event.target.value
-      };
+    let newNote = current;
+    newNote['note'] = event.target.value;
+    setCurrent({
+      ...current,
+      ...newNote
     });
   }
 
