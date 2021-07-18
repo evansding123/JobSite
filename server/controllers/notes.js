@@ -33,4 +33,12 @@ module.exports = {
       res.status(404).send(error);
     }
   },
+  deleteNote: async (req, res) => {
+    try {
+      const queryData = await models.notes.deleteNote(req.body);
+      res.status(200).send(queryData.rows);
+    } catch (error) {
+      res.status(404).send(error);
+    }
+  },
 }

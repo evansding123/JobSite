@@ -37,4 +37,13 @@ module.exports = {
       throw error;
     }
   },
+  deleteNote: async (value = []) => {
+    const query = `DELETE FROM notes WHERE id = $1 AND accounts_id = $2`;;
+    try {
+      const res = await pool.query(query, value);
+      return res;
+    } catch (error) {
+      throw error;
+    }
+  },
 };
