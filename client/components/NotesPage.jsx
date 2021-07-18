@@ -44,7 +44,7 @@ export default function NotesPage(props) {
   return (
     <Tester>
       <List>
-        <NotesList notes={notes} setCurrent={setCurrent} setDisplay={setDisplay}/>
+        <NotesList notes={notes} setCurrent={setCurrent} setDisplay={setDisplay} getAllNotes={getAllNotes}/>
       </List>
       <NotesMain display={display} current={current} getAllNotes={getAllNotes} setCurrent={setCurrent}/>
     </Tester>

@@ -69,12 +69,17 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function NotesList({ notes, setCurrent }) {
+export default function NotesList({ notes, setCurrent, getAllNotes }) {
   const classes = useStyles();
   const { currentUser } = useAuth();
 
-  const deleteNote = () => {
-    console.log('hellloooo');
+  const deleteNote = async ({ id, accounts_id }) => {
+    try {
+      await axios.delete(`/notes/${id}/${accounts_id}`);
+      getAllNotes();
+    } catch (error) {
+      throw error;
+    }
   }
 
   const getNotesList = () => {
@@ -99,7 +104,7 @@ export default function NotesList({ notes, setCurrent }) {
               </NoteDate>
             </ListItemText>
           </ListItem>
-          <DeleteIcon onClick={deleteNote} className={classes.delete}/>
+          <DeleteIcon onClick={() => {deleteNote(note)}} className={classes.delete}/>
         </ListInfo>
         <Divider />
       </div>

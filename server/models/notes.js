@@ -37,10 +37,10 @@ module.exports = {
       throw error;
     }
   },
-  deleteNote: async (value = []) => {
-    const query = `DELETE FROM notes WHERE id = $1 AND accounts_id = $2`;;
+  deleteNote: async ({ id, accounts_id }) => {
+    const query = `DELETE FROM notes WHERE id = $1 AND accounts_id = $2`;
     try {
-      const res = await pool.query(query, value);
+      const res = await pool.query(query, [id, accounts_id]);
       return res;
     } catch (error) {
       throw error;
