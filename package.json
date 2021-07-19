@@ -9,7 +9,8 @@
     "watch": "webpack --config ./webpack.config.js -w",
     "seed:schema": "psql < ./db/schema.sql",
     "db": "psql job_site",
-    "generateData": "nodemon ./generateData/index.js"
+    "generateData": "nodemon ./generateData/index.js",
+    "build": "webpack --config ./webpack.config.js"
   },
   "repository": {
     "type": "git",
