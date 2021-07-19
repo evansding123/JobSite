@@ -1,41 +1,59 @@
 # JobSite
+
+# Index
+<ol>
+    <li><a href="#Summary">Summary</a></li>
+    <li><a href="#Prerequisites">Prerequisites</a></li>
+    <li><a href="#Usage">Usage</a></li>
+    <li><a href="#Module-Description">Module Description</a></li>
+    <li><a href="#Tests">Tests</a></li>
+    <li><a href="#Author">Author</a></li>
+    <li><a href="#Acknowledgements">Acknowledgements</a></li>
+</ol>
+
+## Summary
+
+## Prerequisites
+```sh
+Node v14.16.0
+npm 7.16.0
+PostgreSQL 13
+```
+## Usage
 1. Run `npm install` to get all dependencies
 
 2. Access postgres
-  a. for ubuntu users, use the following command: `sudo -i -u postgres`
-  b.
+  a. For ubuntu users, use the following command: `sudo -i -u postgres`
 
-3. create a config.js file (or .env file) with the following layout:
-
-  module.exports = {
-    poolKey: {
-      $ PGUSER=dbuser \
-      PGHOST=database.server.com \
-      PGPASSWORD=secretpassword \
-      PGDATABASE=mydb \
-      PGPORT=3211 \
-      node script.js
-    }
-  }
+3. Create a config.js file in the root directory with the following layout:
+```sh
+module.exports = {
+  host: 'localhost',
+  user: 'root',
+  database: 'job_site',
+  password: '',
+  port: '5432',
+}
+```
 
 4. To find the host name and port run the following command in psql:
-
+```sh
   SELECT *
   FROM pg_settings
   WHERE name = 'port';
-
+```
 tip: the default port is 5432.
 
 5. To genarate data for the db:
-  a. send a get request to this address, and insert the number of users you want to have:
+  a. Send a get request to this address, and insert the number of users you want to have:
   (data will be pulled from this object and used in the account table)
   `https://randomuser.me/api/?results=INSERT_NUMBER_HERE`
 
-  b. create a `json.js` file inside of generateData, paste the json into the json file. Then, modify the json.js file to be exported like so: `module.exports = {JSON_FILE_HERE}`
+  b. Create a `json.js` file inside of generateData, paste the json into the json file. Then, modify the json.js file to be exported like so:     `module.exports = {JSON_FILE_HERE}`
 
-  c. use this command in the terminal: `npm run generateData`
+  c. Use this command in the terminal: `npm run generateData`
 
-  d. use this list of queries to generate data:
+  d. Use this list of queries to generate data:
   `http://localhost:3011/generate` +
     (for `accounts` table)
     `/accounts`
@@ -71,6 +89,8 @@ tip: the default port is 5432.
 7. Run the following command to create the db from the schema: `psql -U postgres < INSERT_FILE_PATH.sql`
    You can also change to any user you want `-U INSERT_USER`
 
-8. `npm run watch`
+8. Build webpack
+`npm run build`
 
-9. `npm start`
+9. Start Server:
+`npm start`
