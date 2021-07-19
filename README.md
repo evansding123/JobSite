@@ -54,25 +54,27 @@ tip: the default port is 5432.
   c. Use this command in the terminal: `npm run generateData`
 
   d. Use this list of queries to generate data:
-  `http://localhost:3011/generate` +
-    (for `accounts` table)
-    `/accounts`
+  ```sh
+  http://localhost:3011/generate +
+    (for accounts table)
+    /accounts
 
-    (for `notes` table)
-    `/notes`
+    (for notes table)
+    /notes
 
-    (for `employers` table)
-    `/employers`
+    (for employers table)
+    /employers
 
-    (for `job_seekers` table)
-    `/job_seekers`
+    (for job_seekers table)
+    /job_seekers
 
-    (for `jobs` table)
-    `/jobs?posts=INSERT_NUMBER_OF_DESIRED_POSTS`
-    example: `http://localhost:3011/generate/job_seekers_applied_jobs?applications=20000&jobs=5000&transform=true`
+    (for jobs table)
+    /jobs?posts=INSERT_NUMBER_OF_DESIRED_POSTS
+    example: http://localhost:3011/generate/job_seekers_applied_jobs?applications=20000&jobs=5000&transform=true
 
-    (for `/job_seekers_applied_jobs` table. The number of jobs must accurately represent the number of job posts you generated above)
-    `/job_seekers_applied_jobs?applications=INSERT_NUMBER_OF_DESIRED_APPLICANTS&jobs=INSERT_NUMBER_OF_JOB_POSTS_USED_IN_JOBS`
+    (for /job_seekers_applied_jobs table. The number of jobs must accurately represent the number of job posts you generated above)
+    /job_seekers_applied_jobs?applications=INSERT_NUMBER_OF_DESIRED_APPLICANTS&jobs=INSERT_NUMBER_OF_JOB_POSTS_USED_IN_JOBS
+    ```
 
     all queries can take in an optional query parameter called transform: `?transform=true` || `&transform=true`
     Transform accepts a truthy value. If you include transform the generated data will be manipulated in the program and returned in csv format.
@@ -89,8 +91,12 @@ tip: the default port is 5432.
 7. Run the following command to create the db from the schema: `psql -U postgres < INSERT_FILE_PATH.sql`
    You can also change to any user you want `-U INSERT_USER`
 
-8. Build webpack
-`npm run build`
+8. Build with webpack:
+```sh
+npm run build
+```
 
 9. Start Server:
-`npm start`
+```sh
+npm start
+```
