@@ -26,7 +26,7 @@ PostgreSQL 13
 ```sh
 npm run db
 ```
-  a. For ubuntu users, use the following command: `sudo -i -u postgres`
+- For ubuntu users, use the following command: `sudo -i -u postgres`
 
 3. Create a config.js file in the root directory with the following layout:
 ```sh
@@ -48,15 +48,15 @@ module.exports = {
 tip: the default port is 5432.
 
 5. To genarate data for the db:
-  a. Send a get request to this address, and insert the number of users you want to have:
+  - Send a get request to this address, and insert the number of users you want to have:
   (data will be pulled from this object and used in the account table)
   `https://randomuser.me/api/?results=INSERT_NUMBER_HERE`
 
-  b. Create a `json.js` file inside of generateData, paste the json into the json file. Then, modify the json.js file to be exported like so:     `module.exports = {JSON_FILE_HERE}`
+  - Create a `json.js` file inside of generateData, paste the json into the json file. Then, modify the json.js file to be exported like so:     `module.exports = {JSON_FILE_HERE}`
 
-  c. Use this command in the terminal: `npm run generateData`
+  - Use this command in the terminal: `npm run generateData`
 
-  d. Use this list of queries to generate data:
+  - Use this list of queries to generate data:
   http://localhost:3011/generate +
     (for accounts table)
     /accounts
@@ -105,17 +105,17 @@ npm start
 ```
 
 ## Module Description
-Login/Signup
-Landing Page
-Employer Landing Page
-Calendar
-Notes
+#### Login/Signup
+#### Landing Page
+#### Employer Landing Page
+#### Calendar
+#### Notes
 
 ## Authors
-Brandon Parker
-Claire Chen
-Elizabeth Phung
-Evans Ding
-John Yasis
-Philip Latoza
-Sean Claybaugh
+- Brandon Parker
+- Claire Chen
+- Elizabeth Phung
+- Evans Ding
+- John Yasis
+- Philip Latoza
+- Sean Claybaugh
