@@ -6,12 +6,12 @@
     <li><a href="#Prerequisites">Prerequisites</a></li>
     <li><a href="#Usage">Usage</a></li>
     <li><a href="#Module-Description">Module Description</a></li>
-    <li><a href="#Tests">Tests</a></li>
-    <li><a href="#Author">Author</a></li>
+    <li><a href="#Authors">Author</a></li>
     <li><a href="#Acknowledgements">Acknowledgements</a></li>
 </ol>
 
 ## Summary
+JobSite is an employment web application, which allows job seekers to find good fitting jobs and employers to match with the right candidates. What distinguishes JobSite from other competitors is a calendar and notes tool that allows users to keep track of upcoming interviews and record any information about jobs. 
 
 ## Prerequisites
 ```sh
@@ -23,6 +23,9 @@ PostgreSQL 13
 1. Run `npm install` to get all dependencies
 
 2. Access postgres
+```sh
+npm run db
+```
   a. For ubuntu users, use the following command: `sudo -i -u postgres`
 
 3. Create a config.js file in the root directory with the following layout:
@@ -54,7 +57,6 @@ tip: the default port is 5432.
   c. Use this command in the terminal: `npm run generateData`
 
   d. Use this list of queries to generate data:
-  ```sh
   http://localhost:3011/generate +
     (for accounts table)
     /accounts
@@ -74,7 +76,6 @@ tip: the default port is 5432.
 
     (for /job_seekers_applied_jobs table. The number of jobs must accurately represent the number of job posts you generated above)
     /job_seekers_applied_jobs?applications=INSERT_NUMBER_OF_DESIRED_APPLICANTS&jobs=INSERT_NUMBER_OF_JOB_POSTS_USED_IN_JOBS
-    ```
 
     all queries can take in an optional query parameter called transform: `?transform=true` || `&transform=true`
     Transform accepts a truthy value. If you include transform the generated data will be manipulated in the program and returned in csv format.
@@ -84,12 +85,14 @@ tip: the default port is 5432.
     1. exclude the transform parameter.
     2. query as defined above.
     3. copy the returned generated json data.
-    4. use this website to generate csv from the returned json: `https://www.convertcsv.com/json-to-csv.htm`
+    4. use this website to generate csv from the returned json: https://www.convertcsv.com/json-to-csv.htm
 
 6. After you have your csv data create csv files in the db folder. Name the files after the appropriate tables for the data in the db.
 
-7. Run the following command to create the db from the schema: `psql -U postgres < INSERT_FILE_PATH.sql`
-   You can also change to any user you want `-U INSERT_USER`
+7. Run the following command to create the db from the schema:
+```sh
+npm run seed:schema
+```
 
 8. Build with webpack:
 ```sh
@@ -100,3 +103,19 @@ npm run build
 ```sh
 npm start
 ```
+
+## Module Description
+Login/Signup
+Landing Page
+Employer Landing Page
+Calendar
+Notes
+
+## Authors
+Brandon Parker
+Claire Chen
+Elizabeth Phung
+Evans Ding
+John Yasis
+Philip Latoza
+Sean Claybaugh
